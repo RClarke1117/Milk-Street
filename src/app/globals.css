@@ -804,6 +804,7 @@ h1, h2, h3, .display {
   margin-top: 1.5rem;
 }
 .age-actions .btn, .age-actions .btn-ghost { min-width: 8.4rem; }
+.age-actions .btn-ghost { background: rgba(14, 12, 10, 0.45); }
 .age-no {
   margin: 1rem auto 0;
   max-width: 20rem;
