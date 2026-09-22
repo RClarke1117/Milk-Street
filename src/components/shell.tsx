@@ -8,6 +8,8 @@ export function Shell({ children }: { children: React.ReactNode }) {
   const [ready, setReady] = useState(false);
   const [ofAge, setOfAge] = useState(false);
   const [booting, setBooting] = useState(false);
+  const [leaving, setLeaving] = useState(false);
+  const [loaderOut, setLoaderOut] = useState(false);
 
   useEffect(() => {
     const reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
@@ -23,11 +25,16 @@ export function Shell({ children }: { children: React.ReactNode }) {
 
   useEffect(() => {
     if (!booting) return;
-    const timer = window.setTimeout(() => {
+    const startOut = window.setTimeout(() => setLoaderOut(true), 1900);
+    const done = window.setTimeout(() => {
       sessionStorage.setItem("msd-boot", "1");
       setBooting(false);
-    }, 1700);
-    return () => window.clearTimeout(timer);
+      setLoaderOut(false);
+    }, 2400);
+    return () => {
+      window.clearTimeout(startOut);
+      window.clearTimeout(done);
+    };
   }, [booting]);
 
   useEffect(() => {
@@ -35,11 +42,22 @@ export function Shell({ children }: { children: React.ReactNode }) {
   }, [ofAge, booting]);
 
   function confirmAge(yes: boolean) {
-    if (!yes) return;
+    if (!yes) {
+      document.getElementById("age-no")?.removeAttribute("hidden");
+      return;
+    }
     sessionStorage.setItem("msd-age", "1");
-    setOfAge(true);
     const reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-    if (!sessionStorage.getItem("msd-boot") && !reduce) setBooting(true);
+    if (reduce) {
+      sessionStorage.setItem("msd-boot", "1");
+      setOfAge(true);
+      return;
+    }
+    setLeaving(true);
+    window.setTimeout(() => {
+      setOfAge(true);
+      if (!sessionStorage.getItem("msd-boot")) setBooting(true);
+    }, 480);
   }
 
   return (
@@ -52,42 +70,55 @@ export function Shell({ children }: { children: React.ReactNode }) {
       {ready && ofAge ? <Footer /> : null}
 
       {ready && !ofAge ? (
-        <div className="age" role="dialog" aria-modal="true" aria-labelledby="age-title">
-          <img className="age-logo" src="/media/brand/logo.png" alt="Milk Street Distillery" width={878} height={167} />
-          <p className="kicker">Branchville</p>
-          <h1 id="age-title">Are you 21 or older?</h1>
-          <div className="age-actions">
-            <button type="button" className="btn" onClick={() => confirmAge(true)}>
-              Yes, enter
-            </button>
-            <button
-              type="button"
-              className="btn btn-ghost"
-              onClick={() => {
-                const note = document.getElementById("age-no");
-                note?.removeAttribute("hidden");
-              }}
-            >
-              No
-            </button>
+        <div
+          className={`age${leaving ? " is-leaving" : ""}`}
+          role="dialog"
+          aria-modal="true"
+          aria-labelledby="age-title"
+        >
+          <div className="veil-media" aria-hidden="true">
+            <img src="/media/place/back-bar.jpg" alt="" />
           </div>
-          <p id="age-no" className="age-no" hidden>
-            You must be 21.
-          </p>
+          <div className="age-panel">
+            <img className="age-logo" src="/media/brand/logo.png" alt="Milk Street Distillery" width={878} height={167} />
+            <span className="age-rule" />
+            <p className="kicker">Branchville, New Jersey</p>
+            <h1 id="age-title">Are you 21 or older?</h1>
+            <p className="age-lede">Sussex County&apos;s first distillery in over 70 years.</p>
+            <div className="age-actions">
+              <button type="button" className="btn" onClick={() => confirmAge(true)}>
+                Yes, enter
+              </button>
+              <button type="button" className="btn btn-ghost" onClick={() => confirmAge(false)}>
+                No
+              </button>
+            </div>
+            <p id="age-no" className="age-no" hidden>
+              You must be 21.
+            </p>
+          </div>
         </div>
       ) : null}
 
       {booting ? (
-        <div className="loader" role="status" aria-live="polite">
-          <p className="loader-kicker">Branchville, New Jersey</p>
-          <p className="loader-word" aria-label="Milk Street">
-            {"Milk Street".split("").map((letter, index) => (
-              <span key={`${letter}-${index}`} style={{ animationDelay: `${index * 45}ms` }}>
-                {letter === " " ? "\u00a0" : letter}
-              </span>
-            ))}
-          </p>
-          <span className="loader-rule" />
+        <div className={`loader${loaderOut ? " is-leaving" : ""}`} role="status" aria-live="polite">
+          <div className="veil-media" aria-hidden="true">
+            <img src="/media/place/back-bar.jpg" alt="" />
+          </div>
+          <div className="loader-panel">
+            <p className="loader-kicker">Branchville, New Jersey</p>
+            <p className="loader-word" aria-label="Milk Street">
+              {"Milk Street".split("").map((letter, index) => (
+                <span key={`${letter}-${index}`} style={{ animationDelay: `${80 + index * 55}ms` }}>
+                  {letter === " " ? "\u00a0" : letter}
+                </span>
+              ))}
+            </p>
+            <span className="loader-rule" />
+            <p className="loader-sub">
+              Grain to <em>glass.</em>
+            </p>
+          </div>
         </div>
       ) : null}
     </>

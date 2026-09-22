@@ -11,13 +11,13 @@ Milk Street’s motion should feel like a heavy object moving a short distance: 
 
 ## 1. Age gate
 
-On first view in a session, a full-viewport gate asks if the visitor is 21. It does not animate in. Confirming age writes `msd-age` to `sessionStorage` and reveals the site. “No” shows a single sentence and does not enter.
+On first view in a session, a full-viewport gate asks if the visitor is 21. The still-pour photograph sits behind a dark veil. The question, a short Branchville line, and the two buttons sit in one panel that rises once. Confirming age writes `msd-age` to `sessionStorage`. The panel lifts out, then the loader. “No” shows a single sentence and does not enter.
 
 Reduced motion: same gate, no extra transition.
 
 ## 2. Loader
 
-Once per session, after the age gate, a 1.7s title sequence: “Milk Street” rises letter by letter, a copper rule draws, “Grain to glass” sits underneath, then the overlay leaves. Flag: `msd-boot`.
+Once per session, after the age gate, a 2.4s title sequence on the same still-pour: “Milk Street” rises letter by letter, a copper rule draws, “Grain to glass” sits underneath, then the overlay leaves. Flag: `msd-boot`.
 
 Reduced motion: the loader is skipped entirely.
 
