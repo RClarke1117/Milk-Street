@@ -25,10 +25,10 @@ function readStatus(now = new Date()): Status {
   return "closed";
 }
 
-const copy: Record<Status, string> = {
-  open: "Tasting room open",
-  pickup: "Pickup only — email ahead",
-  closed: "Tasting room closed",
+const copy: Record<Status, { full: string; short: string }> = {
+  open: { full: "Tasting room open", short: "Open" },
+  pickup: { full: "Pickup only — email ahead", short: "Pickup" },
+  closed: { full: "Tasting room closed", short: "Closed" },
 };
 
 export function OpenBadge() {
@@ -45,7 +45,8 @@ export function OpenBadge() {
   return (
     <p className={`open-pill ${status === "open" ? "is-open" : "is-shut"}`}>
       <i />
-      {copy[status]}
+      <span className="open-pill-full">{copy[status].full}</span>
+      <span className="open-pill-short">{copy[status].short}</span>
     </p>
   );
 }
