@@ -1,0 +1,26 @@
+import type { Metadata } from "next";
+import { UpcomingEvents } from "@/components/upcoming-events";
+import { site } from "@/lib/site";
+
+export const metadata: Metadata = {
+  title: "Events",
+  description: "Events at Milk Street Distillery.",
+};
+
+export default function EventsPage() {
+  return (
+    <main>
+      <header className="page-hero">
+        <p className="kicker">Events</p>
+        <h1>Events</h1>
+      </header>
+      <section className="section">
+        <UpcomingEvents />
+        <p>
+          Alco-Hauler is available for weddings and private events.{" "}
+          <a href={site.emailHref}>{site.email}</a> or <a href={site.phoneHref}>{site.phone}</a>.
+        </p>
+      </section>
+    </main>
+  );
+}

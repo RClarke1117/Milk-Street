@@ -1,0 +1,55 @@
+import type { Metadata } from "next";
+import { Fraunces, Outfit } from "next/font/google";
+import { JsonLd } from "@/components/json-ld";
+import { Shell } from "@/components/shell";
+import { site } from "@/lib/site";
+import "./globals.css";
+
+const display = Fraunces({
+  subsets: ["latin"],
+  variable: "--font-fraunces",
+  display: "swap",
+  weight: ["400", "500", "600"],
+  style: ["normal", "italic"],
+});
+
+const sans = Outfit({
+  subsets: ["latin"],
+  variable: "--font-outfit",
+  display: "swap",
+  weight: ["300", "400", "500", "600"],
+});
+
+export const metadata: Metadata = {
+  metadataBase: new URL("https://www.milkstreetdistillery.com"),
+  title: {
+    default: "Milk Street Distillery",
+    template: "%s · Milk Street Distillery",
+  },
+  description:
+    "Sussex County's first distillery in over 70 years. We are a true grain to glass distillery, as everything is mashed, fermented, distilled and bottled on site.",
+  openGraph: {
+    title: "Milk Street Distillery",
+    description: "Sussex County's first distillery in over 70 years, in Branchville, New Jersey.",
+    images: ["/media/place/column-still.jpg"],
+    type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Milk Street Distillery",
+    description: "Sussex County's first distillery in over 70 years, in Branchville, New Jersey.",
+    images: ["/media/place/column-still.jpg"],
+  },
+};
+
+export default function RootLayout({ children }: { children: React.ReactNode }) {
+  return (
+    <html lang="en" className={`${display.variable} ${sans.variable}`}>
+      <body>
+        <JsonLd />
+        <Shell>{children}</Shell>
+        <span className="sr-only">{site.name}</span>
+      </body>
+    </html>
+  );
+}
