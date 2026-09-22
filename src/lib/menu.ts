@@ -1,5 +1,3 @@
-import { instagramPosts } from "@/lib/instagram";
-
 export type Drink = {
   id: string;
   name: string;
@@ -8,12 +6,10 @@ export type Drink = {
   description: string;
   spirit: string;
   spiritSlug?: string;
-  image: string;
-  imageAlt: string;
-  credit: string;
-  instagramHref?: string;
-  instagramImage?: string;
-  instagramAlt?: string;
+  /** A photograph of this drink. Absent until one exists — the menu shows a slot instead of another bottle. */
+  image?: string;
+  imageAlt?: string;
+  credit?: string;
 };
 
 export const menuCategories = [
@@ -30,93 +26,19 @@ export const menuCategories = [
 
 export type MenuCategory = (typeof menuCategories)[number];
 
-const vexedPour = instagramPosts.find((post) => post.id === "vexed-pour")!;
-const ryeFilm = instagramPosts.find((post) => post.id === "dam-break-process")!;
-
 const bottle = {
-  murder: {
-    image: "/media/spirits/murder.jpg",
-    imageAlt: "Murder Bourbon in the barrel.",
-    spirit: "Murder Bourbon",
-    spiritSlug: "murder-bourbon",
-    credit: "Distillery photograph · Murder Bourbon",
-  },
-  war: {
-    image: "/media/spirits/war-penny.jpg",
-    imageAlt: "War Penny, wax-sealed with a 1943 steel penny.",
-    spirit: "War Penny",
-    spiritSlug: "war-penny",
-    credit: "Distillery photograph · War Penny",
-  },
-  rye: {
-    image: "/media/spirits/dam-break.jpg",
-    imageAlt: "Dam Break Rye bottle.",
-    spirit: "Dam Break Rye",
-    spiritSlug: "dam-break-rye",
-    credit: "Distillery photograph · Dam Break Rye",
-  },
-  mcnally: {
-    image: "/media/spirits/mcnally.jpg",
-    imageAlt: "McNally’s Irish Style Whiskey in the field.",
-    spirit: "McNally’s",
-    spiritSlug: "mcnallys",
-    credit: "Distillery photograph · McNally’s",
-  },
-  devil: {
-    image: "/media/spirits/devils-bark.jpg",
-    imageAlt: "The Devil’s Bark bottle.",
-    spirit: "The Devil’s Bark",
-    spiritSlug: "devils-bark",
-    credit: "Distillery photograph · The Devil’s Bark",
-  },
-  rum: {
-    image: "/media/spirits/wooden-leg.jpg",
-    imageAlt: "Wooden Leg Rum bottle.",
-    spirit: "Wooden Leg Rum",
-    spiritSlug: "wooden-leg-rum",
-    credit: "Distillery photograph · Wooden Leg Rum",
-  },
-  vexed: {
-    image: "/media/spirits/vexed.jpg",
-    imageAlt: "Vexed Gin bottle by the water.",
-    spirit: "Vexed Gin",
-    spiritSlug: "vexed-gin",
-    credit: "Distillery photograph · Vexed Gin",
-  },
-  bettie: {
-    image: "/media/spirits/blind-bettie.jpg",
-    imageAlt: "Blind Bettie Gin in the cucumber garden.",
-    spirit: "Blind Bettie Gin",
-    spiritSlug: "blind-bettie",
-    credit: "Distillery photograph · Blind Bettie",
-  },
-  kanpeki: {
-    image: "/media/spirits/kanpeki.jpg",
-    imageAlt: "Kanpeki rice vodka bottle.",
-    spirit: "Kanpeki",
-    spiritSlug: "kanpeki",
-    credit: "Distillery photograph · Kanpeki",
-  },
-  vulture: {
-    image: "/media/spirits/black-vulture.jpg",
-    imageAlt: "Black Vulture corn vodka.",
-    spirit: "Black Vulture Vodka",
-    spiritSlug: "black-vulture",
-    credit: "Distillery photograph · Black Vulture",
-  },
-  ginger: {
-    image: "/media/spirits/soulless-ginger.jpg",
-    imageAlt: "Soulless Ginger vodka.",
-    spirit: "Soulless Ginger",
-    spiritSlug: "soulless-ginger",
-    credit: "Distillery photograph · Soulless Ginger",
-  },
-  flight: {
-    image: "/media/place/back-bar.jpg",
-    imageAlt: "The bottle wall behind the tasting-room bar.",
-    spirit: "The shelf",
-    credit: "Distillery photograph · the back bar",
-  },
+  murder: { spirit: "Murder Bourbon", spiritSlug: "murder-bourbon" },
+  war: { spirit: "War Penny", spiritSlug: "war-penny" },
+  rye: { spirit: "Dam Break Rye", spiritSlug: "dam-break-rye" },
+  mcnally: { spirit: "McNally’s", spiritSlug: "mcnallys" },
+  devil: { spirit: "The Devil’s Bark", spiritSlug: "devils-bark" },
+  rum: { spirit: "Wooden Leg Rum", spiritSlug: "wooden-leg-rum" },
+  vexed: { spirit: "Vexed Gin", spiritSlug: "vexed-gin" },
+  bettie: { spirit: "Blind Bettie Gin", spiritSlug: "blind-bettie" },
+  kanpeki: { spirit: "Kanpeki", spiritSlug: "kanpeki" },
+  vulture: { spirit: "Black Vulture Vodka", spiritSlug: "black-vulture" },
+  ginger: { spirit: "Soulless Ginger", spiritSlug: "soulless-ginger" },
+  flight: { spirit: "The shelf" },
 } as const;
 
 type BottleKey = keyof typeof bottle;
@@ -128,7 +50,7 @@ function item(
   category: MenuCategory,
   description: string,
   base: BottleKey,
-  extra?: Partial<Pick<Drink, "instagramHref" | "instagramImage" | "instagramAlt" | "spirit" | "spiritSlug">>,
+  extra?: Partial<Pick<Drink, "spirit" | "spiritSlug" | "image" | "imageAlt" | "credit">>,
 ): Drink {
   const source = bottle[base];
   return {
@@ -139,24 +61,11 @@ function item(
     description,
     spirit: extra?.spirit ?? source.spirit,
     spiritSlug: extra?.spiritSlug ?? ("spiritSlug" in source ? source.spiritSlug : undefined),
-    image: source.image,
-    imageAlt: source.imageAlt,
-    credit: source.credit,
-    ...extra,
+    image: extra?.image,
+    imageAlt: extra?.imageAlt,
+    credit: extra?.credit,
   };
 }
-
-const igVexed = {
-  instagramHref: vexedPour.href,
-  instagramImage: vexedPour.image,
-  instagramAlt: vexedPour.alt,
-};
-
-const igRye = {
-  instagramHref: ryeFilm.href,
-  instagramImage: ryeFilm.image,
-  instagramAlt: ryeFilm.alt,
-};
 
 export const drinks: Drink[] = [
   item("the-morgan-after-pill", "The Morgan After Pill", "$11", "Vodka", "Kanpeki, blackberry citrus tea, and crystallized lemon.", "kanpeki"),
@@ -181,7 +90,7 @@ export const drinks: Drink[] = [
 
   item("heavy-melons", "Heavy Melons", "$11", "Gin", "Blind Bettie, cantaloupe, citrus, and seltzer. Lighter than the name.", "bettie"),
   item("rosemaries-baby", "Rosemary’s Baby", "$11", "Gin", "Orange and lemon muddled in rosemary syrup, with gin and seltzer.", "bettie", { spirit: "House gin" }),
-  item("butterfly-pea", "Butterfly Pea", "$11", "Gin", "Vexed, lavender, lemonade, seltzer, and butterfly pea.", "vexed", igVexed),
+  item("butterfly-pea", "Butterfly Pea", "$11", "Gin", "Vexed, lavender, lemonade, seltzer, and butterfly pea.", "vexed"),
   item("blind-lemonade", "Blind Lemonade", "$11", "Gin", "Blind Bettie and pink lemonade.", "bettie"),
   item("fun-with-a-cucumber", "Fun with a Cucumber", "$11", "Gin", "Gin, muddled cucumber and lime, tonic, and ginger beer.", "bettie", { spirit: "House gin" }),
   item("betties-bbl", "Bettie’s BBL", "$11", "Gin", "Blind Bettie, blackberry, pink lemonade, and cran-razz seltzer.", "bettie"),
@@ -191,7 +100,7 @@ export const drinks: Drink[] = [
   item("tits-on-a-moritz", "Tits on a Moritz", "$13", "Whiskey", "Murder Bourbon, sour cherry, and almond syrup, served ice-cold. Add $1 when it is a mantini.", "murder"),
   item("tish-and-7up", "Tish & 7up", "$13", "Whiskey", "A 7&7 built on McNally’s Irish Style Whiskey and 7up.", "mcnally"),
   item("classic-whiskey-sour", "Classic Whiskey Sour", "$13", "Whiskey", "Whiskey, lemon, simple syrup, and egg white.", "murder", { spirit: "House whiskey" }),
-  item("barrel-rested-old-fashioned", "Barrel Rested Old Fashioned", "$13", "Whiskey", "Orange, cherry, sugar, bitters, and Dam Break Rye over ice.", "rye", igRye),
+  item("barrel-rested-old-fashioned", "Barrel Rested Old Fashioned", "$13", "Whiskey", "Orange, cherry, sugar, bitters, and Dam Break Rye over ice.", "rye"),
   item("smoked-cherry", "Smoked Cherry", "$13", "Whiskey", "Light vanilla syrup and black cherry soda with War Penny.", "war"),
 
   item("moscow-mule", "Moscow Mule", "$11", "Mules", "Vodka, lime, and ginger beer.", "vulture", { spirit: "Milk Street vodka" }),

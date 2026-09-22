@@ -1,9 +1,10 @@
 "use client";
 
 import { useEffect, useId, useRef } from "react";
+import { DrinkSlot } from "@/components/drink-slot";
 
 export type Shot = {
-  src: string;
+  src?: string;
   alt: string;
   title: string;
   kicker?: string;
@@ -17,6 +18,7 @@ export type Shot = {
   secondaryHref?: string;
   secondaryLabel?: string;
   hint?: string;
+  slot?: { name: string; category?: string };
 };
 
 export function PhotoModal({
@@ -50,8 +52,11 @@ export function PhotoModal({
       {shot ? (
         <div className="modal-card">
           <figure className="modal-photo">
-            {/* Native img so the dialog can open before the optimizer warms. */}
-            <img src={shot.src} alt={shot.alt} />
+            {shot.src ? (
+              <img src={shot.src} alt={shot.alt} />
+            ) : shot.slot ? (
+              <DrinkSlot name={shot.slot.name} category={shot.slot.category} size="frame" />
+            ) : null}
           </figure>
           <div className="modal-copy">
             <button

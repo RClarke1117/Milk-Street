@@ -225,7 +225,7 @@ export default function HomePage() {
             Instagram
           </a>
           <Link className="btn btn-ghost" href="/menu">
-            Drinks, with the photos
+            Tasting-room list
           </Link>
         </div>
       </section>
@@ -242,12 +242,13 @@ export default function HomePage() {
             <h2>On the calendar</h2>
             <div className="event-list">
               {next.map((event) => (
-                <article key={event.id} className="event">
+                <article key={event.id} className="event event-next">
+                  <figure>
+                    <Image src={event.image} alt="" width={240} height={240} />
+                  </figure>
                   <div>
                     <time dateTime={event.date}>{formatEventDate(event.date)}</time>
                     <span className="kind">{event.start}</span>
-                  </div>
-                  <div>
                     <h3>{event.title}</h3>
                     <p>{event.detail}</p>
                   </div>

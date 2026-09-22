@@ -3,13 +3,15 @@
 import Link from "next/link";
 import { usePathname, useRouter, useSearchParams } from "next/navigation";
 import { useEffect, useMemo, useState } from "react";
+import { DrinkSlot } from "@/components/drink-slot";
 import { PhotoModal, type Shot } from "@/components/photo-modal";
 import { drinks, menuCategories, type Drink, type MenuCategory } from "@/lib/menu";
 
 function toShot(drink: Drink): Shot {
   return {
     src: drink.image,
-    alt: drink.imageAlt,
+    alt: drink.imageAlt ?? drink.name,
+    slot: drink.image ? undefined : { name: drink.name, category: drink.category },
     title: drink.name,
     kicker: drink.category,
     body: drink.description,
@@ -17,10 +19,6 @@ function toShot(drink: Drink): Shot {
     credit: drink.credit,
     href: drink.spiritSlug ? `/spirits/${drink.spiritSlug}` : undefined,
     hrefLabel: drink.spiritSlug ? `The spirit · ${drink.spirit}` : undefined,
-    secondarySrc: drink.instagramImage,
-    secondaryAlt: drink.instagramAlt,
-    secondaryHref: drink.instagramHref,
-    secondaryLabel: "This spirit on Instagram",
     hint: "Arrow keys move through the list.",
   };
 }
@@ -159,13 +157,14 @@ export function MenuBoard() {
                   <li key={drink.id} id={drink.id}>
                     <button type="button" className="menu-row" onClick={() => openDrink(drink)}>
                       <span className="menu-thumb">
-                        <img src={drink.image} alt="" />
+                        {drink.image ? (
+                          <img src={drink.image} alt="" />
+                        ) : (
+                          <DrinkSlot name={drink.name} size="thumb" />
+                        )}
                       </span>
                       <span className="menu-copy">
-                        <span className="menu-name">
-                          {drink.name}
-                          {drink.instagramImage ? <i>IG</i> : null}
-                        </span>
+                        <span className="menu-name">{drink.name}</span>
                         <span className="menu-desc">{drink.description}</span>
                         <span className="menu-spirit">{drink.spirit}</span>
                       </span>

@@ -8,7 +8,7 @@ Checked September 22, 2026 against a production build (`next start`) in headless
 - @177milkstreet is not used as the account. It is named only in the assessment and asset notes as the handle to reject. It is not rendered on the site.
 - The grid on the site is the live first page of the profile, saved locally. A second feed page returned HTTP 401, so older cocktail posts were not invented.
 - Clicking a grid cell opens the photograph in a dialog and links to the real post.
-- Butterfly Pea opens a dialog whose second photograph is the Vexed gin-and-tonic still, linked to `https://www.instagram.com/reel/DdKjQZoiu--/`.
+- A drink without its own photograph opens a “Drink image here” slot. The Vexed gin-and-tonic still stays on the Instagram grid, not on Butterfly Pea.
 - Barrel Rested Old Fashioned carries the Dam Break process still and its reel.
 
 ## Menu
@@ -40,7 +40,7 @@ These names are the scan, not a cleanup:
 - F.U. Gary, Carol Effin Baskin, and the other house names, kept.
 - Classic Martini is “Classie” on the scan. Ferrero Rocher is “Ferraro Roche” on the scan. Both are treated as the obvious reading and marked here.
 - Jello and moonshine are $5 from the shaker scan. The OCR pass could not read those two prices; the figure on the scan is $5.
-- Where the scan says “vodka” or “whiskey” without a bottle name, the row says “Milk Street vodka” or “house whiskey” and shows the flagship bottle of that family. It does not pretend the scan named Black Vulture or Murder.
+- Where the scan says “vodka” or “whiskey” without a bottle name, the row says “Milk Street vodka” or “house whiskey.” The spirit link uses the flagship of that family. The picture slot does not pretend the scan named Black Vulture or Murder.
 
 Tax and the 3.99% card fee are on the menu page.
 
@@ -56,7 +56,7 @@ With `prefers-reduced-motion: reduce`, the make page loaded with the media query
 
 ## Not claimed
 
-- No per-cocktail Instagram still exists in the September 2026 grid for most of the list. Those rows open the bottle photograph and say so.
+- No per-cocktail photograph exists for this list. Those rows open a “Drink image here” slot instead of a bottle or another drink.
 - Brandon Davis’s ticket URL was not on the pages we could read. The event points at the distillery and the Instagram post instead of a made-up link.
 - The GitHub repository could not be set private (HTTP 403).
 - No hosted preview was created. There is no Vercel token in this environment. The site was reviewed at `http://127.0.0.1:3456`.

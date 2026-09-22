@@ -17,7 +17,7 @@ export default function MenuPage() {
         <p className="kicker">The room · secondary to the still</p>
         <h1>Pours of what we make.</h1>
         <p>
-          Spring / Summer 2026. The list is cocktails, mules, martinis, shakers, and boba — all built on Milk Street spirits. Click any drink to open the photograph. Where Instagram has a real picture of that spirit, it sits inside the same window.
+          Spring / Summer 2026. The list is cocktails, mules, martinis, shakers, and boba — all built on Milk Street spirits. Click a drink for the recipe and the bottle it comes from. A drink photograph appears only when we have one of that pour. Until then the frame says drink image here.
         </p>
         <p className="fine" style={{ color: "rgba(243,238,230,.7)" }}>{menuNote}</p>
       </header>

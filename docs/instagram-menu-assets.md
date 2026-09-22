@@ -33,18 +33,11 @@ Unused extras from the same pull (also saved, not all placed): `cigars.jpg`, `ha
 
 ## How a menu click uses them
 
-The Spring / Summer 2026 list does not have a matching Instagram still for each cocktail. Putting the Vexed gin and tonic on Butterfly Pea, or on The Word, would be a lie.
+The Spring / Summer 2026 list does not have a photograph of each cocktail. A bottle, or the Vexed gin and tonic, is not a picture of The Word or Butterfly Pea.
 
-So each menu row opens a dialog whose main photograph is the **bottle the drink is built from** (distillery product photography). When that spirit has a real Instagram frame, the dialog also shows it:
+Each row opens a dialog. If `image` is set on that drink, the dialog shows that photograph. Otherwise it shows a slot labeled “Drink image here,” with the drink’s name, and a link to the spirit it is built from. The Instagram grid on the menu page is separate: those frames stay attached to the posts they actually are.
 
-| Menu items | Instagram frame inside the dialog |
-| --- | --- |
-| Butterfly Pea (Vexed) | Vexed gin and tonic, linked to the reel |
-| Barrel Rested Old Fashioned (Dam Break Rye) | Process still of the rye, linked to the reel |
-
-Every other row still opens a photograph. The credit line says which bottle it is. The separate Instagram section on the menu page opens any grid cell in the same dialog and links to the post.
-
-Unspecified “vodka” and “whiskey” on the scan are labeled “Milk Street vodka” or “house whiskey” and illustrated with Black Vulture or Murder, the flagship of that family. Where the scan names Kanpeki, Wooden Leg, War Penny, Blind Bettie, Soulless Ginger, McNally’s, Devil’s Bark, or Murder, the bottle matches the name.
+Unspecified “vodka” and “whiskey” on the scan are labeled “Milk Street vodka” or “house whiskey.” The spirit link still points at the flagship of that family. The slot does not pretend to be the bottle.
 
 ## Menu source
 
