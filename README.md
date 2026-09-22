@@ -13,6 +13,8 @@ npm run build
 npm run qa
 ```
 
+`npm run build` writes a static site to `out/` (`output: "export"`). That folder is what Cloudflare Pages serves.
+
 ## Read first
 
 - `docs/brand-assessment.md` — what the distillery is, and what the old site wasted
