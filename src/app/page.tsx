@@ -3,7 +3,7 @@ import Link from "next/link";
 import { Hours } from "@/components/hours";
 import { IgGrid } from "@/components/ig-grid";
 import { Reveal } from "@/components/reveal";
-import { events, formatEventDate } from "@/lib/events";
+import { UpcomingEvents } from "@/components/upcoming-events";
 import { profile } from "@/lib/instagram";
 import { site } from "@/lib/site";
 import { spirits } from "@/lib/spirits";
@@ -48,7 +48,6 @@ const steps = [
 
 export default function HomePage() {
   const featured = spirits.slice(0, 5);
-  const next = events.slice(0, 3);
   const names = spirits.map((spirit) => spirit.name);
 
   return (
@@ -238,21 +237,7 @@ export default function HomePage() {
           </div>
           <div>
             <h2>Events</h2>
-            <div className="event-list">
-              {next.map((event) => (
-                <article key={event.id} className="event event-next">
-                  <figure>
-                    <Image src={event.image} alt="" width={240} height={240} />
-                  </figure>
-                  <div>
-                    <time dateTime={event.date}>{formatEventDate(event.date)}</time>
-                    <span className="kind">{event.start}</span>
-                    <h3>{event.title}</h3>
-                    <p>{event.detail}</p>
-                  </div>
-                </article>
-              ))}
-            </div>
+            <UpcomingEvents variant="preview" />
             <div className="btn-row">
               <Link className="btn" href="/events">
                 All dates
