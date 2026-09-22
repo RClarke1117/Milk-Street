@@ -806,7 +806,7 @@ h1, h2, h3, .display {
 @media (max-width: 980px) {
   :root { --header: 3.15rem; }
   .site-header { padding: 0.45rem 1.2rem 0; }
-  .brand img { height: 1.65rem; }
+  .brand img { height: 1.65rem; max-width: min(11.2rem, 52vw); }
   .nav-toggle {
     display: inline-flex;
     padding: 0.32rem 0.55rem;
