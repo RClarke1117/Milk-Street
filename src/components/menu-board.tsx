@@ -18,7 +18,7 @@ function toShot(drink: Drink): Shot {
     price: drink.price,
     credit: drink.credit,
     href: drink.spiritSlug ? `/spirits/${drink.spiritSlug}` : undefined,
-    hrefLabel: drink.spiritSlug ? `The spirit · ${drink.spirit}` : undefined,
+    hrefLabel: drink.spiritSlug ? drink.linkLabel ?? drink.spirit : undefined,
     hint: "Arrow keys move through the list.",
   };
 }
@@ -176,8 +176,7 @@ export function MenuBoard() {
             </section>
           ))}
           <p className="menu-foot">
-            Built only with what we distill. A spirit page sits behind every named bottle.{" "}
-            <Link href="/spirits">See the shelf</Link>.
+            <Link href="/spirits">Our spirits</Link>
           </p>
         </div>
       </div>

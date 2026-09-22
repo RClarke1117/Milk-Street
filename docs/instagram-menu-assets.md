@@ -37,7 +37,7 @@ The Spring / Summer 2026 list does not have a photograph of each cocktail. A bot
 
 Each row opens a dialog. If `image` is set on that drink, the dialog shows that photograph. Otherwise it shows a slot labeled “Drink image here,” with the drink’s name, and a link to the spirit it is built from. The Instagram grid on the menu page is separate: those frames stay attached to the posts they actually are.
 
-Unspecified “vodka” and “whiskey” on the scan are labeled “Milk Street vodka” or “house whiskey.” The spirit link still points at the flagship of that family. The slot does not pretend to be the bottle.
+Unspecified “vodka,” “gin,” “whiskey,” “bourbon,” and “rum” stay those words. They do not link Black Vulture, Blind Bettie, Murder, or Wooden Leg. Blueberry-infused vodka is its own line, not Black Vulture. A bottle link appears only when the scan names that bottle.
 
 ## Menu source
 

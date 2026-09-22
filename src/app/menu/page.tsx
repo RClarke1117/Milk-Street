@@ -7,18 +7,16 @@ import { profile } from "@/lib/instagram";
 
 export const metadata: Metadata = {
   title: "Tasting room menu",
-  description: "Spring and summer 2026 pours. Every drink is a Milk Street spirit.",
+  description: "Spring / Summer 2026 menu. Prices do not include tax.",
 };
 
 export default function MenuPage() {
   return (
     <main>
       <header className="page-hero">
-        <p className="kicker">The room · secondary to the still</p>
-        <h1>Pours of what we make.</h1>
-        <p>
-          Spring / Summer 2026. The list is cocktails, mules, martinis, shakers, and boba — all built on Milk Street spirits. Click a drink for the recipe and the bottle it comes from. A drink photograph appears only when we have one of that pour. Until then the frame says drink image here.
-        </p>
+        <p className="kicker">Our menu</p>
+        <h1>Our menu</h1>
+        <p>Spring / Summer 2026.</p>
         <p className="fine" style={{ color: "rgba(243,238,230,.7)" }}>{menuNote}</p>
       </header>
       <section className="section" style={{ paddingTop: "2.5rem" }}>
@@ -28,9 +26,9 @@ export default function MenuPage() {
       </section>
       <section className="section section-dark">
         <div className="section-head">
-          <h2>On Instagram</h2>
+          <h2>Instagram</h2>
           <p>
-            {profile.handle}. Click a frame to open it here, or follow the link through to the post. The recent grid is heavy on the room and the calendar; the drink photograph in it is the Vexed gin and tonic.
+            {profile.handle}. {profile.bio}
           </p>
         </div>
         <IgGrid />

@@ -12,35 +12,35 @@ const steps = [
   {
     n: "01",
     title: "Mash",
-    copy: "Corn, rye, barley, rice, cane. The grain hits the tun in this building.",
+    copy: "Mashed on site.",
     image: "/media/place/mash.jpg",
     alt: "Stainless mash tun on the distillery floor.",
   },
   {
     n: "02",
     title: "Ferment",
-    copy: "The wash sits in the fermenters until the sugar is gone and the beer is ready for the still.",
+    copy: "Fermented on site.",
     image: "/media/place/fermenters.jpg",
     alt: "Open stainless fermenters.",
   },
   {
     n: "03",
     title: "Distill",
-    copy: "Copper columns. The cut is made by hand, on the proof the grain wants.",
+    copy: "Distilled on site.",
     image: "/media/place/column-still.jpg",
     alt: "Copper column still with a spirit safe.",
   },
   {
     n: "04",
     title: "Age",
-    copy: "New white oak, seasoned bourbon barrels, and the occasional local beer barrel.",
+    copy: "Whiskey is aged on site.",
     image: "/media/place/barrels.jpg",
     alt: "Barrels racked in the distillery.",
   },
   {
     n: "05",
     title: "Bottle",
-    copy: "Filled, sealed, and labeled here. Nothing on the shelf was finished somewhere else.",
+    copy: "Bottled on site.",
     image: "/media/place/still-house.jpg",
     alt: "The still house interior at Milk Street.",
   },
@@ -64,26 +64,27 @@ export default function HomePage() {
           />
         </div>
         <div className="hero-copy">
-          <p className="kicker">Branchville, New Jersey · Est. {site.established}</p>
+          <p className="kicker">Branchville, New Jersey</p>
           <h1 className="display">
             Grain
             <br />
             to <em>glass.</em>
           </h1>
           <p className="lede">
-            Sussex County’s first legal distillery in more than seventy years. Everything on the shelf is mashed, fermented, distilled, and bottled in the old feed store at 1 Milk Street.
+            Sussex County&apos;s first distillery in over 70 years, located in the small town of Branchville, nestled in the rural northwest corner of New Jersey. We are a true grain to glass distillery, as everything is mashed, fermented, distilled and bottled on site.
           </p>
           <div className="hero-actions">
-            <Link className="btn" href="/the-make">
-              The make
+            <Link className="btn" href="/spirits">
+              Our spirits
             </Link>
-            <Link className="btn btn-ghost" href="/spirits">
-              The shelf
+            <Link className="btn btn-ghost" href="/tours">
+              Tours
             </Link>
           </div>
           <div className="hero-meta">
-            <span>Tasting room Fri–Sun</span>
-            <span>The still runs all week</span>
+            <span>Friday 4–10</span>
+            <span>Saturday 1–10</span>
+            <span>Sunday 1–6</span>
           </div>
         </div>
       </section>
@@ -99,11 +100,9 @@ export default function HomePage() {
       <section className="section">
         <div className="section-head">
           <h2>
-            <span className="num">01</span>Made here.
+            <span className="num">01</span>We&apos;re located in downtown Branchville.
           </h2>
-          <p className="prose">
-            Milk Street is a distillery that keeps a tasting room, not a bar that happens to sell bottles. Brothers Mike and Gordon Geerhart built the plant with their own hands inside a late-1800s feed store. The street took its name from the Borden creameries that once stood on it. The whiskey takes its name from the work.
-          </p>
+          <p className="prose">{site.address.full}</p>
         </div>
         <div className="split">
           <figure className="frame">
@@ -114,19 +113,21 @@ export default function HomePage() {
               height={1600}
               style={{ width: "100%", height: "auto" }}
             />
-            <figcaption>1 Milk Street, Building 1. The feed store is still the plant.</figcaption>
+            <figcaption>1 Milk Street, Building 1, Branchville, NJ 07826</figcaption>
           </figure>
           <div>
-            <p className="kicker">From the sack to the seal</p>
+            <p className="kicker">Visit</p>
             <h3 className="display" style={{ fontSize: "clamp(2.8rem, 5vw, 4.4rem)" }}>
-              Five rooms. One address.
+              1 Milk Street, Building 1
             </h3>
             <p>
-              Opened January 2017 with Black Vulture vodka and Wooden Leg rum. The shelf is larger now — bourbon, smoked bourbon, rye, Irish-style whiskey, two gins, rice vodka, ginger vodka — and the rule has not changed. If it is in the bottle, it was made on this floor.
+              <a href={site.phoneHref}>{site.phone}</a>
+              <br />
+              <a href={site.emailHref}>{site.email}</a>
             </p>
             <div className="btn-row">
-              <Link className="btn" href="/the-make">
-                Walk the make
+              <Link className="btn" href="/visit">
+                Visit
               </Link>
             </div>
           </div>
@@ -136,9 +137,9 @@ export default function HomePage() {
       <section className="section section-dark">
         <div className="section-head">
           <h2>
-            <span className="num">02</span>The make
+            <span className="num">02</span>Our distillery
           </h2>
-          <p>No neutral shipped in from somewhere else and dressed up as craft. The column is in the room.</p>
+          <p>We are a true grain to glass distillery, as everything is mashed, fermented, distilled and bottled on site.</p>
         </div>
         <div className="process">
           {steps.map((step) => (
@@ -159,9 +160,8 @@ export default function HomePage() {
       <section className="section">
         <div className="section-head">
           <h2>
-            <span className="num">03</span>The shelf
+            <span className="num">03</span>Our spirits
           </h2>
-          <p>Eleven spirits. Awards where they were earned. The tasting room pours these and nothing else.</p>
         </div>
         <div className="shelf">
           {featured.map((spirit, index) => (
@@ -180,7 +180,7 @@ export default function HomePage() {
         </div>
         <div className="btn-row">
           <Link className="btn" href="/spirits">
-            All eleven
+            Our spirits
           </Link>
         </div>
       </section>
@@ -188,16 +188,16 @@ export default function HomePage() {
       <section className="section section-dark">
         <div className="split">
           <div>
-            <p className="kicker">After the bottle</p>
+            <p className="kicker">Tours &amp; tastings</p>
             <h2>
-              <span className="num">04</span>The room is second.
+              <span className="num">04</span>Tours &amp; tastings
             </h2>
             <p>
-              Friday through Sunday the tasting room opens and the same spirits are poured by the glass. Tours leave every half hour. You do not book them. You walk in. Weekdays are for pickup, not for a bar shift — email first so someone is in the building.
+              We offer weekly tours in addition to tasting sessions. Tours run every half an hour. It is not necessary to book a tour, just c&apos;mon in.
             </p>
             <div className="btn-row">
               <Link className="btn" href="/menu">
-                Tasting-room list
+                Our menu
               </Link>
               <Link className="btn btn-ghost" href="/tours">
                 Tours
@@ -205,7 +205,7 @@ export default function HomePage() {
             </div>
           </div>
           <figure className="frame">
-            <Image src="/media/place/bar.jpg" alt="The hand-built wooden bar in the tasting room." fill sizes="50vw" />
+            <Image src="/media/place/bar.jpg" alt="The tasting room bar." fill sizes="50vw" />
           </figure>
         </div>
       </section>
@@ -213,10 +213,10 @@ export default function HomePage() {
       <section className="section">
         <div className="section-head">
           <h2>
-            <span className="num">05</span>From the feed
+            <span className="num">05</span>Instagram
           </h2>
           <p>
-            {profile.handle} · {profile.followers} followers. {profile.bio}
+            {profile.handle}. {profile.bio}
           </p>
         </div>
         <IgGrid limit={6} />
@@ -225,7 +225,7 @@ export default function HomePage() {
             Instagram
           </a>
           <Link className="btn btn-ghost" href="/menu">
-            Tasting-room list
+            Our menu
           </Link>
         </div>
       </section>
@@ -233,13 +233,11 @@ export default function HomePage() {
       <section className="section section-dark">
         <div className="two">
           <div>
-            <p className="kicker">When the door is open</p>
             <h2>Hours</h2>
             <Hours />
           </div>
           <div>
-            <p className="kicker">Next in the room</p>
-            <h2>On the calendar</h2>
+            <h2>Events</h2>
             <div className="event-list">
               {next.map((event) => (
                 <article key={event.id} className="event event-next">

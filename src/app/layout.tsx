@@ -23,21 +23,21 @@ const sans = Outfit({
 export const metadata: Metadata = {
   metadataBase: new URL("https://www.milkstreetdistillery.com"),
   title: {
-    default: "Milk Street Distillery · Grain to glass in Branchville",
+    default: "Milk Street Distillery",
     template: "%s · Milk Street Distillery",
   },
   description:
-    "Sussex County’s grain-to-glass distillery. Mashed, fermented, distilled, and bottled at 1 Milk Street, Building 1, Branchville, NJ.",
+    "Sussex County's first distillery in over 70 years. We are a true grain to glass distillery, as everything is mashed, fermented, distilled and bottled on site.",
   openGraph: {
     title: "Milk Street Distillery",
-    description: "Grain to glass, on Milk Street. Branchville, New Jersey.",
+    description: "Sussex County's first distillery in over 70 years, in Branchville, New Jersey.",
     images: ["/media/place/column-still.jpg"],
     type: "website",
   },
   twitter: {
     card: "summary_large_image",
     title: "Milk Street Distillery",
-    description: "Grain to glass, on Milk Street.",
+    description: "Sussex County's first distillery in over 70 years, in Branchville, New Jersey.",
     images: ["/media/place/column-still.jpg"],
   },
 };

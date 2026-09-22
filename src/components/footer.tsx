@@ -30,7 +30,7 @@ export function Footer() {
           </ul>
         </div>
         <div>
-          <p className="kicker">Walk the site</p>
+          <p className="kicker">Menu</p>
           <ul className="footer-links">
             {nav.map((item) => (
               <li key={item.href}>
@@ -40,7 +40,7 @@ export function Footer() {
           </ul>
         </div>
         <div>
-          <p className="kicker">The feed</p>
+          <p className="kicker">Instagram</p>
           <p>
             <a href={site.instagram} target="_blank" rel="noreferrer">
               {site.instagramHandle}
@@ -49,9 +49,6 @@ export function Footer() {
             <a href={site.facebook} target="_blank" rel="noreferrer">
               Facebook
             </a>
-          </p>
-          <p className="fine">
-            Grain to glass. You must be 21 to drink what we make.
           </p>
         </div>
       </div>

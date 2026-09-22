@@ -5,7 +5,7 @@ import { spirits } from "@/lib/spirits";
 
 export const metadata: Metadata = {
   title: "Spirits",
-  description: "The Milk Street shelf: whiskey, gin, vodka, and rum made on site.",
+  description: "Kanpeki, Murder Bourbon, McNally's, Vexed, Blind Bettie, The Devil's Bark, War Penny, Dam Break Rye, Soulless Ginger, Wooden Leg Rum, and Black Vulture.",
 };
 
 const families = ["Whiskey", "Gin", "Vodka", "Rum"] as const;
@@ -14,9 +14,9 @@ export default function SpiritsPage() {
   return (
     <main>
       <header className="page-hero">
-        <p className="kicker">02 — The shelf</p>
-        <h1>Eleven bottles. One floor.</h1>
-        <p>Every spirit below is mashed, fermented, distilled, and bottled at 1 Milk Street. The tasting room does not pour anyone else’s liquor.</p>
+        <p className="kicker">Our spirits</p>
+        <h1>Our spirits</h1>
+        <p>We are a true grain to glass distillery, as everything is mashed, fermented, distilled and bottled on site.</p>
       </header>
       {families.map((family) => (
         <section key={family} className="section" style={{ paddingTop: "3rem" }}>

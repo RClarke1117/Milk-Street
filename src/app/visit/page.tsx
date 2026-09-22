@@ -13,23 +13,19 @@ export default function VisitPage() {
     <main>
       <header className="page-hero">
         <p className="kicker">Visit</p>
-        <h1>Downtown Branchville. Building 1.</h1>
-        <p>
-          {site.address.full}. The tasting room is the public face. The work is the still behind it.
-        </p>
+        <h1>We&apos;re located in downtown Branchville.</h1>
+        <p>{site.address.full}</p>
       </header>
       <section className="section">
         <div className="visit-grid">
           <div>
-            <p className="kicker">Find the door</p>
-            <h2>Come to the feed store.</h2>
             <p>
               <a href={site.phoneHref}>{site.phone}</a>
               <br />
               <a href={site.emailHref}>{site.email}</a>
             </p>
             <p>
-              Bottle and gift-card pickup is Monday through Friday, 12–6. Email first. The tasting room and tours are not open on those weekday hours. Friday at 4 the room opens and stays open until 10. Saturday 1–10. Sunday 1–6.
+              Bottle and gift-card pickup only, Monday through Friday, 12–6. Please email to verify that we are in. Not open for the tasting room or tours. Friday tasting room 4–10. Saturday 1–10. Sunday 1–6.
             </p>
             <div className="btn-row">
               <a className="btn" href={site.maps}>
@@ -47,16 +43,15 @@ export default function VisitPage() {
       <section className="section section-dark">
         <div className="split">
           <figure className="frame">
-            <Image src="/media/place/alco-hauler.jpg" alt="The Alco-Hauler, the distillery’s mobile bar." fill sizes="50vw" />
+            <Image src="/media/place/alco-hauler.jpg" alt="The Alco-Hauler." fill sizes="50vw" />
           </figure>
           <div>
-            <p className="kicker">Off site</p>
-            <h2>The Alco-Hauler</h2>
-            <p>
-              Weddings and private events. The trailer carries Milk Street spirits and someone who knows how to pour them. It is the distillery leaving the building, not a separate bar brand. Cards on to-go bottles add 3.99%.
-            </p>
+            <h2>Alco-Hauler</h2>
+            <p>Available for weddings and private events.</p>
+            <p>Keep the party going at home. Grab some bottles to go.</p>
+            <p>If you pay by card, a 3.99% fee is added.</p>
             <a className="btn" href={site.emailHref}>
-              Ask about a date
+              {site.email}
             </a>
           </div>
         </div>

@@ -5,18 +5,15 @@ import { site } from "@/lib/site";
 
 export const metadata: Metadata = {
   title: "Events",
-  description: "Music, trucks, and house games at Milk Street Distillery.",
+  description: "Events at Milk Street Distillery.",
 };
 
 export default function EventsPage() {
   return (
     <main>
       <header className="page-hero">
-        <p className="kicker">The room</p>
-        <h1>What is on, after the make.</h1>
-        <p>
-          Live music, a food truck, chicken bingo, trivia. The distillery does not run a restaurant. Dinner, when there is dinner, parks outside. Each date below uses the flyer from the public calendar, as of September 22, 2026.
-        </p>
+        <p className="kicker">Events</p>
+        <h1>Events</h1>
       </header>
       <section className="section">
         <div className="event-board">
@@ -45,8 +42,8 @@ export default function EventsPage() {
           ))}
         </div>
         <p>
-          Private events and weddings go out on the Alco-Hauler. Write{" "}
-          <a href={site.emailHref}>{site.email}</a> or call <a href={site.phoneHref}>{site.phone}</a>.
+          Alco-Hauler is available for weddings and private events.{" "}
+          <a href={site.emailHref}>{site.email}</a> or <a href={site.phoneHref}>{site.phone}</a>.
         </p>
       </section>
     </main>

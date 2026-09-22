@@ -19,7 +19,7 @@ export const events: DistilleryEvent[] = [
     end: "9:00 PM",
     title: "Music Bingo",
     detail:
-      "A short clip of a song, a card, a prize. Friday night in the tasting room.",
+      "How good do you think that you know music? 30–45 seconds of a song is played. If you know it and have it on your bingo card, mark it down. Win prizes.",
     kind: "House game",
     image: "/media/events/music-bingo.jpg",
     imageAlt: "Music Bingo at Milk Street Distillery. Sing it, mark it, win it.",
@@ -31,7 +31,7 @@ export const events: DistilleryEvent[] = [
     end: "9:00 PM",
     title: "Smokin’ Mo’s BBQ",
     detail:
-      "Brisket, ribs, pork, and chicken from the truck. Milk Street does not run a kitchen — dinner parks outside.",
+      "A succulent variety of wood smoked meats such as brisket, ribs, pork and chicken along with many delicious sides.",
     kind: "Food truck",
     image: "/media/events/smokin-mos.jpg",
     imageAlt: "Smokin’ Mo’s BBQ truck, the flyer on the September 26 calendar listing.",
@@ -42,7 +42,8 @@ export const events: DistilleryEvent[] = [
     start: "7:00 PM",
     end: "10:00 PM",
     title: "Brian St. John Band",
-    detail: "The band, fully electric, in the tasting room.",
+    detail:
+      "The famous Brian St. John Band will be fully electric. Jamming out in a style completely unique to them, it is guaranteed to get your ass shakin’.",
     kind: "Music",
     image: "/media/events/brian-st-john.jpg",
     imageAlt: "Brian St. John Band, electric, on the distillery’s event flyer.",
@@ -54,7 +55,7 @@ export const events: DistilleryEvent[] = [
     end: "6:00 PM",
     title: "Chicken S#!t Bingo",
     detail:
-      "Every drink gets a number. Once an hour a chicken walks a numbered mat. The first mark of the hour wins a drink; the second wins a shirt. Second and fourth Sundays. First drop at 2:00.",
+      "With every drink you buy, you get a number. Once an hour we put a chicken on a numbered mat in a pen. If she poops on your number, you win. First poop that hour gets you a free drink, and the second poop, an exclusive Chicken S#!t Bingo t-shirt. Every 2nd and 4th Sunday. First poo at 2:00.",
     kind: "House game",
     image: "/media/events/chicken-bingo.jpg",
     imageAlt: "The numbered chicken-bingo pen, the photograph on the distillery’s listing.",
@@ -66,7 +67,7 @@ export const events: DistilleryEvent[] = [
     end: "5:30 PM",
     title: "Trivia with DJ Ray",
     detail:
-      "First and third Sundays. First place leaves with a $25 gift certificate.",
+      "Do you think that you are smart and know things? Come put your knowledge to the test every first and third Sunday of the month. Have a drink, have fun, and have a shot of winning a $25 gift certificate for 1st place.",
     kind: "House game",
     image: "/media/events/trivia.jpg",
     imageAlt: "Trivia Night at Milk Street Distillery, every first and third Sunday at 3:30.",
@@ -77,7 +78,8 @@ export const events: DistilleryEvent[] = [
     start: "1:00 PM",
     end: "6:00 PM",
     title: "Chicken S#!t Bingo",
-    detail: "Second Sunday of the month. First drop at 2:00.",
+    detail:
+      "With every drink you buy, you get a number. Once an hour we put a chicken on a numbered mat in a pen. If she poops on your number, you win. First poop that hour gets you a free drink, and the second poop, an exclusive Chicken S#!t Bingo t-shirt. Every 2nd and 4th Sunday. First poo at 2:00.",
     kind: "House game",
     image: "/media/events/chicken-bingo.jpg",
     imageAlt: "The numbered chicken-bingo pen, the photograph on the distillery’s listing.",
@@ -87,8 +89,7 @@ export const events: DistilleryEvent[] = [
     date: "2026-10-15",
     start: "Evening",
     title: "Brandon Davis",
-    detail:
-      "Country recording artist. His only New Jersey stop on the run, announced by the distillery for October 15. Ask the bar, or watch @milkstreetdistillery, for tickets.",
+    detail: "Country recording artist Brandon Davis at Milk Street October 15.",
     kind: "Show",
     image: "/media/events/brandon-davis.jpg",
     imageAlt: "Brandon Davis, October 15, from the distillery’s Instagram announcement.",

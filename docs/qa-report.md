@@ -40,7 +40,7 @@ These names are the scan, not a cleanup:
 - F.U. Gary, Carol Effin Baskin, and the other house names, kept.
 - Classic Martini is “Classie” on the scan. Ferrero Rocher is “Ferraro Roche” on the scan. Both are treated as the obvious reading and marked here.
 - Jello and moonshine are $5 from the shaker scan. The OCR pass could not read those two prices; the figure on the scan is $5.
-- Where the scan says “vodka” or “whiskey” without a bottle name, the row says “Milk Street vodka” or “house whiskey.” The spirit link uses the flagship of that family. The picture slot does not pretend the scan named Black Vulture or Murder.
+- Where the scan names a bottle, the row uses that bottle and links to it. Where it only says vodka, gin, whiskey, bourbon, rum, blueberry-infused vodka, or ginger vodka, the row uses those words and does not link a bottle. Unspecified vodka is not Black Vulture. Blueberry-infused vodka is not Black Vulture. Captain Hazelwood names Wooden Leg and blueberry vodka; only Wooden Leg is linked.
 
 Tax and the 3.99% card fee are on the menu page.
 
@@ -53,6 +53,12 @@ JSON-LD on the menu page is a Distillery at 07826 and includes the menu item The
 ## Motion
 
 With `prefers-reduced-motion: reduce`, the make page loaded with the media query matching and with no console error. An earlier build threw React hydration error 418 when that preference was on, because the first client render branched away from the server HTML. The preference is now read after mount. The rerun reported zero console errors.
+
+## Bottle pages
+
+Product pages were re-read on 22 Sep 2026. The bottle text is the mash, proof, palate, and award line printed on that page. Kanpeki (92 points from Wine Enthusiast), Black Vulture (90 Points Wine Enthusiast), and Wooden Leg (2017 Global Spirits Awards Silver Winner) are the only award lines on those pages. Murder, War Penny, Dam Break, McNally’s, Devil’s Bark, Vexed, Blind Bettie, and Soulless Ginger do not print a competition score there. Vexed’s ASCOT Double Platinum stays on the Instagram caption for that post.
+
+A bottle page lists a menu drink only when the scan names that bottle. Black Vulture has no such drinks. The old “In the tasting room” list, which attached unspecified vodka and every rum drink to a flagship, is gone.
 
 ## Not claimed
 

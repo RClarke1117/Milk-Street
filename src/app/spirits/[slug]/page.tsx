@@ -32,49 +32,42 @@ export default async function SpiritPage({ params }: { params: Promise<{ slug: s
           <h1>{spirit.name}</h1>
           <p className="lede">{spirit.lede}</p>
           <div className="facts">
-            <div>
-              <span>Mash</span>
-              {spirit.mash}
-            </div>
+            {spirit.mash ? (
+              <div>
+                <span>Mash</span>
+                {spirit.mash}
+              </div>
+            ) : null}
             <div>
               <span>Palate</span>
               {spirit.palate}
             </div>
-            <div>
-              <span>Award</span>
-              {spirit.award ?? "House spirit"}
-            </div>
+            {spirit.award ? (
+              <div>
+                <span>Award</span>
+                {spirit.award}
+              </div>
+            ) : null}
           </div>
+          <Link className="btn" href="/the-make">
+            Distillery
+          </Link>
         </div>
       </article>
-      <section className="section">
-        <div className="split">
-          <div className="prose">
-            <p className="kicker">How it is made</p>
-            <h2>On this floor</h2>
-            <p>{spirit.story}</p>
-            <Link className="btn" href="/the-make">
-              The make
-            </Link>
-          </div>
-          <div>
-            <p className="kicker">Poured as</p>
-            <h2>In the tasting room</h2>
-            {pours.length === 0 ? (
-              <p>Ask the bar for a neat pour or a flight.</p>
-            ) : (
-              <ul className="footer-links">
-                {pours.map((drink) => (
-                  <li key={drink.id}>
-                    <Link href={`/menu?pour=${drink.id}`}>{drink.name}</Link>
-                    <span>{drink.price}</span>
-                  </li>
-                ))}
-              </ul>
-            )}
-          </div>
-        </div>
-      </section>
+      {pours.length > 0 ? (
+        <section className="section">
+          <h2 style={{ fontSize: "clamp(2rem, 4vw, 3rem)", marginTop: 0 }}>Spring / Summer 2026 menu</h2>
+          <p className="fine">Drinks on the menu that name this bottle.</p>
+          <ul className="footer-links">
+            {pours.map((drink) => (
+              <li key={drink.id}>
+                <Link href={`/menu?pour=${drink.id}`}>{drink.name}</Link>
+                <span>{drink.price}</span>
+              </li>
+            ))}
+          </ul>
+        </section>
+      ) : null}
     </main>
   );
 }

@@ -5,51 +5,33 @@ import { Hours } from "@/components/hours";
 
 export const metadata: Metadata = {
   title: "Tours",
-  description: "Walk-in distillery tours every half hour during tasting-room hours.",
+  description: "Tours run every half an hour. It is not necessary to book a tour.",
 };
-
-const walk = [
-  ["The tun", "Where the grain is cooked. Corn, rye, barley, rice, or cane, depending on the day."],
-  ["The fermenters", "Open stainless. This is the beer before it is a spirit."],
-  ["The columns", "Copper. The cut is the whole argument."],
-  ["The rack", "New oak, seasoned bourbon barrels, beer-barrel finishes."],
-  ["The glass", "A taste of what you just walked past. The room is the last stop, not the first."],
-];
 
 export default function ToursPage() {
   return (
     <main>
       <header className="page-hero">
-        <p className="kicker">Tours</p>
-        <h1>Walk in. The still is the tour.</h1>
+        <p className="kicker">Tours & tastings</p>
+        <h1>Tours & tastings</h1>
         <p>
-          Tours run every half hour during tasting-room hours. You do not book a slot. Come in, ask, and go. Weekdays are pickup only — the tasting room and the tours are closed Monday through Thursday, and Friday before 4.
+          We offer weekly tours in addition to tasting sessions. Tours run every half an hour. It is not necessary to book a tour, just c&apos;mon in.
+        </p>
+        <p>
+          Bottle and gift-card pickup only, Monday through Friday, 12–6. Please email to verify that we are in. Not open for the tasting room or tours. Friday tasting room 4–10. Saturday 1–10. Sunday 1–6.
         </p>
       </header>
       <section className="section">
-        <div className="split">
-          <figure>
-            <Image src="/media/place/fermenters.jpg" alt="Fermenters on the production floor." width={1400} height={1600} style={{ width: "100%", height: "auto" }} />
-          </figure>
-          <ol className="event-list" style={{ listStyle: "none", padding: 0 }}>
-            {walk.map(([title, copy], index) => (
-              <li key={title} className="event">
-                <time>0{index + 1}</time>
-                <div>
-                  <h3>{title}</h3>
-                  <p>{copy}</p>
-                </div>
-              </li>
-            ))}
-          </ol>
-        </div>
+        <figure>
+          <Image src="/media/place/fermenters.jpg" alt="Fermenters on the production floor." width={1400} height={1600} style={{ width: "100%", height: "auto" }} />
+        </figure>
       </section>
       <section className="section section-dark">
-        <h2>When a tour can start</h2>
+        <h2>Hours</h2>
         <Hours />
         <div className="btn-row">
           <Link className="btn" href="/visit">
-            Plan the visit
+            Visit
           </Link>
         </div>
       </section>

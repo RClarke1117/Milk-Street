@@ -37,17 +37,19 @@ Eleven spirits, all positioned as house-made:
 
 | Spirit | Family | Proof | Notes taken from their pages |
 | --- | --- | --- | --- |
-| Murder Bourbon | Whiskey | 100 | Corn, rye, barley. New white American oak. Butter, brown sugar, caramel. NYISC Gold 95, 2025. |
-| War Penny | Whiskey | — | Corn and rye, 36 hours of cherry-wood smoke, new oak, finished in local beer barrels. 1943 steel penny in the wax (on the bottle). SFWSC Silver. |
-| Dam Break Rye | Whiskey | 90 | Caramel, vanilla, honey, pepper finish. Global Spirits Gold, 2019. |
+| Murder Bourbon | Whiskey | 100 | Corn, rye, barley. New white American oak. Butter, brown sugar, caramel. |
+| War Penny | Whiskey | — | Corn and rye, 36 hours of cherry-wood smoke, new white American oak, finished in local beer barrels. Subtle smoke and the beer barrel. |
+| Dam Break Rye | Whiskey | 90 | Caramel, vanilla, honey, peppery rye finish. |
 | McNally’s | Whiskey | 90 | Irish-style, seasoned bourbon barrels. Vanilla, caramel, dried fruit. |
-| The Devil’s Bark | Whiskey | — | Birch and cinnamon on the house whiskey. |
-| Vexed Gin | Gin | — | Corn base. Juniper, coriander, cardamom, sarsaparilla, angelica, citrus peels, lavender. ASCOT Double Platinum (their July 2026 post). |
-| Blind Bettie | Gin | — | Cucumber, lemon, honey, cranberry, juniper. ASCOT Double Platinum. |
-| Kanpeki | Vodka | — | Polished rice, double distilled, double carbon filtered. Wine Enthusiast 92. |
-| Black Vulture | Vodka | — | Corn. Opened the distillery in 2017. Wine Enthusiast 90. |
-| Soulless Ginger | Vodka | — | Corn spirit infused with candied ginger. |
-| Wooden Leg Rum | Rum | — | Evaporated cane and brown molasses. Silver rum. Opened in 2017. Global Spirits Silver 2017, NYISC Gold 94 in 2020. |
+| The Devil’s Bark | Whiskey | — | Birch, cinnamon, and whiskey. |
+| Vexed Gin | Gin | — | Corn base. Juniper, coriander, cardamom, sarsaparilla, angelica, lemon, orange, grapefruit, lavender. |
+| Blind Bettie | Gin | — | Cucumber, lemon, honey, cranberry, juniper. |
+| Kanpeki | Vodka | — | Polished white rice, double distilled, double carbon filtered. “Kanpeki” is the Japanese word for perfection. 92 points from Wine Enthusiast, printed on the bottle page. |
+| Black Vulture | Vodka | — | Locally grown corn, Delaware River Basin. Smooth, subtle sweetness. “90 Points Wine Enthusiast,” printed on the bottle page. |
+| Soulless Ginger | Vodka | — | Corn-based spirit infused with candied ginger. Sweet and spicy. |
+| Wooden Leg Rum | Rum | — | Evaporated cane juice and brown molasses. Silver rum. Cane sweetness; brown molasses reminiscent of salted caramel. “2017 Global Spirits Awards Silver Winner,” printed on the bottle page. |
+
+Checked again against the product pages on 22 Sep 2026. These awards are **not** on those pages, so they are not on the bottle pages here: Murder NYISC Gold, War Penny SFWSC Silver, Dam Break Global Spirits Gold 2019, Blind Bettie ASCOT, Wooden Leg NYISC Gold 94 in 2020. Vexed’s Double Platinum is on their Instagram post of 10 Jul 2026, not on the Vexed product page. The Spring / Summer 2026 menu does not name Black Vulture. Drinks that say only “vodka” or “blueberry-infused vodka” are not listed under that bottle.
 
 ## Tasting-room list
 

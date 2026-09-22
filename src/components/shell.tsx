@@ -56,7 +56,6 @@ export function Shell({ children }: { children: React.ReactNode }) {
           <img className="age-logo" src="/media/brand/logo.png" alt="Milk Street Distillery" width={878} height={167} />
           <p className="kicker">Branchville</p>
           <h1 id="age-title">Are you 21 or older?</h1>
-          <p>We make spirits. This site is for adults.</p>
           <div className="age-actions">
             <button type="button" className="btn" onClick={() => confirmAge(true)}>
               Yes, enter
@@ -73,7 +72,7 @@ export function Shell({ children }: { children: React.ReactNode }) {
             </button>
           </div>
           <p id="age-no" className="age-no" hidden>
-            Come back when you are of age. The still will still be here.
+            You must be 21.
           </p>
         </div>
       ) : null}
@@ -89,7 +88,6 @@ export function Shell({ children }: { children: React.ReactNode }) {
             ))}
           </p>
           <span className="loader-rule" />
-          <p className="loader-sub">Grain to glass</p>
         </div>
       ) : null}
     </>

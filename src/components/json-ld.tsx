@@ -7,7 +7,7 @@ export function JsonLd() {
     "@type": "Distillery",
     name: site.name,
     description:
-      "Grain-to-glass distillery in Branchville, New Jersey. Spirits are mashed, fermented, distilled, and bottled on site.",
+      "Sussex County's first distillery in over 70 years. Everything is mashed, fermented, distilled and bottled on site.",
     url: "https://www.milkstreetdistillery.com/",
     telephone: "+1-973-948-0178",
     email: site.email,
@@ -29,7 +29,7 @@ export function JsonLd() {
     hasMenu: {
       "@type": "Menu",
       name: "Spring / Summer 2026 tasting room",
-      description: "Pours made only with Milk Street spirits. Prices exclude tax.",
+      description: "Spring / Summer 2026. Prices do not include tax.",
       hasMenuSection: menuCategories.map((category) => ({
         "@type": "MenuSection",
         name: category,

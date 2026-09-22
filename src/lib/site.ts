@@ -1,7 +1,7 @@
 export const site = {
   name: "Milk Street Distillery",
   short: "Milk Street",
-  tagline: "Grain to glass, on Milk Street.",
+  tagline: "We are a true grain to glass distillery, as everything is mashed, fermented, distilled and bottled on site.",
   established: "2017",
   address: {
     line1: "1 Milk Street, Building 1",
@@ -24,7 +24,7 @@ export const site = {
 } as const;
 
 export const nav = [
-  { href: "/the-make", label: "The Make" },
+  { href: "/the-make", label: "Distillery" },
   { href: "/spirits", label: "Spirits" },
   { href: "/menu", label: "Menu" },
   { href: "/tours", label: "Tours" },
@@ -36,12 +36,12 @@ export const hours = [
   {
     days: "Monday – Thursday",
     room: "Closed",
-    note: "Bottle and gift-card pickup only, 12–6. Email ahead so someone is in. No tasting room, no tours.",
+    note: "Bottle and gift-card pickup only, 12–6. Please email to verify that we are in. Not open for the tasting room or tours.",
   },
   {
     days: "Friday",
     room: "4–10 PM",
-    note: "Pickup 12–6. Tasting room and walk-in tours from 4.",
+    note: "Pickup 12–6. Tasting room 4–10. Tours every half hour.",
   },
   {
     days: "Saturday",
