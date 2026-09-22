@@ -138,7 +138,15 @@ export default function HomePage() {
           <h2>
             <span className="num">02</span>Our distillery
           </h2>
-          <p>We are a true grain to glass distillery, as everything is mashed, fermented, distilled and bottled on site.</p>
+          <p>
+            We are a true grain to glass distillery, as everything is mashed, fermented, distilled and bottled on site.
+            Mike and Gordon Geerhart opened in January 2017, in a late-1800s feed store. “We’re Sussex County boys and we love it here,” Mike told New Jersey Monthly.
+          </p>
+        </div>
+        <div className="btn-row">
+          <Link className="btn" href="/the-make">
+            Distillery
+          </Link>
         </div>
         <div className="process">
           {steps.map((step) => (

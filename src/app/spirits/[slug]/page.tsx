@@ -31,6 +31,7 @@ export default async function SpiritPage({ params }: { params: Promise<{ slug: s
           <p className="kicker">{spirit.family}{spirit.proof ? ` · ${spirit.proof} proof` : ""}</p>
           <h1>{spirit.name}</h1>
           <p className="lede">{spirit.lede}</p>
+          {spirit.note ? <p className="detail-note">{spirit.note}</p> : null}
           <div className="facts">
             {spirit.mash ? (
               <div>

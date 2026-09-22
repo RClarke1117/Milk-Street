@@ -16,7 +16,10 @@ export default function SpiritsPage() {
       <header className="page-hero">
         <p className="kicker">Our spirits</p>
         <h1>Our spirits</h1>
-        <p>We are a true grain to glass distillery, as everything is mashed, fermented, distilled and bottled on site.</p>
+        <p>
+          We are a true grain to glass distillery, as everything is mashed, fermented, distilled and bottled on site.
+          They opened in January 2017 with Black Vulture Vodka and Wooden Leg Rum. Both are still in the lineup.
+        </p>
       </header>
       {families.map((family) => (
         <section key={family} className="section" style={{ paddingTop: "3rem" }}>

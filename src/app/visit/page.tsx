@@ -15,6 +15,9 @@ export default function VisitPage() {
         <p className="kicker">Visit</p>
         <h1>We&apos;re located in downtown Branchville.</h1>
         <p>{site.address.full}</p>
+        <p>
+          Just off US-206. Gordon calls it the gateway to Sussex County’s parks, and to Branchville. Mike wanted a nightspot for the town: a down-home bar, and a food truck on Saturday evenings.
+        </p>
       </header>
       <section className="section">
         <div className="visit-grid">

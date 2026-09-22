@@ -18,6 +18,9 @@ export default function ToursPage() {
           We offer weekly tours in addition to tasting sessions. Tours run every half an hour. It is not necessary to book a tour, just c&apos;mon in.
         </p>
         <p>
+          Mike and Gordon fitted the building while they waited on the license. Water, sewer, gas, a bathroom, and the bar. The tour is that floor.
+        </p>
+        <p>
           Bottle and gift-card pickup only, Monday through Friday, 12–6. Please email to verify that we are in. Not open for the tasting room or tours. Friday tasting room 4–10. Saturday 1–10. Sunday 1–6.
         </p>
       </header>

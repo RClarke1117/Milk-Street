@@ -691,6 +691,7 @@ h1, h2, h3, .display {
 .detail-copy { padding: calc(var(--header) + 3rem) 6vw 4rem; align-self: end; }
 .detail-copy .btn { margin-top: 1.6rem; }
 .detail-copy h1 { margin: 0 0 1rem; font-size: clamp(3.4rem, 7vw, 6.5rem); }
+.detail-note { color: rgba(243, 238, 230, 0.82); max-width: 38rem; }
 .facts { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem; margin-top: 2rem; }
 .facts div { border-top: 1px solid var(--line-light); padding-top: 0.7rem; }
 .facts span { display: block; letter-spacing: 0.14em; text-transform: uppercase; font-size: 0.68rem; color: var(--copper-2); }
