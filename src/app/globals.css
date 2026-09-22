@@ -52,7 +52,7 @@ a { color: inherit; }
   font-weight: 500;
 }
 
-h1, h2, h3, .display, .footer-name {
+h1, h2, h3, .display {
   font-family: var(--serif);
   font-weight: 500;
   letter-spacing: -0.035em;
@@ -83,21 +83,16 @@ h1, h2, h3, .display, .footer-name {
 .brand {
   text-decoration: none;
   display: flex;
-  flex-direction: column;
-  line-height: 1;
+  align-items: center;
+  flex: 0 0 auto;
 }
-.brand span {
-  font-family: var(--serif);
-  font-size: 1.35rem;
-  letter-spacing: -0.03em;
+.brand img, .footer-logo, .age-logo {
+  display: block;
+  width: auto;
+  height: 2.55rem;
 }
-.brand small {
-  margin-top: 0.2rem;
-  letter-spacing: 0.28em;
-  text-transform: uppercase;
-  font-size: 0.58rem;
-  opacity: 0.75;
-}
+.footer-logo { height: 3.4rem; margin: 0 0 1rem; }
+.age-logo { height: 3.6rem; margin: 0 auto 1.1rem; }
 .site-header nav {
   display: flex;
   align-items: center;
@@ -709,7 +704,6 @@ h1, h2, h3, .display, .footer-name {
   padding-bottom: 2.5rem;
   border-bottom: 1px solid var(--line-light);
 }
-.footer-name { font-size: 3.4rem; margin: 0 0 0.8rem; }
 .footer-hours, .footer-links { list-style: none; margin: 0; padding: 0; }
 .footer-hours li, .footer-links li {
   display: flex;
@@ -802,17 +796,26 @@ h1, h2, h3, .display, .footer-name {
 }
 
 @media (max-width: 980px) {
+  .brand img { height: 2.15rem; }
   .nav-toggle { display: inline-flex; }
   .header-tools .header-phone { display: none; }
   .open-pill { letter-spacing: 0.08em; }
-  .header-bar { flex-wrap: wrap; align-items: center; }
-  .brand { order: 1; }
-  .header-tools { order: 2; margin-left: auto; }
-  .site-header nav { order: 3; }
+  .header-bar {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) auto;
+    align-items: center;
+    column-gap: 0.8rem;
+    row-gap: 0.45rem;
+  }
+  .brand { grid-column: 1; grid-row: 1; }
+  .header-tools { display: contents; }
+  .open-pill { grid-column: 1 / -1; grid-row: 2; justify-self: start; }
+  .nav-toggle { grid-column: 2; grid-row: 1; }
   .site-header nav {
     display: none;
     position: static;
-    flex: 1 0 100%;
+    grid-column: 1 / -1;
+    grid-row: 3;
     flex-direction: column;
     align-items: stretch;
     justify-content: flex-start;

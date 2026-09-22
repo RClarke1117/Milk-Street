@@ -6,8 +6,7 @@ export function Footer() {
     <footer className="site-footer">
       <div className="footer-top">
         <div>
-          <p className="kicker">The distillery</p>
-          <p className="footer-name">Milk Street</p>
+          <img className="footer-logo" src="/media/brand/logo.png" alt="Milk Street Distillery" width={878} height={167} />
           <p>
             {site.address.line1}
             <br />

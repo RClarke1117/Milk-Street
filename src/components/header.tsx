@@ -26,8 +26,7 @@ export function Header() {
     <header className={`site-header ${solid || open ? "is-solid" : ""}`}>
       <div className="header-bar">
         <Link href="/" className="brand" aria-label="Milk Street Distillery, home">
-          <span>Milk Street</span>
-          <small>Distillery</small>
+          <img src="/media/brand/logo.png" alt="" width={878} height={167} />
         </Link>
         <nav id="site-nav" className={open ? "is-open" : ""} aria-label="Primary">
           {nav.map((item) => (

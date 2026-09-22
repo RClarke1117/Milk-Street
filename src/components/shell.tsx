@@ -53,7 +53,8 @@ export function Shell({ children }: { children: React.ReactNode }) {
 
       {ready && !ofAge ? (
         <div className="age" role="dialog" aria-modal="true" aria-labelledby="age-title">
-          <p className="kicker">Milk Street Distillery · Branchville</p>
+          <img className="age-logo" src="/media/brand/logo.png" alt="Milk Street Distillery" width={878} height={167} />
+          <p className="kicker">Branchville</p>
           <h1 id="age-title">Are you 21 or older?</h1>
           <p>We make spirits. This site is for adults.</p>
           <div className="age-actions">

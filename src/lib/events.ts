@@ -22,7 +22,7 @@ export const events: DistilleryEvent[] = [
       "A short clip of a song, a card, a prize. Friday night in the tasting room.",
     kind: "House game",
     image: "/media/events/music-bingo.jpg",
-    imageAlt: "Friday night music bingo flyer from the distillery calendar.",
+    imageAlt: "Music Bingo at Milk Street Distillery. Sing it, mark it, win it.",
   },
   {
     id: "smokin-mos-0926",
@@ -69,7 +69,7 @@ export const events: DistilleryEvent[] = [
       "First and third Sundays. First place leaves with a $25 gift certificate.",
     kind: "House game",
     image: "/media/events/trivia.jpg",
-    imageAlt: "Trivia with DJ Ray, the flyer used on the distillery calendar.",
+    imageAlt: "Trivia Night at Milk Street Distillery, every first and third Sunday at 3:30.",
   },
   {
     id: "chicken-bingo-1011",
