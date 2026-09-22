@@ -66,7 +66,7 @@ export default async function SpiritPage({ params }: { params: Promise<{ slug: s
               <ul className="footer-links">
                 {pours.map((drink) => (
                   <li key={drink.id}>
-                    <Link href={`/menu#${drink.id}`}>{drink.name}</Link>
+                    <Link href={`/menu?pour=${drink.id}`}>{drink.name}</Link>
                     <span>{drink.price}</span>
                   </li>
                 ))}

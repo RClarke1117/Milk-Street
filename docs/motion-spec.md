@@ -25,7 +25,7 @@ Reduced motion: the loader is skipped entirely.
 
 `src/app/template.tsx` fades and lifts the new page 16px over 550ms. The header and footer stay still so the building doesn’t reload, only the room.
 
-Reduced motion: the template renders children with no animation (`useReducedMotion`).
+Reduced motion: after mount, the preference is read from `matchMedia`. The first paint matches the server HTML so hydration does not branch. Duration then drops to 0. CSS also forces transitions and the marquee off.
 
 ## 4. Scroll reveal
 

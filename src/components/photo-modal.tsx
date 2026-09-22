@@ -16,6 +16,7 @@ export type Shot = {
   secondaryAlt?: string;
   secondaryHref?: string;
   secondaryLabel?: string;
+  hint?: string;
 };
 
 export function PhotoModal({
@@ -65,6 +66,7 @@ export function PhotoModal({
             {shot.price ? <p className="modal-price">{shot.price}</p> : null}
             {shot.body ? <p>{shot.body}</p> : null}
             {shot.credit ? <p className="modal-credit">{shot.credit}</p> : null}
+            {shot.hint ? <p className="modal-credit">{shot.hint}</p> : null}
             {shot.href ? (
               <a className="text-link" href={shot.href}>
                 {shot.hrefLabel ?? "View"}

@@ -3,6 +3,7 @@
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
+import { OpenBadge } from "@/components/open-badge";
 import { nav, site } from "@/lib/site";
 
 export function Header() {
@@ -32,15 +33,6 @@ export function Header() {
         <span>Milk Street</span>
         <small>Distillery</small>
       </Link>
-      <button
-        type="button"
-        className="nav-toggle"
-        aria-expanded={open}
-        aria-controls="site-nav"
-        onClick={() => setOpen((value) => !value)}
-      >
-        {open ? "Close" : "Menu"}
-      </button>
       <nav id="site-nav" className={open ? "is-open" : ""} aria-label="Primary">
         {nav.map((item) => (
           <Link
@@ -51,10 +43,25 @@ export function Header() {
             {item.label}
           </Link>
         ))}
-        <a className="header-phone" href={site.phoneHref}>
+        <a className="nav-phone" href={site.phoneHref}>
           {site.phone}
         </a>
       </nav>
+      <div className="header-tools">
+        <OpenBadge />
+        <a className="header-phone" href={site.phoneHref}>
+          {site.phone}
+        </a>
+        <button
+          type="button"
+          className="nav-toggle"
+          aria-expanded={open}
+          aria-controls="site-nav"
+          onClick={() => setOpen((value) => !value)}
+        >
+          {open ? "Close" : "Menu"}
+        </button>
+      </div>
     </header>
   );
 }

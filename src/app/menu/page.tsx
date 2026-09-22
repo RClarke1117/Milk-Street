@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { Suspense } from "react";
 import { IgGrid } from "@/components/ig-grid";
 import { MenuBoard } from "@/components/menu-board";
 import { menuNote } from "@/lib/menu";
@@ -21,7 +22,9 @@ export default function MenuPage() {
         <p className="fine" style={{ color: "rgba(243,238,230,.7)" }}>{menuNote}</p>
       </header>
       <section className="section" style={{ paddingTop: "2.5rem" }}>
-        <MenuBoard />
+        <Suspense fallback={<p className="empty">Setting the list…</p>}>
+          <MenuBoard />
+        </Suspense>
       </section>
       <section className="section section-dark">
         <div className="section-head">

@@ -216,7 +216,7 @@ export default function HomePage() {
             <span className="num">05</span>From the feed
           </h2>
           <p>
-            {profile.handle} · {profile.followers} followers. {profile.bio} Verified against the live profile. Not {profile.notThis}.
+            {profile.handle} · {profile.followers} followers. {profile.bio}
           </p>
         </div>
         <IgGrid limit={6} />

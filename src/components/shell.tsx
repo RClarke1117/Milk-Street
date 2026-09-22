@@ -1,17 +1,16 @@
 "use client";
 
-import { useReducedMotion } from "framer-motion";
 import { useEffect, useState } from "react";
 import { Footer } from "@/components/footer";
 import { Header } from "@/components/header";
 
 export function Shell({ children }: { children: React.ReactNode }) {
-  const reduce = useReducedMotion();
   const [ready, setReady] = useState(false);
   const [ofAge, setOfAge] = useState(false);
   const [booting, setBooting] = useState(false);
 
   useEffect(() => {
+    const reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
     const aged = sessionStorage.getItem("msd-age") === "1";
     const seen = sessionStorage.getItem("msd-boot") === "1";
     setOfAge(aged);
@@ -20,7 +19,7 @@ export function Shell({ children }: { children: React.ReactNode }) {
     if (aged && (seen || reduce)) {
       sessionStorage.setItem("msd-boot", "1");
     }
-  }, [reduce]);
+  }, []);
 
   useEffect(() => {
     if (!booting) return;
@@ -39,6 +38,7 @@ export function Shell({ children }: { children: React.ReactNode }) {
     if (!yes) return;
     sessionStorage.setItem("msd-age", "1");
     setOfAge(true);
+    const reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
     if (!sessionStorage.getItem("msd-boot") && !reduce) setBooting(true);
   }
 

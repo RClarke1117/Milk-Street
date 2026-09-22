@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Fraunces, Outfit } from "next/font/google";
+import { JsonLd } from "@/components/json-ld";
 import { Shell } from "@/components/shell";
 import { site } from "@/lib/site";
 import "./globals.css";
@@ -45,6 +46,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
   return (
     <html lang="en" className={`${display.variable} ${sans.variable}`}>
       <body>
+        <JsonLd />
         <Shell>{children}</Shell>
         <span className="sr-only">{site.name}</span>
       </body>
