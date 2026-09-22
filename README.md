@@ -15,6 +15,8 @@ npm run qa
 
 `npm run build` writes a static site to `out/` (`output: "export"`). That folder is what Cloudflare Pages serves.
 
+Live: https://milk-street-distillery.pages.dev
+
 ## Read first
 
 - `docs/brand-assessment.md` — what the distillery is, and what the old site wasted
