@@ -354,7 +354,7 @@ h1, h2, h3, .display {
 
 .page-hero {
   position: relative;
-  padding: calc(var(--header) + 7.2rem) 6vw 7.2rem;
+  padding: calc(var(--header) + 5.5rem) 6vw 5.6rem;
   background:
     radial-gradient(900px 400px at 90% -10%, rgba(193, 122, 69, 0.18), transparent 60%),
     var(--dark);
@@ -377,8 +377,8 @@ h1, h2, h3, .display {
 .wheat-frame-copper::before { border-color: rgba(226, 176, 122, 0.5); }
 .wheat-sprig {
   position: absolute;
-  width: 3rem;
-  height: 6.15rem;
+  width: 2.1rem;
+  height: 4.305rem;
   display: block;
 }
 .wheat-frame-ink {
@@ -420,8 +420,8 @@ h1, h2, h3, .display {
 }
 .menu-sheet {
   position: relative;
-  margin-top: 5.4rem;
-  margin-bottom: 2rem;
+  margin-top: 3.5rem;
+  margin-bottom: 0.4rem;
   padding: 1.2rem 0.85rem 1.35rem;
 }
 .menu-nav {
@@ -1076,7 +1076,7 @@ h1, h2, h3, .display {
   .hero-meta { margin-top: 1.2rem; }
   .lede { font-size: 1rem; }
   .section { padding: 4.5rem 1.2rem; }
-  .section.section-dark { padding-top: 7.6rem; padding-bottom: 7.6rem; }
+  .section.section-dark { padding-top: 5.8rem; padding-bottom: 5.8rem; }
   .page-hero, .hero { padding-left: 1.2rem; padding-right: 1.2rem; }
   .ig-cell img { height: 16rem; }
 }
