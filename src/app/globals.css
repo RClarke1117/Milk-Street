@@ -354,7 +354,7 @@ h1, h2, h3, .display {
 
 .page-hero {
   position: relative;
-  padding: calc(var(--header) + 5.5rem) 6vw 5.6rem;
+  padding: calc(var(--header) + 3.6rem) 6vw 3.4rem;
   background:
     radial-gradient(900px 400px at 90% -10%, rgba(193, 122, 69, 0.18), transparent 60%),
     var(--dark);
@@ -366,6 +366,7 @@ h1, h2, h3, .display {
   position: absolute;
   pointer-events: none;
   z-index: 2;
+  overflow: visible;
 }
 .wheat-frame::before {
   content: "";
@@ -377,8 +378,8 @@ h1, h2, h3, .display {
 .wheat-frame-copper::before { border-color: rgba(226, 176, 122, 0.5); }
 .wheat-sprig {
   position: absolute;
-  width: 2.1rem;
-  height: 4.305rem;
+  width: 4.305rem;
+  height: 2.1rem;
   display: block;
 }
 .wheat-frame-ink {
@@ -389,26 +390,22 @@ h1, h2, h3, .display {
   color: rgba(226, 176, 122, 0.82);
 }
 .page-hero > .wheat-frame-copper {
-  top: calc(var(--header) + 0.4rem);
-  right: 0.55rem;
-  bottom: 0.55rem;
-  left: 0.55rem;
+  top: calc(var(--header) + 0.55rem);
+  right: 0.7rem;
+  bottom: 0.7rem;
+  left: 0.7rem;
 }
 .section-dark > .wheat-frame-copper { inset: 0.7rem; }
 
-.wheat-tl { left: 0.15rem; bottom: 100%; }
-.wheat-tr { right: 0.15rem; bottom: 100%; transform: scaleX(-1); }
-.wheat-bl { left: 0.15rem; top: 100%; transform: scaleY(-1); }
-.wheat-br { right: 0.15rem; top: 100%; transform: scale(-1); }
+.wheat-tl { left: 0.1rem; top: -1.05rem; }
+.wheat-tr { right: 0.1rem; top: -1.05rem; transform: scaleX(-1); }
+.wheat-bl { left: 0.1rem; bottom: -1.05rem; transform: scaleY(-1); }
+.wheat-br { right: 0.1rem; bottom: -1.05rem; transform: scale(-1); }
 
-.wheat-frame-copper .wheat-tl,
-.wheat-frame-copper .wheat-tr,
-.wheat-frame-copper .wheat-bl,
-.wheat-frame-copper .wheat-br { bottom: auto; top: auto; }
-.wheat-frame-copper .wheat-tl { top: 0.2rem; left: 0.15rem; transform: none; }
-.wheat-frame-copper .wheat-tr { top: 0.2rem; right: 0.15rem; transform: scaleX(-1); }
-.wheat-frame-copper .wheat-bl { bottom: 0.2rem; left: 0.15rem; transform: scaleY(-1); }
-.wheat-frame-copper .wheat-br { bottom: 0.2rem; right: 0.15rem; transform: scale(-1); }
+.wheat-frame-copper .wheat-tl { top: 0.2rem; left: 0.25rem; transform: none; }
+.wheat-frame-copper .wheat-tr { top: 0.2rem; right: 0.25rem; transform: scaleX(-1); }
+.wheat-frame-copper .wheat-bl { bottom: 0.2rem; left: 0.25rem; transform: scaleY(-1); }
+.wheat-frame-copper .wheat-br { bottom: 0.2rem; right: 0.25rem; transform: scale(-1); }
 .page-hero p { max-width: 38rem; color: rgba(243, 238, 230, 0.8); }
 
 .menu-layout {
@@ -420,9 +417,10 @@ h1, h2, h3, .display {
 }
 .menu-sheet {
   position: relative;
-  margin-top: 3.5rem;
-  margin-bottom: 0.4rem;
+  margin-top: 1.4rem;
+  margin-bottom: 1.4rem;
   padding: 1.2rem 0.85rem 1.35rem;
+  overflow: visible;
 }
 .menu-nav {
   position: sticky;
@@ -1076,7 +1074,7 @@ h1, h2, h3, .display {
   .hero-meta { margin-top: 1.2rem; }
   .lede { font-size: 1rem; }
   .section { padding: 4.5rem 1.2rem; }
-  .section.section-dark { padding-top: 5.8rem; padding-bottom: 5.8rem; }
+  .section.section-dark { padding-top: 4.5rem; padding-bottom: 4.5rem; }
   .page-hero, .hero { padding-left: 1.2rem; padding-right: 1.2rem; }
   .ig-cell img { height: 16rem; }
 }
