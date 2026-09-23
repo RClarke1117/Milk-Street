@@ -173,12 +173,8 @@ export default function HomePage() {
           </h2>
         </div>
         <div className="shelf">
-          {featured.map((spirit, index) => (
-            <Link
-              key={spirit.slug}
-              href={`/spirits/${spirit.slug}`}
-              className={`spirit-card ${index === 0 ? "feature" : ""}`}
-            >
+          {featured.map((spirit) => (
+            <Link key={spirit.slug} href={`/spirits/${spirit.slug}`} className="spirit-card">
               <Image src={spirit.image} alt={spirit.imageAlt} fill sizes="(max-width: 900px) 100vw, 33vw" />
               <span>
                 <em>{spirit.family}{spirit.proof ? ` · ${spirit.proof} proof` : ""}</em>
