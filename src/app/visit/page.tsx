@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Image from "next/image";
 import { Hours } from "@/components/hours";
+import { WheatFrame } from "@/components/wheat-frame";
 import { site } from "@/lib/site";
 
 export const metadata: Metadata = {
@@ -12,6 +13,7 @@ export default function VisitPage() {
   return (
     <main>
       <header className="page-hero">
+        <WheatFrame tone="copper" />
         <p className="kicker">Visit</p>
         <h1>We&apos;re located in downtown Branchville.</h1>
         <p>{site.address.full}</p>
@@ -44,6 +46,7 @@ export default function VisitPage() {
         </div>
       </section>
       <section className="section section-dark">
+        <WheatFrame tone="copper" />
         <div className="split">
           <figure className="frame">
             <Image src="/media/place/alco-hauler.jpg" alt="The Alco-Hauler." fill sizes="50vw" />

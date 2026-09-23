@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Suspense } from "react";
 import { IgGrid } from "@/components/ig-grid";
 import { MenuBoard } from "@/components/menu-board";
+import { WheatFrame } from "@/components/wheat-frame";
 import { menuNote } from "@/lib/menu";
 import { profile } from "@/lib/instagram";
 
@@ -14,6 +15,7 @@ export default function MenuPage() {
   return (
     <main>
       <header className="page-hero">
+        <WheatFrame tone="copper" />
         <p className="kicker">Our menu</p>
         <h1>Our menu</h1>
         <p>Spring / Summer 2026.</p>
@@ -25,6 +27,7 @@ export default function MenuPage() {
         </Suspense>
       </section>
       <section className="section section-dark">
+        <WheatFrame tone="copper" />
         <div className="section-head">
           <h2>Instagram</h2>
           <p>

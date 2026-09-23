@@ -5,6 +5,7 @@ import { usePathname, useRouter, useSearchParams } from "next/navigation";
 import { useEffect, useMemo, useState } from "react";
 import { DrinkSlot } from "@/components/drink-slot";
 import { PhotoModal, type Shot } from "@/components/photo-modal";
+import { WheatFrame } from "@/components/wheat-frame";
 import { drinks, menuCategories, type Drink, type MenuCategory } from "@/lib/menu";
 
 function toShot(drink: Drink): Shot {
@@ -143,7 +144,8 @@ export function MenuBoard() {
             </button>
           ))}
         </nav>
-        <div>
+        <div className="menu-sheet">
+          <WheatFrame />
           {groups.length === 0 ? (
             <p className="empty">Nothing on the list matches that. Try the spirit, or clear the search.</p>
           ) : null}

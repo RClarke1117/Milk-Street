@@ -1,6 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { Hours } from "@/components/hours";
+import { WheatFrame } from "@/components/wheat-frame";
 import { IgGrid } from "@/components/ig-grid";
 import { Reveal } from "@/components/reveal";
 import { UpcomingEvents } from "@/components/upcoming-events";
@@ -134,6 +135,7 @@ export default function HomePage() {
       </section>
 
       <section className="section section-dark">
+        <WheatFrame tone="copper" />
         <div className="section-head">
           <h2>
             <span className="num">02</span>Our distillery
@@ -193,6 +195,7 @@ export default function HomePage() {
       </section>
 
       <section className="section section-dark">
+        <WheatFrame tone="copper" />
         <div className="split">
           <div>
             <p className="kicker">Tours &amp; tastings</p>
@@ -238,6 +241,7 @@ export default function HomePage() {
       </section>
 
       <section className="section section-dark">
+        <WheatFrame tone="copper" />
         <div className="two">
           <div>
             <h2>Hours</h2>

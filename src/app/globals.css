@@ -344,12 +344,62 @@ h1, h2, h3, .display {
 .spirit-card.feature { grid-row: span 2; min-height: 54rem; }
 
 .page-hero {
-  padding: calc(var(--header) + 4.5rem) 6vw 3rem;
+  position: relative;
+  padding: calc(var(--header) + 4.5rem) 6vw 3.4rem;
   background:
     radial-gradient(900px 400px at 90% -10%, rgba(193, 122, 69, 0.18), transparent 60%),
     var(--dark);
   color: var(--cream);
 }
+.section-dark { position: relative; }
+
+.wheat-frame {
+  position: absolute;
+  pointer-events: none;
+  z-index: 2;
+}
+.wheat-frame::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border: 1px solid transparent;
+}
+.wheat-frame-ink::before { border-color: rgba(22, 19, 15, 0.4); }
+.wheat-frame-copper::before { border-color: rgba(226, 176, 122, 0.5); }
+.wheat-sprig {
+  position: absolute;
+  width: 1.35rem;
+  height: 2.15rem;
+  display: block;
+}
+.wheat-frame-ink {
+  inset: 0;
+  color: rgba(44, 36, 28, 0.78);
+}
+.wheat-frame-copper {
+  color: rgba(226, 176, 122, 0.82);
+}
+.page-hero > .wheat-frame-copper {
+  top: calc(var(--header) + 0.4rem);
+  right: 0.55rem;
+  bottom: 0.55rem;
+  left: 0.55rem;
+}
+.section-dark > .wheat-frame-copper { inset: 0.7rem; }
+
+.wheat-tl { left: 0.15rem; bottom: 100%; }
+.wheat-tr { right: 0.15rem; bottom: 100%; transform: scaleX(-1); }
+.wheat-bl { left: 0.15rem; top: 100%; transform: scaleY(-1); }
+.wheat-br { right: 0.15rem; top: 100%; transform: scale(-1); }
+
+.wheat-frame-copper .wheat-tl,
+.wheat-frame-copper .wheat-tr,
+.wheat-frame-copper .wheat-bl,
+.wheat-frame-copper .wheat-br { bottom: auto; top: auto; }
+.wheat-frame-copper .wheat-tl { top: 0.35rem; left: 0.3rem; transform: rotate(180deg); }
+.wheat-frame-copper .wheat-tr { top: 0.35rem; right: 0.3rem; transform: rotate(180deg) scaleX(-1); }
+.wheat-frame-copper .wheat-bl { bottom: 0.35rem; left: 0.3rem; transform: none; }
+.wheat-frame-copper .wheat-br { bottom: 0.35rem; right: 0.3rem; transform: scaleX(-1); }
 .page-hero p { max-width: 38rem; color: rgba(243, 238, 230, 0.8); }
 
 .menu-layout {
@@ -357,6 +407,12 @@ h1, h2, h3, .display {
   grid-template-columns: 14rem 1fr;
   gap: 2.5rem;
   align-items: start;
+  margin-top: 0.4rem;
+}
+.menu-sheet {
+  position: relative;
+  margin-top: 1.7rem;
+  padding: 1.2rem 0.85rem 1.35rem;
 }
 .menu-nav {
   position: sticky;

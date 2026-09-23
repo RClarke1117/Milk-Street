@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
 import { Hours } from "@/components/hours";
+import { WheatFrame } from "@/components/wheat-frame";
 
 export const metadata: Metadata = {
   title: "Tours",
@@ -12,6 +13,7 @@ export default function ToursPage() {
   return (
     <main>
       <header className="page-hero">
+        <WheatFrame tone="copper" />
         <p className="kicker">Tours & tastings</p>
         <h1>Tours & tastings</h1>
         <p>
@@ -30,6 +32,7 @@ export default function ToursPage() {
         </figure>
       </section>
       <section className="section section-dark">
+        <WheatFrame tone="copper" />
         <h2>Hours</h2>
         <Hours />
         <div className="btn-row">

@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { UpcomingEvents } from "@/components/upcoming-events";
+import { WheatFrame } from "@/components/wheat-frame";
 import { site } from "@/lib/site";
 
 export const metadata: Metadata = {
@@ -11,6 +12,7 @@ export default function EventsPage() {
   return (
     <main>
       <header className="page-hero">
+        <WheatFrame tone="copper" />
         <p className="kicker">Events</p>
         <h1>Events</h1>
       </header>

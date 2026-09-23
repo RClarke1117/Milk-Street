@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
+import { WheatFrame } from "@/components/wheat-frame";
 
 export const metadata: Metadata = {
   title: "Distillery",
@@ -11,6 +12,7 @@ export default function MakePage() {
   return (
     <main>
       <header className="page-hero">
+        <WheatFrame tone="copper" />
         <p className="kicker">Distillery</p>
         <h1>We are a true grain to glass distillery.</h1>
         <p>
