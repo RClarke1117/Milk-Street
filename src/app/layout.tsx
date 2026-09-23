@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import { Fraunces, Outfit } from "next/font/google";
 import { JsonLd } from "@/components/json-ld";
 import { Shell } from "@/components/shell";
@@ -19,6 +19,13 @@ const sans = Outfit({
   display: "swap",
   weight: ["300", "400", "500", "600"],
 });
+
+export const viewport: Viewport = {
+  width: "device-width",
+  initialScale: 1,
+  viewportFit: "cover",
+  themeColor: "#0e0c0a",
+};
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://www.milkstreetdistillery.com"),
