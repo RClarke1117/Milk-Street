@@ -350,7 +350,7 @@ h1, h2, h3, .display {
 
 .page-hero {
   position: relative;
-  padding: calc(var(--header) + 4.5rem) 6vw 3.4rem;
+  padding: calc(var(--header) + 7.2rem) 6vw 7.2rem;
   background:
     radial-gradient(900px 400px at 90% -10%, rgba(193, 122, 69, 0.18), transparent 60%),
     var(--dark);
@@ -373,8 +373,8 @@ h1, h2, h3, .display {
 .wheat-frame-copper::before { border-color: rgba(226, 176, 122, 0.5); }
 .wheat-sprig {
   position: absolute;
-  width: 1.35rem;
-  height: 2.15rem;
+  width: 3rem;
+  height: 6.15rem;
   display: block;
 }
 .wheat-frame-ink {
@@ -401,10 +401,10 @@ h1, h2, h3, .display {
 .wheat-frame-copper .wheat-tr,
 .wheat-frame-copper .wheat-bl,
 .wheat-frame-copper .wheat-br { bottom: auto; top: auto; }
-.wheat-frame-copper .wheat-tl { top: 0.35rem; left: 0.3rem; transform: rotate(180deg); }
-.wheat-frame-copper .wheat-tr { top: 0.35rem; right: 0.3rem; transform: rotate(180deg) scaleX(-1); }
-.wheat-frame-copper .wheat-bl { bottom: 0.35rem; left: 0.3rem; transform: none; }
-.wheat-frame-copper .wheat-br { bottom: 0.35rem; right: 0.3rem; transform: scaleX(-1); }
+.wheat-frame-copper .wheat-tl { top: 0.2rem; left: 0.15rem; transform: none; }
+.wheat-frame-copper .wheat-tr { top: 0.2rem; right: 0.15rem; transform: scaleX(-1); }
+.wheat-frame-copper .wheat-bl { bottom: 0.2rem; left: 0.15rem; transform: scaleY(-1); }
+.wheat-frame-copper .wheat-br { bottom: 0.2rem; right: 0.15rem; transform: scale(-1); }
 .page-hero p { max-width: 38rem; color: rgba(243, 238, 230, 0.8); }
 
 .menu-layout {
@@ -416,7 +416,8 @@ h1, h2, h3, .display {
 }
 .menu-sheet {
   position: relative;
-  margin-top: 1.7rem;
+  margin-top: 5.4rem;
+  margin-bottom: 2rem;
   padding: 1.2rem 0.85rem 1.35rem;
 }
 .menu-nav {
@@ -1063,6 +1064,7 @@ h1, h2, h3, .display {
   .hero-meta { margin-top: 1.2rem; }
   .lede { font-size: 1rem; }
   .section { padding: 4.5rem 1.2rem; }
+  .section.section-dark { padding-top: 7.6rem; padding-bottom: 7.6rem; }
   .page-hero, .hero { padding-left: 1.2rem; padding-right: 1.2rem; }
   .ig-cell img { height: 16rem; }
 }
