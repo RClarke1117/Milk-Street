@@ -29,6 +29,7 @@ export const nav = [
   { href: "/menu", label: "Menu" },
   { href: "/tours", label: "Tours" },
   { href: "/events", label: "Events" },
+  { href: "/alco-hauler", label: "Alco-Hauler" },
   { href: "/visit", label: "Visit" },
 ] as const;
 

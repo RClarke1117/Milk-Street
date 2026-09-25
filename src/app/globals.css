@@ -106,7 +106,7 @@ h1, h2, h3, .display {
 .site-header nav {
   display: flex;
   align-items: center;
-  gap: 1.05rem;
+  gap: 0.85rem;
 }
 .site-header nav a {
   text-decoration: none;
@@ -454,6 +454,70 @@ h1, h2, h3, .display {
 .wheat-frame-copper .wheat-bl { bottom: 0.2rem; left: 0.25rem; transform: scaleY(-1); }
 .wheat-frame-copper .wheat-br { bottom: 0.2rem; right: 0.25rem; transform: scale(-1); }
 .page-hero p { max-width: 38rem; color: rgba(243, 238, 230, 0.8); }
+.page-subnav {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.85rem 1.4rem;
+  margin-top: 1.6rem;
+}
+.page-subnav a {
+  text-decoration: none;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  font-size: 0.72rem;
+  color: var(--copper-2);
+  box-shadow: inset 0 -1px 0 rgba(226, 176, 122, 0.45);
+}
+.hauler-photo {
+  margin: 0;
+  overflow: hidden;
+  max-width: 100%;
+}
+.hauler-photo img {
+  display: block;
+  width: 100%;
+  height: 22rem;
+  max-width: 100%;
+  object-fit: cover;
+  object-position: 50% 40%;
+}
+.hauler-board {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2.5rem 4vw;
+}
+.hauler-group ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+.hauler-group li {
+  display: flex;
+  justify-content: space-between;
+  gap: 1.2rem;
+  padding: 0.85rem 0;
+  border-bottom: 1px solid var(--line-light);
+}
+.hauler-group strong {
+  display: block;
+  font-family: var(--serif);
+  font-size: 1.45rem;
+  font-weight: 500;
+  letter-spacing: -0.03em;
+}
+.hauler-group span {
+  display: block;
+  margin-top: 0.25rem;
+  color: rgba(243, 238, 230, 0.72);
+  font-size: 0.95rem;
+}
+.hauler-group em {
+  font-style: normal;
+  font-family: var(--serif);
+  font-size: 1.15rem;
+  color: var(--copper-2);
+  white-space: nowrap;
+}
 
 .menu-layout {
   display: grid;
@@ -1100,7 +1164,7 @@ h1, h2, h3, .display {
     color: var(--cream);
     border-color: var(--dark);
   }
-  .section-head, .split, .menu-layout, .visit-grid, .two, .detail-hero, .event, .event-card, .modal-card, .footer-top, .hours-row {
+  .section-head, .split, .menu-layout, .visit-grid, .two, .detail-hero, .event, .event-card, .modal-card, .footer-top, .hours-row, .hauler-board {
     grid-template-columns: 1fr;
   }
   .process, .ig-grid, .facts, .related { grid-template-columns: 1fr 1fr; }
@@ -1129,6 +1193,7 @@ h1, h2, h3, .display {
   .split { gap: 1.4rem; }
   .frame, .frame img { min-height: 16rem; }
   .place-shot img { height: 13.5rem; }
+  .hauler-photo img { height: 16rem; }
 }
 
 @media (prefers-reduced-motion: reduce) {

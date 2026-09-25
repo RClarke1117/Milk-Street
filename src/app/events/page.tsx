@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Link from "next/link";
 import { UpcomingEvents } from "@/components/upcoming-events";
 import { WheatFrame } from "@/components/wheat-frame";
 import { site } from "@/lib/site";
@@ -19,7 +20,7 @@ export default function EventsPage() {
       <section className="section">
         <UpcomingEvents />
         <p>
-          Alco-Hauler is available for weddings and private events.{" "}
+          <Link href="/alco-hauler">Alco-Hauler</Link> is available for weddings and private events.{" "}
           <a href={site.emailHref}>{site.email}</a> or <a href={site.phoneHref}>{site.phone}</a>.
         </p>
       </section>

@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Image from "next/image";
+import Link from "next/link";
 import { Hours } from "@/components/hours";
 import { WheatFrame } from "@/components/wheat-frame";
 import { site } from "@/lib/site";
@@ -49,16 +50,19 @@ export default function VisitPage() {
         <WheatFrame tone="copper" />
         <div className="split">
           <figure className="frame">
-            <Image src="/media/place/alco-hauler.jpg" alt="The Alco-Hauler." fill sizes="50vw" />
+            <Image src="/media/ig/alco-hauler.jpg" alt="The Alco-Hauler trailer." fill sizes="50vw" />
           </figure>
           <div>
             <h2>Alco-Hauler</h2>
-            <p>Available for weddings and private events.</p>
-            <p>Keep the party going at home. Grab some bottles to go.</p>
-            <p>If you pay by card, a 3.99% fee is added.</p>
-            <a className="btn" href={site.emailHref}>
-              {site.email}
-            </a>
+            <p>Available for weddings and private events. Keep the party going at home. Grab some bottles to go.</p>
+            <div className="btn-row">
+              <Link className="btn" href="/alco-hauler">
+                Alco-Hauler
+              </Link>
+              <a className="btn btn-ghost" href={site.emailHref}>
+                {site.email}
+              </a>
+            </div>
           </div>
         </div>
       </section>
