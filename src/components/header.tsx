@@ -4,7 +4,7 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
 import { OpenBadge } from "@/components/open-badge";
-import { WheatMark } from "@/components/wheat-frame";
+import { WheatFrame, WheatMark } from "@/components/wheat-frame";
 import { nav, site } from "@/lib/site";
 
 function isHere(pathname: string, href: string) {
@@ -35,6 +35,7 @@ export function Header() {
           <img src="/media/brand/logo.png" alt="" width={878} height={167} />
         </Link>
         <nav id="site-nav" className={open ? "is-open" : ""} aria-label="Primary">
+          <WheatFrame tone="copper" />
           {nav.map((item) => {
             const here = isHere(pathname, item.href);
             return (
