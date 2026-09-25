@@ -9,24 +9,33 @@ import { profile } from "@/lib/instagram";
 import { hours, site } from "@/lib/site";
 import { spirits } from "@/lib/spirits";
 
-const steps = [
+const steps: {
+  n: string;
+  title: string;
+  image: string;
+  alt: string;
+  crop?: string;
+}[] = [
   {
     n: "01",
     title: "Mash",
-    image: "/media/ig/dam-break-process.jpg",
-    alt: "Rye grain poured into the mash.",
+    image: "/media/place/process-mash.jpg",
+    alt: "Milled grain poured into the mash tun.",
+    crop: "42% 28%",
   },
   {
     n: "02",
     title: "Ferment",
-    image: "/media/place/stills-wide.jpg",
-    alt: "Open stainless tank on the distillery floor.",
+    image: "/media/place/process-ferment.jpg",
+    alt: "A fermenting wash with a thick head of krausen.",
+    crop: "50% 72%",
   },
   {
     n: "03",
     title: "Distill",
-    image: "/media/place/back-bar.jpg",
-    alt: "New make spirit running from the still.",
+    image: "/media/place/process-distill.jpg",
+    alt: "New make spirit running from the still into the spirit tub.",
+    crop: "50% 38%",
   },
   {
     n: "04",
@@ -156,7 +165,11 @@ export default function HomePage() {
           {steps.map((step) => (
             <Reveal key={step.n}>
               <article>
-                <img src={step.image} alt={step.alt} />
+                <img
+                  src={step.image}
+                  alt={step.alt}
+                  style={step.crop ? { objectPosition: step.crop } : undefined}
+                />
                 <div>
                   <span>{step.n}</span>
                   <h3>{step.title}</h3>
