@@ -4,6 +4,10 @@ import { JsonLd } from "@/components/json-ld";
 import { Shell } from "@/components/shell";
 import { site } from "@/lib/site";
 import "./globals.css";
+import "./motion.css";
+
+// Hides reveal targets before first paint; drops the flag if the app never hydrates.
+const motionFlag = `(function(){try{var d=document.documentElement;if(matchMedia("(prefers-reduced-motion: reduce)").matches)return;d.classList.add("m");setTimeout(function(){if(!window.__msdMotion)d.classList.remove("m")},6000)}catch(e){}})();`;
 
 const display = Fraunces({
   subsets: ["latin"],
@@ -51,7 +55,15 @@ export const metadata: Metadata = {
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="en" className={`${display.variable} ${sans.variable}`}>
+    <html
+      lang="en"
+      className={`${display.variable} ${sans.variable}`}
+      data-scroll-behavior="smooth"
+      suppressHydrationWarning
+    >
+      <head>
+        <script dangerouslySetInnerHTML={{ __html: motionFlag }} />
+      </head>
       <body>
         <JsonLd />
         <Shell>{children}</Shell>

@@ -119,6 +119,9 @@ export default function HomePage() {
             ))}
           </div>
         </div>
+        <span className="hero-cue" aria-hidden="true">
+          <i />
+        </span>
       </section>
 
       <Marquee>

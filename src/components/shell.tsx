@@ -3,12 +3,16 @@
 import { useEffect, useState } from "react";
 import { Footer } from "@/components/footer";
 import { Header } from "@/components/header";
+import { MotionRoot } from "@/components/motion-root";
 import { site } from "@/lib/site";
+
+const gateLead = 420;
 
 export function Shell({ children }: { children: React.ReactNode }) {
   const [ready, setReady] = useState(false);
   const [ofAge, setOfAge] = useState(false);
   const [booting, setBooting] = useState(false);
+  const [fromGate, setFromGate] = useState(false);
   const [leaving, setLeaving] = useState(false);
   const [loaderOut, setLoaderOut] = useState(false);
   const [filling, setFilling] = useState(false);
@@ -27,17 +31,19 @@ export function Shell({ children }: { children: React.ReactNode }) {
 
   useEffect(() => {
     if (!booting) return;
-    const startOut = window.setTimeout(() => setLoaderOut(true), 1900);
+    const lead = fromGate ? gateLead : 0;
+    const startOut = window.setTimeout(() => setLoaderOut(true), 1900 + lead);
     const done = window.setTimeout(() => {
       sessionStorage.setItem("msd-boot", "1");
       setBooting(false);
       setLoaderOut(false);
-    }, 2400);
+      setFromGate(false);
+    }, 2560 + lead);
     return () => {
       window.clearTimeout(startOut);
       window.clearTimeout(done);
     };
-  }, [booting]);
+  }, [booting, fromGate]);
 
   useEffect(() => {
     document.body.classList.toggle("is-locked", !ofAge || booting);
@@ -56,21 +62,26 @@ export function Shell({ children }: { children: React.ReactNode }) {
       setOfAge(true);
       return;
     }
-    setLeaving(true);
-    window.setTimeout(() => {
-      setOfAge(true);
-      if (!sessionStorage.getItem("msd-boot")) setBooting(true);
-    }, 480);
+    if (!sessionStorage.getItem("msd-boot")) {
+      setFromGate(true);
+      setBooting(true);
+    }
+    window.setTimeout(() => setLeaving(true), 260);
+    window.setTimeout(() => setOfAge(true), 1000);
   }
+
+  const entered = ofAge || leaving;
+  const revealed = entered && (!booting || loaderOut);
 
   return (
     <>
       <a className="skip" href="#content">
         Skip to content
       </a>
-      {ready && ofAge ? <Header /> : null}
+      <MotionRoot active={ready && revealed} />
+      {ready && entered ? <Header /> : null}
       <div id="content">{children}</div>
-      {ready && ofAge ? <Footer /> : null}
+      {ready && entered ? <Footer /> : null}
 
       {ready && !ofAge ? (
         <div
@@ -104,7 +115,11 @@ export function Shell({ children }: { children: React.ReactNode }) {
       ) : null}
 
       {booting ? (
-        <div className={`loader${loaderOut ? " is-leaving" : ""}`} role="status" aria-live="polite">
+        <div
+          className={`loader${fromGate ? " from-gate" : ""}${loaderOut ? " is-leaving" : ""}`}
+          role="status"
+          aria-live="polite"
+        >
           <div className="veil-media" aria-hidden="true">
             <img src="/media/place/back-bar.jpg" alt="" />
           </div>
@@ -116,7 +131,7 @@ export function Shell({ children }: { children: React.ReactNode }) {
                   {word.split("").map((letter, index) => (
                     <span
                       key={`${word}-${index}`}
-                      style={{ animationDelay: `${80 + (wordIndex * 12 + index) * 32}ms` }}
+                      style={{ animationDelay: `calc(var(--lead, 0ms) + ${80 + (wordIndex * 12 + index) * 32}ms)` }}
                     >
                       {letter === " " ? "\u00a0" : letter}
                     </span>

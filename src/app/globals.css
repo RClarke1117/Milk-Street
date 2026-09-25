@@ -186,19 +186,9 @@ h1, h2, h3, .display {
   height: 100%;
   object-fit: cover;
 }
-.hero-media img {
-  transform: scale(1.08);
-  animation: hero-drift 28s ease-in-out infinite alternate;
-}
-@keyframes hero-drift {
-  from { transform: scale(1.08) translate3d(0, 0, 0); }
-  to { transform: scale(1.14) translate3d(-1.6%, -1.2%, 0); }
-}
+.hero-media img { transform: scale(1.08); }
 .hero-line { display: block; }
-.hero-line span {
-  display: inline-block;
-  animation: rise 0.95s var(--ease) both;
-}
+.hero-line span { display: inline-block; }
 .hero-line em span { color: inherit; font-style: italic; }
 .hero-media::after {
   content: "";
@@ -415,10 +405,7 @@ h1, h2, h3, .display {
   inset: 0;
   height: 100%;
   object-position: 40% 50%;
-  opacity: 0;
-  transition: opacity 1.6s var(--ease);
 }
-.place-shot.is-showing-then .is-then { opacity: 1; }
 .place h3 {
   margin: 0 0 0.7rem;
   font-size: clamp(1.6rem, 3vw, 2.2rem);
@@ -445,24 +432,13 @@ h1, h2, h3, .display {
   justify-content: flex-start;
   border: 1px solid var(--line-light);
 }
+.process-photo { overflow: hidden; margin-bottom: 0.65rem; }
 .process img {
   width: 100%;
   height: 6rem;
   object-fit: cover;
-  margin-bottom: 0.65rem;
-  clip-path: inset(0 0 100% 0);
 }
-.process.is-in img { animation: photo-wipe 0.7s var(--ease) both; }
-.process span { opacity: 0; }
-.process.is-in span { animation: num-tick 0.45s var(--ease) both; }
-@keyframes photo-wipe {
-  from { clip-path: inset(0 0 100% 0); }
-  to { clip-path: inset(0); }
-}
-@keyframes num-tick {
-  from { opacity: 0; transform: translateY(0.35em); }
-  to { opacity: 1; transform: none; }
-}
+.process span { display: block; }
 .process h3 { margin: 0; font-size: 2rem; color: var(--cream); }
 .process p { margin: 0.35rem 0 0; color: rgba(243, 238, 230, 0.62); font-size: 0.92rem; }
 .process-swipe { display: none; }
@@ -1370,7 +1346,10 @@ h1, h2, h3, .display {
   .nav-dim {
     position: fixed;
     z-index: 30;
-    inset: 50dvh 0 0 0;
+    top: 50dvh;
+    left: 0;
+    right: 0;
+    height: 50dvh;
     border: 0;
     padding: 0;
     background: rgba(8, 6, 4, 0.62);
@@ -1474,14 +1453,7 @@ h1, h2, h3, .display {
   }
   .process-swipe span::after { content: " →"; }
   .process-swipe.is-moved span { opacity: 0; }
-  .process-swipe div { display: flex; gap: 0.4rem; }
-  .process-swipe i {
-    width: 0.4rem;
-    height: 0.4rem;
-    border-radius: 50%;
-    background: rgba(226, 176, 122, 0.35);
-  }
-  .process-swipe i.is-on { background: var(--copper-2); }
+  .process-swipe div { display: flex; gap: 0.1rem; }
   .process img { height: 8.25rem; }
   .ig-grid { grid-template-columns: 1fr 1fr; }
   .shelf { grid-template-columns: 1fr 1fr; }
@@ -1504,16 +1476,3 @@ h1, h2, h3, .display {
   .hauler-photo img { height: 16rem; }
 }
 
-@media (prefers-reduced-motion: reduce) {
-  html { scroll-behavior: auto; }
-  *, *::before, *::after {
-    animation-duration: 0.01ms !important;
-    animation-iteration-count: 1 !important;
-    transition-duration: 0.01ms !important;
-  }
-  .place-shot .is-then { transition: none; opacity: 0; }
-  .process img { clip-path: none; }
-  .process span { opacity: 1; }
-  .marquee-track { animation: none; }
-  .spirit-card:hover img, .ig-cell:hover img, .btn:hover { transform: none; }
-}

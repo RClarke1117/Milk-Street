@@ -150,7 +150,7 @@ export function MenuBoard() {
             <p className="empty">Nothing on the list matches that. Try the spirit, or clear the search.</p>
           ) : null}
           {groups.map((group) => (
-            <section key={group.category} className="menu-group">
+            <section key={`${active}-${group.category}`} className="menu-group">
               <header>
                 <h2>{group.category}</h2>
               </header>
