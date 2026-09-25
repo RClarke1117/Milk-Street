@@ -21,6 +21,7 @@ html {
   background: var(--dark);
   color-scheme: dark;
   min-height: 100%;
+  overflow-x: hidden;
 }
 body {
   margin: 0;
@@ -32,9 +33,10 @@ body {
   font-size: 1.05rem;
   line-height: 1.55;
   font-weight: 400;
+  overflow-x: hidden;
 }
 body.is-locked { overflow: hidden; }
-#content { background: var(--cream); color-scheme: light; }
+#content { background: var(--cream); color-scheme: light; overflow-x: hidden; max-width: 100%; }
 img { max-width: 100%; display: block; border: 1px solid #000; }
 button, a { font: inherit; }
 a { color: inherit; }
@@ -295,11 +297,24 @@ h1, h2, h3, .display {
   background: var(--dark-2);
 }
 .frame img { width: 100%; height: 100%; object-fit: cover; min-height: 22rem; }
-.frame-place {
-  min-height: 0;
-  aspect-ratio: 4 / 3;
+.split,
+.place,
+.place-shot {
+  min-width: 0;
+  max-width: 100%;
 }
-.frame-place img { min-height: 0; }
+.place-shot {
+  margin: 0;
+  overflow: hidden;
+}
+.place-shot img {
+  display: block;
+  width: 100%;
+  height: 18rem;
+  max-width: 100%;
+  object-fit: cover;
+  object-position: 40% 50%;
+}
 .place h3 {
   margin: 0 0 0.7rem;
   font-size: clamp(1.6rem, 3vw, 2.2rem);
@@ -1100,11 +1115,7 @@ h1, h2, h3, .display {
   .section-head { margin-bottom: 1.4rem; gap: 0.75rem; }
   .split { gap: 1.4rem; }
   .frame, .frame img { min-height: 16rem; }
-  .frame-place {
-    aspect-ratio: 16 / 10;
-    max-height: 14.5rem;
-  }
-  .frame-place img { min-height: 0; height: 100%; }
+  .place-shot img { height: 13.5rem; }
 }
 
 @media (prefers-reduced-motion: reduce) {

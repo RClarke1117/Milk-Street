@@ -102,19 +102,16 @@ export default function HomePage() {
           <h2>
             <span className="num">01</span>We&apos;re located in downtown Branchville.
           </h2>
-          <p className="prose">{site.address.full}</p>
         </div>
         <div className="split place">
-          <figure>
-            <div className="frame frame-place">
-              <Image
-                src="/media/place/building.jpg"
-                alt="The historic feed-store building that houses the distillery."
-                fill
-                sizes="(max-width: 900px) 100vw, 50vw"
-              />
-            </div>
-            <figcaption className="caption">1 Milk Street, Building 1, Branchville, NJ 07826</figcaption>
+          <figure className="place-shot">
+            <Image
+              src="/media/place/building.jpg"
+              alt="The historic feed-store building that houses the distillery."
+              width={1400}
+              height={900}
+              sizes="(max-width: 900px) 100vw, 50vw"
+            />
           </figure>
           <div>
             <p className="kicker">Visit</p>
