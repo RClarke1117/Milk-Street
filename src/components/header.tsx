@@ -8,7 +8,8 @@ import { WheatMark } from "@/components/wheat-frame";
 import { nav, site } from "@/lib/site";
 
 function isHere(pathname: string, href: string) {
-  return pathname === href || pathname.startsWith(`${href}/`);
+  const clean = pathname.replace(/\.html$/, "").replace(/\/$/, "") || "/";
+  return clean === href || clean.startsWith(`${href}/`);
 }
 
 export function Header() {
