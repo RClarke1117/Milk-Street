@@ -277,12 +277,18 @@ h1, h2, h3, .display {
   display: grid;
   align-items: center;
   height: 3.4rem;
-  mask-image: linear-gradient(90deg, transparent, #000 9%, #000 91%, transparent);
-  -webkit-mask-image: linear-gradient(90deg, transparent, #000 9%, #000 91%, transparent);
-  border-block: 1px solid rgba(14, 12, 10, 0.55);
+  border: 1px solid #000;
   background:
     url("/media/place/column-still.jpg") 62% 100% / 220% auto no-repeat;
   color: var(--cream);
+}
+.marquee-fade {
+  overflow: hidden;
+  height: 100%;
+  display: grid;
+  align-items: center;
+  mask-image: linear-gradient(90deg, transparent, #000 9%, #000 91%, transparent);
+  -webkit-mask-image: linear-gradient(90deg, transparent, #000 9%, #000 91%, transparent);
 }
 .marquee-track {
   display: flex;
@@ -527,16 +533,11 @@ h1, h2, h3, .display {
   height: 1.3rem;
 }
 .spirit-more span {
-  inset: 0;
+  inset: auto 0.45rem 0.45rem 0.45rem;
   z-index: 3;
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-end;
-  padding: 0.9rem 0.8rem 1rem;
-  border: 0;
-  background: transparent;
+  border: 1px solid #000;
+  background: rgba(8, 6, 4, 0.72);
 }
-.spirit-more strong { font-size: 1.55rem; }
 
 .page-hero {
   position: relative;

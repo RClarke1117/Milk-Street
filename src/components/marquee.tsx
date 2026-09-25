@@ -11,7 +11,7 @@ export function Marquee({ children }: { children: ReactNode }) {
       onPointerCancel={(event) => event.currentTarget.classList.remove("is-held")}
       onPointerLeave={(event) => event.currentTarget.classList.remove("is-held")}
     >
-      {children}
+      <div className="marquee-fade">{children}</div>
     </div>
   );
 }
