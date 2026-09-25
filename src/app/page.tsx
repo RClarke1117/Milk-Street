@@ -104,22 +104,21 @@ export default function HomePage() {
           </h2>
           <p className="prose">{site.address.full}</p>
         </div>
-        <div className="split">
-          <figure className="frame">
-            <Image
-              src="/media/place/building.jpg"
-              alt="The historic feed-store building that houses the distillery."
-              width={1400}
-              height={1600}
-              style={{ width: "100%", height: "auto" }}
-            />
-            <figcaption>1 Milk Street, Building 1, Branchville, NJ 07826</figcaption>
+        <div className="split place">
+          <figure>
+            <div className="frame frame-place">
+              <Image
+                src="/media/place/building.jpg"
+                alt="The historic feed-store building that houses the distillery."
+                fill
+                sizes="(max-width: 900px) 100vw, 50vw"
+              />
+            </div>
+            <figcaption className="caption">1 Milk Street, Building 1, Branchville, NJ 07826</figcaption>
           </figure>
           <div>
             <p className="kicker">Visit</p>
-            <h3 className="display" style={{ fontSize: "clamp(2.8rem, 5vw, 4.4rem)" }}>
-              1 Milk Street, Building 1
-            </h3>
+            <h3>1 Milk Street, Building 1</h3>
             <p>
               <a href={site.phoneHref}>{site.phone}</a>
               <br />

@@ -55,7 +55,7 @@ export default function MakePage() {
             </p>
           </div>
           <figure>
-            <Image src="/media/place/barrels.jpg" alt="Harry or Ester, one of the distillery cats." width={1400} height={1600} style={{ width: "100%", height: "auto" }} />
+            <Image src="/media/place/bar.jpg" alt="Oak barrels racked in the distillery." width={1400} height={1600} style={{ width: "100%", height: "auto" }} />
           </figure>
         </div>
         <figure>
