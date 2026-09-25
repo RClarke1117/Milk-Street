@@ -3,7 +3,8 @@ import Link from "next/link";
 import { Hours } from "@/components/hours";
 import { WheatFrame } from "@/components/wheat-frame";
 import { IgGrid } from "@/components/ig-grid";
-import { Reveal } from "@/components/reveal";
+import { Marquee } from "@/components/marquee";
+import { ProcessRow } from "@/components/process-row";
 import { UpcomingEvents } from "@/components/upcoming-events";
 import { profile } from "@/lib/instagram";
 import { hours, site } from "@/lib/site";
@@ -113,13 +114,13 @@ export default function HomePage() {
         </div>
       </section>
 
-      <div className="marquee" aria-hidden="true">
+      <Marquee>
         <div className="marquee-track">
           {[...names, ...names].map((name, index) => (
             <span key={`${name}-${index}`}>{name} ·</span>
           ))}
         </div>
-      </div>
+      </Marquee>
 
       <section className="section">
         <div className="section-head">
@@ -129,6 +130,10 @@ export default function HomePage() {
         </div>
         <div className="split place">
           <figure className="place-shot">
+            <figcaption className="place-when">
+              <span className="when-then">Then</span>
+              <span className="when-now">Now</span>
+            </figcaption>
             <Image
               className="is-now"
               src="/media/place/building-now.jpg"
@@ -179,23 +184,7 @@ export default function HomePage() {
             Distillery
           </Link>
         </div>
-        <div className="process">
-          {steps.map((step) => (
-            <Reveal key={step.n}>
-              <article>
-                <img
-                  src={step.image}
-                  alt={step.alt}
-                  style={step.crop ? { objectPosition: step.crop } : undefined}
-                />
-                <div>
-                  <span>{step.n}</span>
-                  <h3>{step.title}</h3>
-                </div>
-              </article>
-            </Reveal>
-          ))}
-        </div>
+        <ProcessRow steps={steps} />
       </section>
 
       <section className="section">

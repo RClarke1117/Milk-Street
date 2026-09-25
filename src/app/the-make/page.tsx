@@ -13,7 +13,7 @@ export default function MakePage() {
     <main>
       <header className="page-hero">
         <WheatFrame tone="copper" />
-        <p className="kicker">Distillery</p>
+        <p className="kicker kicker-rule">Distillery</p>
         <h1>We are a true grain to glass distillery.</h1>
         <p>
           Sussex County&apos;s first distillery in over 70 years, located in the small town of Branchville, nestled in the rural northwest corner of New Jersey. Everything is mashed, fermented, distilled and bottled on site.

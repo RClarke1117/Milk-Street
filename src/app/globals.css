@@ -277,6 +277,8 @@ h1, h2, h3, .display {
   display: grid;
   align-items: center;
   height: 3.4rem;
+  mask-image: linear-gradient(90deg, transparent, #000 9%, #000 91%, transparent);
+  -webkit-mask-image: linear-gradient(90deg, transparent, #000 9%, #000 91%, transparent);
   border-block: 1px solid rgba(14, 12, 10, 0.55);
   background:
     url("/media/place/column-still.jpg") 62% 100% / 220% auto no-repeat;
@@ -303,6 +305,8 @@ h1, h2, h3, .display {
   -webkit-text-stroke: 1px #000;
   paint-order: stroke fill;
 }
+.marquee:hover .marquee-track,
+.marquee.is-held .marquee-track { animation-play-state: paused; }
 @keyframes marquee {
   from { transform: translateX(0); }
   to { transform: translateX(-50%); }
@@ -329,13 +333,28 @@ h1, h2, h3, .display {
   font-size: clamp(2.6rem, 6vw, 4.6rem);
 }
 .num {
-  display: block;
+  display: flex;
+  align-items: center;
+  gap: 0.55rem;
   font-family: var(--serif);
   font-style: italic;
   font-size: 0.85rem;
   letter-spacing: 0.14em;
   color: var(--copper);
   margin: 0 0 0.35rem;
+}
+.num::after,
+.kicker-rule::after {
+  content: "";
+  width: 2.4rem;
+  height: 1px;
+  background: currentColor;
+  flex: 0 0 auto;
+}
+.kicker-rule {
+  display: flex;
+  align-items: center;
+  gap: 0.55rem;
 }
 .prose { max-width: 40rem; }
 .prose p, .split p { margin: 0 0 1rem; }
@@ -370,6 +389,34 @@ h1, h2, h3, .display {
   height: 18rem;
   max-width: 100%;
   object-fit: cover;
+}
+.place-when {
+  position: absolute;
+  z-index: 2;
+  left: 0.7rem;
+  bottom: 0.7rem;
+  margin: 0;
+}
+.place-when span {
+  display: block;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  font-size: 0.68rem;
+  color: var(--cream);
+  -webkit-text-stroke: 1px #000;
+  paint-order: stroke fill;
+}
+.when-then { animation: place-then-now 11s var(--ease) infinite; }
+.when-now {
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  animation: place-now 11s var(--ease) infinite;
+}
+@keyframes place-now {
+  0%, 36% { opacity: 0; }
+  48%, 86% { opacity: 1; }
+  100% { opacity: 0; }
 }
 .place-shot .is-now { object-position: 50% 55%; }
 .place-shot .is-then {
@@ -410,7 +457,24 @@ h1, h2, h3, .display {
   justify-content: flex-start;
   border: 1px solid var(--line-light);
 }
-.process img { width: 100%; height: 6rem; object-fit: cover; margin-bottom: 0.65rem; }
+.process img {
+  width: 100%;
+  height: 6rem;
+  object-fit: cover;
+  margin-bottom: 0.65rem;
+  clip-path: inset(0 0 100% 0);
+}
+.process.is-in img { animation: photo-wipe 0.7s var(--ease) both; }
+.process span { opacity: 0; }
+.process.is-in span { animation: num-tick 0.45s var(--ease) both; }
+@keyframes photo-wipe {
+  from { clip-path: inset(0 0 100% 0); }
+  to { clip-path: inset(0); }
+}
+@keyframes num-tick {
+  from { opacity: 0; transform: translateY(0.35em); }
+  to { opacity: 1; transform: none; }
+}
 .process h3 { margin: 0 0 0.6rem; font-size: 2rem; color: var(--cream); }
 .process p { margin: 0; color: rgba(243, 238, 230, 0.78); font-size: 0.95rem; }
 .process span { color: var(--copper-2); letter-spacing: 0.18em; font-size: 0.72rem; }
@@ -1400,7 +1464,20 @@ h1, h2, h3, .display {
 }
 
 @media (max-width: 640px) {
-  .process, .facts, .related { grid-template-columns: 1fr; }
+  .facts, .related { grid-template-columns: 1fr; }
+  .process {
+    display: flex;
+    grid-template-columns: none;
+    gap: 0.8rem;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    scroll-padding-inline: 0;
+    padding-bottom: 0.2rem;
+  }
+  .process article {
+    flex: 0 0 100%;
+    scroll-snap-align: start;
+  }
   .process img { height: 8.25rem; }
   .ig-grid { grid-template-columns: 1fr 1fr; }
   .shelf { grid-template-columns: 1fr 1fr; }
@@ -1430,10 +1507,14 @@ h1, h2, h3, .display {
     animation-iteration-count: 1 !important;
     transition-duration: 0.01ms !important;
   }
-  .place-shot .is-then {
+  .place-shot .is-then,
+  .when-then {
     animation: none !important;
     opacity: 0;
   }
+  .when-now { animation: none !important; opacity: 1; }
+  .process img { clip-path: none; }
+  .process span { opacity: 1; }
   .marquee-track { animation: none; }
   .spirit-card:hover img, .ig-cell:hover img, .btn:hover { transform: none; }
 }
