@@ -1257,6 +1257,7 @@ h1, h2, h3, .display {
 
 @media (max-width: 640px) {
   .process, .facts, .related { grid-template-columns: 1fr; }
+  .process img { height: 16.5rem; }
   .ig-grid { grid-template-columns: 1fr 1fr; }
   .shelf { grid-template-columns: 1fr 1fr; }
   .menu-row { grid-template-columns: 4.6rem minmax(0, 1fr); column-gap: 0.85rem; }
