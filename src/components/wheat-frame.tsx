@@ -9,6 +9,10 @@ export function WheatFrame({ tone = "ink" }: { tone?: "ink" | "copper" }) {
   );
 }
 
+export function WheatMark({ className }: { className?: string }) {
+  return <WheatSprig className={className ?? "wheat-sprig"} />;
+}
+
 function WheatSprig({ className }: { className: string }) {
   return (
     <svg className={className} viewBox="-4 0 164 92" fill="none">

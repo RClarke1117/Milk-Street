@@ -4,7 +4,12 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
 import { OpenBadge } from "@/components/open-badge";
+import { WheatMark } from "@/components/wheat-frame";
 import { nav, site } from "@/lib/site";
+
+function isHere(pathname: string, href: string) {
+  return pathname === href || pathname.startsWith(`${href}/`);
+}
 
 export function Header() {
   const pathname = usePathname();
@@ -29,15 +34,20 @@ export function Header() {
           <img src="/media/brand/logo.png" alt="" width={878} height={167} />
         </Link>
         <nav id="site-nav" className={open ? "is-open" : ""} aria-label="Primary">
-          {nav.map((item) => (
-            <Link
-              key={item.href}
-              href={item.href}
-              aria-current={pathname === item.href ? "page" : undefined}
-            >
-              {item.label}
-            </Link>
-          ))}
+          {nav.map((item) => {
+            const here = isHere(pathname, item.href);
+            return (
+              <Link
+                key={item.href}
+                href={item.href}
+                className={here ? "is-here" : undefined}
+                aria-current={here ? "page" : undefined}
+              >
+                {here ? <WheatMark className="nav-wheat" /> : null}
+                {item.label}
+              </Link>
+            );
+          })}
           <a className="nav-phone" href={site.phoneHref}>
             {site.phone}
           </a>

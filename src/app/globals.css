@@ -112,6 +112,9 @@ h1, h2, h3, .display {
   gap: 0.85rem;
 }
 .site-header nav a {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.38rem;
   text-decoration: none;
   font-size: 0.82rem;
   letter-spacing: 0.12em;
@@ -119,9 +122,23 @@ h1, h2, h3, .display {
   opacity: 0.82;
 }
 .site-header nav a:hover,
-.site-header nav a[aria-current="page"] { opacity: 1; }
-.site-header nav a[aria-current="page"] {
-  box-shadow: inset 0 -1px 0 var(--copper-2);
+.site-header nav a[aria-current="page"],
+.site-header nav a.is-here { opacity: 1; }
+.site-header nav a[aria-current="page"],
+.site-header nav a.is-here {
+  color: var(--copper-2);
+  box-shadow: inset 0 -1px 0 rgba(226, 176, 122, 0.7);
+}
+.nav-wheat {
+  width: 1.35rem;
+  height: 0.66rem;
+  color: var(--copper-2);
+  flex: 0 0 auto;
+  animation: wheat-glow 2.6s ease-in-out infinite;
+}
+@keyframes wheat-glow {
+  0%, 100% { color: var(--copper-2); opacity: 0.72; }
+  50% { color: #f0c992; opacity: 1; }
 }
 .header-tools {
   display: flex;
@@ -1166,25 +1183,46 @@ h1, h2, h3, .display {
   }
   .open-pill-full { display: none; }
   .open-pill-short { display: inline; }
+  .header-bar { position: relative; }
   .site-header nav {
     display: none;
-    position: static;
-    grid-column: 1 / -1;
-    grid-row: 2;
+    position: absolute;
+    top: calc(100% - 0.15rem);
+    left: -1.2rem;
+    right: -1.2rem;
+    max-height: 50vh;
+    overflow-y: auto;
     flex-direction: column;
     align-items: stretch;
     justify-content: flex-start;
     gap: 0;
-    padding: 0.15rem 0 0.35rem;
-    background: transparent;
+    padding: 0.2rem 1.2rem 0.85rem;
+    background: rgba(14, 12, 10, 0.96);
+    border-bottom: 1px solid rgba(226, 176, 122, 0.28);
+    box-shadow: 0 22px 48px rgba(8, 6, 4, 0.42);
+    -webkit-overflow-scrolling: touch;
   }
-  .site-header nav.is-open { display: flex; }
+  .site-header nav.is-open {
+    display: flex;
+    animation: nav-sheet 0.36s var(--ease);
+  }
+  @keyframes nav-sheet {
+    from { opacity: 0; transform: translateY(-0.55rem); }
+    to { opacity: 1; transform: none; }
+  }
   .site-header nav a {
     font-size: 0.95rem;
     letter-spacing: 0.14em;
     padding: 0.58rem 0;
     border-top: 1px solid var(--line-light);
     opacity: 0.92;
+  }
+  .site-header nav a.is-here {
+    background: linear-gradient(90deg, rgba(193, 122, 69, 0.16), transparent 72%);
+    box-shadow: none;
+    margin: 0 -1.2rem;
+    padding-left: 1.2rem;
+    padding-right: 1.2rem;
   }
   .nav-phone { display: block; }
   .menu-nav {
