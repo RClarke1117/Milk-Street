@@ -300,6 +300,8 @@ h1, h2, h3, .display {
   white-space: nowrap;
   line-height: 1;
   transform: translateY(0.08em);
+  -webkit-text-stroke: 1px #000;
+  paint-order: stroke fill;
 }
 @keyframes marquee {
   from { transform: translateX(0); }
