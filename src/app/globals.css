@@ -407,8 +407,8 @@ h1, h2, h3, .display {
   outline-offset: -1px;
 }
 .spirit-more img {
-  filter: saturate(0.82) brightness(0.52);
-  object-position: 54% 62%;
+  filter: saturate(0.95) brightness(0.88);
+  object-position: 50% 58%;
   z-index: 0;
 }
 .spirit-more::after {
@@ -417,8 +417,8 @@ h1, h2, h3, .display {
   inset: 0;
   z-index: 1;
   background:
-    linear-gradient(180deg, rgba(14, 12, 10, 0.12), rgba(14, 12, 10, 0.74)),
-    radial-gradient(90% 70% at 80% 0%, rgba(193, 122, 69, 0.42), transparent 64%);
+    linear-gradient(180deg, rgba(14, 12, 10, 0.05) 28%, rgba(14, 12, 10, 0.62) 100%),
+    radial-gradient(90% 70% at 80% 0%, rgba(193, 122, 69, 0.2), transparent 64%);
 }
 .spirit-more .wheat-frame-copper {
   inset: 0.4rem;
