@@ -1,6 +1,6 @@
 /*
   Motion layer.
-  Reveal targets are hidden only under html.m, which is set before first paint
+  Reveal targets (marked data-in once seen) are hidden only under html.m, which is set before first paint
   and skipped for reduced motion. html.is-revealed is set once the age gate or
   loader lifts, so entrances play when they can be seen.
 */
@@ -18,8 +18,10 @@
 @keyframes fade-out { to { opacity: 0; } }
 @keyframes curtain-up { from { clip-path: inset(0 0 0 0); } to { clip-path: inset(0 0 100% 0); } }
 
-/* Route change */
-.m .route { animation: rise-in 0.6s var(--ease) backwards; }
+/*
+  Route changes are carried by the header sweep and each page hero's own reveal;
+  moving the whole route would expose the cream body above the dark heroes.
+*/
 
 .site-header { top: 0; animation: header-in 0.8s var(--ease) 0.1s backwards; }
 @keyframes header-in { from { top: -5rem; opacity: 0; } }
@@ -109,17 +111,16 @@
   .hero .kicker, .hero-line span, .hero .lede, .hero-actions, .hero-meta, .hero-cue, .hero-media img
 ) { animation-play-state: paused; }
 
-@supports (animation-timeline: view()) {
-  .hero { view-timeline: --hero block; }
+@supports (animation-timeline: scroll()) {
   .hero-copy {
     animation: hero-exit linear both;
-    animation-timeline: --hero;
-    animation-range: exit 0% exit 75%;
+    animation-timeline: scroll(root block);
+    animation-range: 0 80svh;
   }
   .hero-media {
     animation: hero-sink linear both;
-    animation-timeline: --hero;
-    animation-range: exit 0% exit 100%;
+    animation-timeline: scroll(root block);
+    animation-range: 0 100svh;
   }
 }
 @keyframes hero-exit { to { opacity: 0.1; transform: translate3d(0, -3.5rem, 0); } }
@@ -140,7 +141,7 @@
   .page-hero > .kicker, .page-hero > p, .page-subnav, .hauler-group, .hours-row, .event, .event-card > div,
   .menu-search, .menu-group header, .menu-group li, .detail-copy > .kicker, .detail-copy > .lede,
   .detail-copy > .detail-note, .facts > div, .footer-top > div, .footer-bottom
-):not(.is-in) {
+):not([data-in]) {
   opacity: 0;
   transform: translate3d(0, 1.5rem, 0);
 }
@@ -151,7 +152,7 @@
   transition: clip-path 1.1s var(--ease), transform 1.1s var(--ease), opacity 0.6s ease;
   transition-delay: calc(var(--i, 0) * 90ms);
 }
-.m :where(#content) :is(.section-head h2, .split h2, .two h2, .section > h2, .page-hero h1, .detail-copy h1):not(.is-in) {
+.m :where(#content) :is(.section-head h2, .split h2, .two h2, .section > h2, .page-hero h1, .detail-copy h1):not([data-in]) {
   clip-path: inset(100% -0.3em -0.35em -0.3em);
   transform: translate3d(0, 0.45em, 0);
   opacity: 0;
@@ -161,7 +162,7 @@
   transform-origin: left center;
   transition: transform 0.9s var(--ease) 0.5s;
 }
-.m :where(#content) :is(.is-in .num, .kicker-rule.is-in)::after { transform: scaleX(1); }
+.m :where(#content) :is([data-in] .num, .kicker-rule[data-in])::after { transform: scaleX(1); }
 
 /* Scroll reveals: photos fill from the bottom, like a pour */
 .m :where(#content) :is(.frame, .place-shot, .hauler-photo, .split > figure, .section > figure, .event-card figure, .detail-hero > img) {
@@ -169,13 +170,13 @@
   transition: clip-path 1.25s var(--ease-pour);
   transition-delay: calc(var(--i, 0) * 90ms);
 }
-.m :where(#content) :is(.frame, .place-shot, .hauler-photo, .split > figure, .section > figure, .event-card figure, .detail-hero > img):not(.is-in) {
+.m :where(#content) :is(.frame, .place-shot, .hauler-photo, .split > figure, .section > figure, .event-card figure, .detail-hero > img):not([data-in]) {
   clip-path: inset(100% 0 0 0);
 }
 .m :where(#content) :is(.frame, .hauler-photo, .split > figure, .section > figure, .event-card figure) img {
   transition: transform 1.7s var(--ease);
 }
-.m :where(#content) :is(.frame, .hauler-photo, .split > figure, .section > figure, .event-card figure):not(.is-in) img {
+.m :where(#content) :is(.frame, .hauler-photo, .split > figure, .section > figure, .event-card figure):not([data-in]) img {
   transform: scale(1.16);
 }
 
@@ -191,13 +192,13 @@
   transition: clip-path 1.1s var(--ease-pour), transform 0.35s var(--ease);
   transition-delay: calc(var(--i, 0) * 90ms), 0s;
 }
-.m :where(#content) :is(.shelf > .spirit-card, .ig-grid > .ig-cell):not(.is-in) { clip-path: inset(100% 0 0 0); }
-.m :where(#content) :is(.shelf > .spirit-card, .ig-grid > .ig-cell):not(.is-in) img { transform: scale(1.2); }
+.m :where(#content) :is(.shelf > .spirit-card, .ig-grid > .ig-cell):not([data-in]) { clip-path: inset(100% 0 0 0); }
+.m :where(#content) :is(.shelf > .spirit-card, .ig-grid > .ig-cell):not([data-in]) img { transform: scale(1.2); }
 .m :where(#content) :is(.shelf > .spirit-card, .ig-grid > .ig-cell) > span {
   transition: opacity 0.7s var(--ease), transform 0.7s var(--ease);
   transition-delay: calc(var(--i, 0) * 90ms + 420ms);
 }
-.m :where(#content) :is(.shelf > .spirit-card, .ig-grid > .ig-cell):not(.is-in) > span {
+.m :where(#content) :is(.shelf > .spirit-card, .ig-grid > .ig-cell):not([data-in]) > span {
   opacity: 0;
   transform: translate3d(0, 0.7rem, 0);
 }
@@ -247,7 +248,7 @@
   clip-path: inset(0 0 0 0);
   transition: clip-path 1.4s var(--ease-pour);
 }
-.m :where(#content) .wheat-frame:not(.is-in)::before { clip-path: inset(0 50% 0 50%); }
+.m :where(#content) .wheat-frame:not([data-in])::before { clip-path: inset(0 50% 0 50%); }
 .m :where(#content) .wheat-frame .wheat-sprig {
   transition: opacity 0.7s var(--ease), scale 1s var(--ease-back), rotate 0.6s var(--ease-back);
   transition-delay: 0.75s, 0.75s, 0s;
@@ -255,7 +256,7 @@
 .m :where(#content) .wheat-frame .wheat-tr { transition-delay: 0.85s, 0.85s, 0s; }
 .m :where(#content) .wheat-frame .wheat-bl { transition-delay: 0.95s, 0.95s, 0s; }
 .m :where(#content) .wheat-frame .wheat-br { transition-delay: 1.05s, 1.05s, 0s; }
-.m :where(#content) .wheat-frame:not(.is-in) .wheat-sprig {
+.m :where(#content) .wheat-frame:not([data-in]) .wheat-sprig {
   opacity: 0;
   scale: 0.3;
   rotate: -14deg;
@@ -348,6 +349,7 @@
 }
 
 @media (max-width: 980px) {
+  .site-header nav.is-open > .wheat-frame-copper::before { animation: frame-trace 0.8s var(--ease-pour) 0.1s both; }
   .site-header nav.is-open { animation: sheet-down 0.55s var(--ease) both; }
   .site-header nav.is-closing { animation: sheet-up 0.32s var(--ease-in) both; }
   .site-header nav.is-open > a { animation: link-in 0.5s var(--ease) both; animation-delay: calc(0.14s + var(--i, 0) * 45ms); }
@@ -361,6 +363,11 @@
 @keyframes sheet-up {
   from { clip-path: inset(0 0 -2.5rem 0); }
   to { clip-path: inset(0 0 100% 0); }
+}
+@keyframes frame-trace {
+  0% { clip-path: inset(0 100% calc(100% - 2px) 0); }
+  45% { clip-path: inset(0 0 calc(100% - 2px) 0); }
+  100% { clip-path: inset(0 0 0 0); }
 }
 @keyframes link-in { from { opacity: 0; transform: translate3d(-0.8rem, 0, 0); } }
 
@@ -538,6 +545,7 @@
 @keyframes modal-in { from { opacity: 0; transform: translate3d(0, 1.2rem, 0) scale(0.97); } }
 @keyframes modal-out { to { opacity: 0; transform: translate3d(0, 0.8rem, 0) scale(0.98); } }
 .modal-photo { overflow: hidden; }
+.modal-copy > .kicker { padding-right: 4.8rem; }
 .modal-photo > * { animation: photo-settle 1.2s var(--ease) both; }
 @keyframes photo-settle { from { opacity: 0; transform: scale(1.08); } }
 .modal-copy > * { animation: rise-in 0.6s var(--ease) both; }

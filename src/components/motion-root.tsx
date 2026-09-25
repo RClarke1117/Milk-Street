@@ -68,7 +68,7 @@ export function MotionRoot({ active }: { active: boolean }) {
     const pending = new Set<HTMLElement>();
     const show = (el: Element, order: number) => {
       (el as HTMLElement).style.setProperty("--i", String(Math.min(order, 6)));
-      el.classList.add("is-in");
+      el.setAttribute("data-in", "");
       pending.delete(el as HTMLElement);
       observer.unobserve(el);
     };

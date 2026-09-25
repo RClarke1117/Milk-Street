@@ -123,9 +123,6 @@ export function Header() {
           aria-label="Primary"
         >
           <WheatFrame tone="copper" />
-          <svg className="nav-draw" viewBox="0 0 100 100" preserveAspectRatio="none" aria-hidden="true">
-            <rect x="0.6" y="0.6" width="98.8" height="98.8" pathLength="100" />
-          </svg>
           {nav.map((item, index) => {
             const here = isHere(pathname, item.href);
             return (
