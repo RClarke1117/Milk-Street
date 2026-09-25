@@ -6,7 +6,7 @@ import { IgGrid } from "@/components/ig-grid";
 import { Reveal } from "@/components/reveal";
 import { UpcomingEvents } from "@/components/upcoming-events";
 import { profile } from "@/lib/instagram";
-import { site } from "@/lib/site";
+import { hours, site } from "@/lib/site";
 import { spirits } from "@/lib/spirits";
 
 const steps = [
@@ -82,9 +82,11 @@ export default function HomePage() {
             </Link>
           </div>
           <div className="hero-meta">
-            <span>Friday 4–10</span>
-            <span>Saturday 1–10</span>
-            <span>Sunday 1–6</span>
+            {hours.map((row) => (
+              <span key={row.days}>
+                {row.days} {row.room}
+              </span>
+            ))}
           </div>
         </div>
       </section>
