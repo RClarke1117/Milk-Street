@@ -402,18 +402,43 @@ h1, h2, h3, .display {
   letter-spacing: -0.03em;
 }
 .spirit-card em { font-style: normal; letter-spacing: 0.14em; text-transform: uppercase; font-size: 0.62rem; opacity: 0.8; }
-.spirit-more img { filter: saturate(0.7) brightness(0.72); }
+.spirit-more {
+  outline: 1px solid rgba(193, 122, 69, 0.55);
+  outline-offset: -1px;
+}
+.spirit-more img {
+  filter: saturate(0.82) brightness(0.52);
+  object-position: 54% 62%;
+  z-index: 0;
+}
 .spirit-more::after {
   content: "";
   position: absolute;
   inset: 0;
+  z-index: 1;
   background:
-    linear-gradient(180deg, rgba(14, 12, 10, 0.15), rgba(14, 12, 10, 0.55)),
-    radial-gradient(80% 70% at 50% 0%, rgba(193, 122, 69, 0.32), transparent 62%);
+    linear-gradient(180deg, rgba(14, 12, 10, 0.12), rgba(14, 12, 10, 0.74)),
+    radial-gradient(90% 70% at 80% 0%, rgba(193, 122, 69, 0.42), transparent 64%);
+}
+.spirit-more .wheat-frame-copper {
+  inset: 0.4rem;
+  z-index: 2;
+}
+.spirit-more .wheat-sprig {
+  width: 2.7rem;
+  height: 1.3rem;
 }
 .spirit-more span {
-  inset: auto 0.7rem 0.8rem 0.7rem;
+  inset: 0;
+  z-index: 3;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  padding: 0.9rem 0.8rem 1rem;
+  border: 0;
+  background: transparent;
 }
+.spirit-more strong { font-size: 1.55rem; }
 
 .page-hero {
   position: relative;

@@ -43,7 +43,7 @@ const steps = [
 ];
 
 export default function HomePage() {
-  const featured = spirits.slice(0, 7);
+  const featured = spirits.slice(0, 5);
   const names = spirits.map((spirit) => spirit.name);
 
   return (
@@ -185,13 +185,14 @@ export default function HomePage() {
           ))}
           <Link href="/spirits" className="spirit-card spirit-more">
             <Image
-              src="/media/place/back-bar.jpg"
-              alt=""
+              src="/media/place/pour.jpg"
+              alt="The rest of the Milk Street bottles on the tasting-room shelf."
               fill
-              sizes="(max-width: 900px) 100vw, 33vw"
+              sizes="(max-width: 900px) 50vw, 25vw"
             />
+            <WheatFrame tone="copper" />
             <span>
-              <em>The shelf</em>
+              <em>The rest of the shelf</em>
               <strong>More spirits</strong>
             </span>
           </Link>
