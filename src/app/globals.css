@@ -279,7 +279,7 @@ h1, h2, h3, .display {
   height: 3.4rem;
   border-block: 1px solid rgba(14, 12, 10, 0.55);
   background:
-    url("/media/place/column-still.jpg") center 100% / cover no-repeat;
+    url("/media/place/column-still.jpg") 62% 100% / 220% auto no-repeat;
   color: var(--cream);
 }
 .marquee-track {
