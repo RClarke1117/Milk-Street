@@ -963,16 +963,18 @@ h1, h2, h3, .display {
 .detail-hero img {
   display: block;
   width: 100%;
-  height: 78svh;
+  height: 26rem;
   object-fit: contain;
   object-position: center center;
   background: var(--dark);
 }
-.detail-copy { padding: calc(var(--header) + 3rem) 6vw 4rem; align-self: end; }
-.detail-copy .btn { margin-top: 1.6rem; }
-.detail-copy h1 { margin: 0 0 1rem; font-size: clamp(3.4rem, 7vw, 6.5rem); }
+.detail-copy { padding: calc(var(--header) + 1.4rem) 6vw 2.6rem; align-self: start; }
+.detail-copy .kicker { margin-bottom: 0.35rem; }
+.detail-copy .btn { margin-top: 1.05rem; }
+.detail-copy h1 { margin: 0 0 0.45rem; font-size: clamp(2.5rem, 4.6vw, 4.4rem); }
+.detail-copy p { margin: 0.4rem 0 0; }
 .detail-note { color: rgba(243, 238, 230, 0.82); max-width: 38rem; }
-.facts { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem; margin-top: 2rem; }
+.facts { display: grid; grid-template-columns: repeat(3, 1fr); gap: 0.75rem; margin-top: 1.05rem; }
 .facts div { border-top: 1px solid var(--line-light); padding-top: 0.7rem; }
 .facts span { display: block; letter-spacing: 0.14em; text-transform: uppercase; font-size: 0.68rem; color: var(--copper-2); }
 .related { display: grid; grid-template-columns: 1fr 1fr; gap: 0.6rem; }
@@ -1384,6 +1386,9 @@ h1, h2, h3, .display {
   .section-head, .split, .menu-layout, .visit-grid, .two, .detail-hero, .event, .event-card, .modal-card, .footer-top, .hours-row, .hauler-board {
     grid-template-columns: 1fr;
   }
+  .detail-hero img { height: 16.5rem; }
+  .detail-copy { padding: 0.9rem 1.2rem 2rem; }
+  .detail-copy h1 { font-size: 2.45rem; }
   .process, .ig-grid, .facts, .related { grid-template-columns: 1fr 1fr; }
   .shelf { grid-template-columns: 1fr 1fr; }
   .process article { min-height: 0; }
