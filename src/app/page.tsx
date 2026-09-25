@@ -16,6 +16,7 @@ const steps: {
   title: string;
   image: string;
   alt: string;
+  line: string;
   crop?: string;
 }[] = [
   {
@@ -23,6 +24,7 @@ const steps: {
     title: "Mash",
     image: "/media/place/process-mash.jpg",
     alt: "Milled grain poured into the mash tun.",
+    line: "Milled grain into the tun.",
     crop: "38% 58%",
   },
   {
@@ -30,6 +32,7 @@ const steps: {
     title: "Ferment",
     image: "/media/place/process-ferment.jpg",
     alt: "A fermenting wash with a thick head of krausen.",
+    line: "The wash working in the drum.",
     crop: "50% 68%",
   },
   {
@@ -37,6 +40,7 @@ const steps: {
     title: "Distill",
     image: "/media/place/process-distill.jpg",
     alt: "New make spirit running from the still into the spirit tub.",
+    line: "New make off the still.",
     crop: "50% 22%",
   },
   {
@@ -44,12 +48,14 @@ const steps: {
     title: "Age",
     image: "/media/place/bar.jpg",
     alt: "Oak barrels racked in the distillery.",
+    line: "Rested in oak barrels.",
   },
   {
     n: "05",
     title: "Bottle",
     image: "/media/place/mash.jpg",
     alt: "The bottling line at Milk Street.",
+    line: "Filled on the line.",
   },
 ];
 
