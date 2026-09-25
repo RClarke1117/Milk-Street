@@ -168,12 +168,12 @@ export default function HomePage() {
             Mike and Gordon Geerhart opened in January 2017, in a late-1800s feed store. “We’re Sussex County boys and we love it here,” Mike told New Jersey Monthly.
           </p>
         </div>
+        <ProcessRow steps={steps} />
         <div className="btn-row">
           <Link className="btn" href="/the-make">
             Distillery
           </Link>
         </div>
-        <ProcessRow steps={steps} />
       </section>
 
       <section className="section">
