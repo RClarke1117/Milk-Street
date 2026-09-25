@@ -13,7 +13,7 @@ export default function EventsPage() {
     <main>
       <header className="page-hero">
         <WheatFrame tone="copper" />
-        <p className="kicker">Events</p>
+        <p className="kicker">The calendar</p>
         <h1>Events</h1>
       </header>
       <section className="section">

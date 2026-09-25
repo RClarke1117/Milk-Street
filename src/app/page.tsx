@@ -14,36 +14,36 @@ const steps = [
     n: "01",
     title: "Mash",
     copy: "Mashed on site.",
-    image: "/media/place/mash.jpg",
-    alt: "Stainless mash tun on the distillery floor.",
+    image: "/media/ig/dam-break-process.jpg",
+    alt: "Rye grain poured into the mash.",
   },
   {
     n: "02",
     title: "Ferment",
     copy: "Fermented on site.",
-    image: "/media/place/fermenters.jpg",
-    alt: "Open stainless fermenters.",
+    image: "/media/place/stills-wide.jpg",
+    alt: "Open stainless tank on the distillery floor.",
   },
   {
     n: "03",
     title: "Distill",
     copy: "Distilled on site.",
-    image: "/media/place/column-still.jpg",
-    alt: "Copper column still with a spirit safe.",
+    image: "/media/place/back-bar.jpg",
+    alt: "New make spirit running from the still.",
   },
   {
     n: "04",
     title: "Age",
     copy: "Whiskey is aged on site.",
-    image: "/media/place/barrels.jpg",
-    alt: "Barrels racked in the distillery.",
+    image: "/media/place/bar.jpg",
+    alt: "Oak barrels racked in the distillery.",
   },
   {
     n: "05",
     title: "Bottle",
     copy: "Bottled on site.",
-    image: "/media/place/still-house.jpg",
-    alt: "The still house interior at Milk Street.",
+    image: "/media/place/mash.jpg",
+    alt: "The bottling line at Milk Street.",
   },
 ];
 
@@ -211,7 +211,7 @@ export default function HomePage() {
             </div>
           </div>
           <figure className="frame">
-            <Image src="/media/place/bar.jpg" alt="The tasting room bar." fill sizes="50vw" />
+            <Image src="/media/place/still-house.jpg" alt="The tasting room bar." fill sizes="50vw" />
           </figure>
         </div>
       </section>

@@ -35,12 +35,12 @@ export const nav = [
 export const hours = [
   {
     days: "Monday – Thursday",
-    room: "Closed",
+    room: "Pickup 12–6",
     note: "Bottle and gift-card pickup only, 12–6. Please email to verify that we are in. Not open for the tasting room or tours.",
   },
   {
     days: "Friday",
-    room: "4–10 PM",
+    room: "Pickup 12–6 · 4–10 PM",
     note: "Pickup 12–6. Tasting room 4–10. Tours every half hour.",
   },
   {

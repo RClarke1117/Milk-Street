@@ -28,7 +28,7 @@ export default function ToursPage() {
       </header>
       <section className="section">
         <figure>
-          <Image src="/media/place/fermenters.jpg" alt="Fermenters on the production floor." width={1400} height={1600} style={{ width: "100%", height: "auto" }} />
+          <Image src="/media/place/still-house.jpg" alt="The tasting room at Milk Street Distillery." width={1400} height={1600} style={{ width: "100%", height: "auto" }} />
         </figure>
       </section>
       <section className="section section-dark">

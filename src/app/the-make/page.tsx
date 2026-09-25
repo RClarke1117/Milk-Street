@@ -22,7 +22,7 @@ export default function MakePage() {
       <section className="section">
         <div className="split">
           <figure>
-            <Image src="/media/place/stills-wide.jpg" alt="Two copper column stills and the fermenters beside them." width={1600} height={1100} style={{ width: "100%", height: "auto" }} />
+            <Image src="/media/place/stills-wide.jpg" alt="Open stainless tank on the distillery floor." width={1600} height={1100} style={{ width: "100%", height: "auto" }} />
           </figure>
           <div className="prose">
             <h2>Bringing it back, just in liquid form.</h2>
@@ -55,11 +55,11 @@ export default function MakePage() {
             </p>
           </div>
           <figure>
-            <Image src="/media/place/barrels.jpg" alt="Oak barrels at the distillery." width={1400} height={1600} style={{ width: "100%", height: "auto" }} />
+            <Image src="/media/place/barrels.jpg" alt="Harry or Ester, one of the distillery cats." width={1400} height={1600} style={{ width: "100%", height: "auto" }} />
           </figure>
         </div>
         <figure>
-          <Image src="/media/place/mash.jpg" alt="The mash tun." width={1600} height={1100} style={{ width: "100%", height: "auto" }} />
+          <Image src="/media/place/mash.jpg" alt="The bottling line." width={1600} height={1100} style={{ width: "100%", height: "auto" }} />
         </figure>
       </section>
     </main>
