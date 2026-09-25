@@ -21,7 +21,7 @@ export default function MenuPage() {
         <p>Spring / Summer 2026.</p>
         <p className="fine" style={{ color: "rgba(243,238,230,.7)" }}>{menuNote}</p>
       </header>
-      <section className="section" style={{ paddingTop: "2.5rem" }}>
+      <section className="section menu-section">
         <Suspense fallback={<p className="empty">Setting the list…</p>}>
           <MenuBoard />
         </Suspense>
