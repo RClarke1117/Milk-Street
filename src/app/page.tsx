@@ -3,6 +3,7 @@ import Link from "next/link";
 import { Hours } from "@/components/hours";
 import { WheatFrame } from "@/components/wheat-frame";
 import { IgGrid } from "@/components/ig-grid";
+import { PlaceShot } from "@/components/place-shot";
 import { Marquee } from "@/components/marquee";
 import { ProcessRow } from "@/components/process-row";
 import { UpcomingEvents } from "@/components/upcoming-events";
@@ -129,28 +130,7 @@ export default function HomePage() {
           </h2>
         </div>
         <div className="split place">
-          <figure className="place-shot">
-            <figcaption className="place-when">
-              <span className="when-then">Then</span>
-              <span className="when-now">Now</span>
-            </figcaption>
-            <Image
-              className="is-now"
-              src="/media/place/building-now.jpg"
-              alt="Milk Street Distillery at 1 Milk Street today."
-              width={1200}
-              height={609}
-              sizes="(max-width: 900px) 100vw, 50vw"
-            />
-            <Image
-              className="is-then"
-              src="/media/place/building.jpg"
-              alt="The historic feed-store building that houses the distillery."
-              width={1500}
-              height={1091}
-              sizes="(max-width: 900px) 100vw, 50vw"
-            />
-          </figure>
+          <PlaceShot />
           <div>
             <p className="kicker">Visit</p>
             <h3>1 Milk Street, Building 1</h3>
