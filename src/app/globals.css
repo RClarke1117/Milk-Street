@@ -1199,7 +1199,7 @@ h1, h2, h3, .display {
     align-items: stretch;
     justify-content: flex-start;
     gap: 0;
-    padding: 0.85rem 1.35rem 0.7rem;
+    padding: 1.4rem 1.15rem 1.05rem;
     background:
       radial-gradient(90% 70% at 100% 0%, rgba(193, 122, 69, 0.28), transparent 58%),
       rgba(14, 12, 10, 0.97);
@@ -1208,13 +1208,21 @@ h1, h2, h3, .display {
   }
   .site-header nav > .wheat-frame-copper {
     display: block;
-    inset: 0.28rem;
+    inset: 0;
     z-index: 2;
   }
-  .site-header nav > .wheat-frame .wheat-sprig {
-    width: 2.6rem;
-    height: 1.25rem;
+  .site-header nav > .wheat-frame-copper::before {
+    inset: 1.15rem 0.7rem 0.85rem;
+    border-color: rgba(226, 176, 122, 0.72);
   }
+  .site-header nav > .wheat-frame .wheat-sprig {
+    width: 2.15rem;
+    height: 0.95rem;
+  }
+  .site-header nav .wheat-tl { top: 0.08rem; left: 0.35rem; }
+  .site-header nav .wheat-tr { top: 0.08rem; right: 0.35rem; }
+  .site-header nav .wheat-bl { bottom: 0.02rem; left: 0.35rem; }
+  .site-header nav .wheat-br { bottom: 0.02rem; right: 0.35rem; }
   .site-header nav.is-open {
     display: flex;
     animation: nav-sheet 0.32s var(--ease);
@@ -1235,9 +1243,9 @@ h1, h2, h3, .display {
     opacity: 1;
     background: linear-gradient(90deg, rgba(193, 122, 69, 0.34), transparent 70%);
     box-shadow: inset 3px 0 0 var(--copper);
-    margin: 0 -1.15rem;
-    padding-left: 0.85rem;
-    padding-right: 1.15rem;
+    margin: 0 -0.35rem;
+    padding-left: 0.55rem;
+    padding-right: 0.55rem;
   }
   .site-header nav a.is-here .nav-wheat {
     width: 2.15rem;
