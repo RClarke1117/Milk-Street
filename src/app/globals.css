@@ -100,6 +100,9 @@ h1, h2, h3, .display {
   display: block;
   width: auto;
   height: 2.2rem;
+  border: 0;
+  background: transparent;
+  box-shadow: none;
 }
 .footer-logo { height: 3.4rem; margin: 0 0 1rem; }
 .age-logo { height: 2.7rem; margin: 0 auto 1.15rem; }
