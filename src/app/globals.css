@@ -304,6 +304,7 @@ h1, h2, h3, .display {
   max-width: 100%;
 }
 .place-shot {
+  position: relative;
   margin: 0;
   overflow: hidden;
 }
@@ -313,7 +314,19 @@ h1, h2, h3, .display {
   height: 18rem;
   max-width: 100%;
   object-fit: cover;
+}
+.place-shot .is-now { object-position: 50% 55%; }
+.place-shot .is-then {
+  position: absolute;
+  inset: 0;
+  height: 100%;
   object-position: 40% 50%;
+  animation: place-then-now 11s var(--ease) infinite;
+}
+@keyframes place-then-now {
+  0%, 36% { opacity: 1; }
+  48%, 86% { opacity: 0; }
+  100% { opacity: 1; }
 }
 .place h3 {
   margin: 0 0 0.7rem;
@@ -1124,6 +1137,10 @@ h1, h2, h3, .display {
     animation-duration: 0.01ms !important;
     animation-iteration-count: 1 !important;
     transition-duration: 0.01ms !important;
+  }
+  .place-shot .is-then {
+    animation: none !important;
+    opacity: 0;
   }
   .marquee-track { animation: none; }
   .spirit-card:hover img, .ig-cell:hover img, .btn:hover { transform: none; }

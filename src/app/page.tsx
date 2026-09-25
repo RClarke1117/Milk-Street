@@ -106,10 +106,19 @@ export default function HomePage() {
         <div className="split place">
           <figure className="place-shot">
             <Image
+              className="is-now"
+              src="/media/place/building-now.jpg"
+              alt="Milk Street Distillery at 1 Milk Street today."
+              width={1200}
+              height={609}
+              sizes="(max-width: 900px) 100vw, 50vw"
+            />
+            <Image
+              className="is-then"
               src="/media/place/building.jpg"
               alt="The historic feed-store building that houses the distillery."
-              width={1400}
-              height={900}
+              width={1500}
+              height={1091}
               sizes="(max-width: 900px) 100vw, 50vw"
             />
           </figure>
