@@ -3,6 +3,7 @@
 import { useEffect, useState } from "react";
 import { Footer } from "@/components/footer";
 import { Header } from "@/components/header";
+import { site } from "@/lib/site";
 
 export function Shell({ children }: { children: React.ReactNode }) {
   const [ready, setReady] = useState(false);
@@ -107,10 +108,17 @@ export function Shell({ children }: { children: React.ReactNode }) {
           </div>
           <div className="loader-panel">
             <p className="loader-kicker">Branchville, New Jersey</p>
-            <p className="loader-word" aria-label="Milk Street">
-              {"Milk Street".split("").map((letter, index) => (
-                <span key={`${letter}-${index}`} style={{ animationDelay: `${80 + index * 55}ms` }}>
-                  {letter === " " ? "\u00a0" : letter}
+            <p className="loader-word" aria-label={site.name}>
+              {["Milk Street", "Distillery"].map((word, wordIndex) => (
+                <span className="loader-line" key={word}>
+                  {word.split("").map((letter, index) => (
+                    <span
+                      key={`${word}-${index}`}
+                      style={{ animationDelay: `${80 + (wordIndex * 12 + index) * 32}ms` }}
+                    >
+                      {letter === " " ? "\u00a0" : letter}
+                    </span>
+                  ))}
                 </span>
               ))}
             </p>

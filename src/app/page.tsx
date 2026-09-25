@@ -13,42 +13,37 @@ const steps = [
   {
     n: "01",
     title: "Mash",
-    copy: "Mashed on site.",
     image: "/media/ig/dam-break-process.jpg",
     alt: "Rye grain poured into the mash.",
   },
   {
     n: "02",
     title: "Ferment",
-    copy: "Fermented on site.",
     image: "/media/place/stills-wide.jpg",
     alt: "Open stainless tank on the distillery floor.",
   },
   {
     n: "03",
     title: "Distill",
-    copy: "Distilled on site.",
     image: "/media/place/back-bar.jpg",
     alt: "New make spirit running from the still.",
   },
   {
     n: "04",
     title: "Age",
-    copy: "Whiskey is aged on site.",
     image: "/media/place/bar.jpg",
     alt: "Oak barrels racked in the distillery.",
   },
   {
     n: "05",
     title: "Bottle",
-    copy: "Bottled on site.",
     image: "/media/place/mash.jpg",
     alt: "The bottling line at Milk Street.",
   },
 ];
 
 export default function HomePage() {
-  const featured = spirits.slice(0, 5);
+  const featured = spirits.slice(0, 7);
   const names = spirits.map((spirit) => spirit.name);
 
   return (
@@ -165,7 +160,6 @@ export default function HomePage() {
                 <div>
                   <span>{step.n}</span>
                   <h3>{step.title}</h3>
-                  <p>{step.copy}</p>
                 </div>
               </article>
             </Reveal>
@@ -189,10 +183,17 @@ export default function HomePage() {
               </span>
             </Link>
           ))}
-        </div>
-        <div className="btn-row">
-          <Link className="btn" href="/spirits">
-            Our spirits
+          <Link href="/spirits" className="spirit-card spirit-more">
+            <Image
+              src="/media/place/back-bar.jpg"
+              alt=""
+              fill
+              sizes="(max-width: 900px) 100vw, 33vw"
+            />
+            <span>
+              <em>The shelf</em>
+              <strong>More spirits</strong>
+            </span>
           </Link>
         </div>
       </section>

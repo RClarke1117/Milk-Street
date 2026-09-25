@@ -402,6 +402,18 @@ h1, h2, h3, .display {
   letter-spacing: -0.03em;
 }
 .spirit-card em { font-style: normal; letter-spacing: 0.14em; text-transform: uppercase; font-size: 0.62rem; opacity: 0.8; }
+.spirit-more img { filter: saturate(0.7) brightness(0.72); }
+.spirit-more::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(180deg, rgba(14, 12, 10, 0.15), rgba(14, 12, 10, 0.55)),
+    radial-gradient(80% 70% at 50% 0%, rgba(193, 122, 69, 0.32), transparent 62%);
+}
+.spirit-more span {
+  inset: auto 0.7rem 0.8rem 0.7rem;
+}
 
 .page-hero {
   position: relative;
@@ -1021,12 +1033,13 @@ h1, h2, h3, .display {
 .loader-word {
   font-family: var(--serif);
   font-weight: 500;
-  font-size: clamp(3rem, 10vw, 5.6rem);
-  margin: 0.35rem 0 0.7rem;
+  font-size: clamp(2.4rem, 8vw, 4.8rem);
+  margin: 0.35rem auto 0.7rem;
   letter-spacing: -0.045em;
   line-height: 0.95;
 }
-.loader-word span {
+.loader-line { display: block; }
+.loader-word .loader-line span {
   display: inline-block;
   animation: rise 0.75s var(--ease) both;
 }
