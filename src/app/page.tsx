@@ -69,10 +69,28 @@ export default function HomePage() {
         </div>
         <div className="hero-copy">
           <p className="kicker">Branchville, New Jersey</p>
-          <h1 className="display">
-            Grain
-            <br />
-            to <em>glass.</em>
+          <h1 className="display hero-title" aria-label="Grain to glass.">
+            <span className="hero-line" aria-hidden="true">
+              {"Grain".split("").map((letter, index) => (
+                <span key={letter} style={{ animationDelay: `${180 + index * 42}ms` }}>
+                  {letter}
+                </span>
+              ))}
+            </span>
+            <span className="hero-line" aria-hidden="true">
+              {"to ".split("").map((letter, index) => (
+                <span key={`to-${index}`} style={{ animationDelay: `${620 + index * 42}ms` }}>
+                  {letter === " " ? "\u00a0" : letter}
+                </span>
+              ))}
+              <em>
+                {"glass.".split("").map((letter, index) => (
+                  <span key={`glass-${index}`} style={{ animationDelay: `${760 + index * 42}ms` }}>
+                    {letter}
+                  </span>
+                ))}
+              </em>
+            </span>
           </h1>
           <p className="lede">
             Sussex County&apos;s first distillery in over 70 years, located in the small town of Branchville, nestled in the rural northwest corner of New Jersey. We are a true grain to glass distillery, as everything is mashed, fermented, distilled and bottled on site.

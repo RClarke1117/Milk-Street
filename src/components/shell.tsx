@@ -11,6 +11,7 @@ export function Shell({ children }: { children: React.ReactNode }) {
   const [booting, setBooting] = useState(false);
   const [leaving, setLeaving] = useState(false);
   const [loaderOut, setLoaderOut] = useState(false);
+  const [filling, setFilling] = useState(false);
 
   useEffect(() => {
     const reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
@@ -47,6 +48,7 @@ export function Shell({ children }: { children: React.ReactNode }) {
       document.getElementById("age-no")?.removeAttribute("hidden");
       return;
     }
+    setFilling(true);
     sessionStorage.setItem("msd-age", "1");
     const reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
     if (reduce) {
@@ -87,8 +89,8 @@ export function Shell({ children }: { children: React.ReactNode }) {
             <h1 id="age-title">Are you 21 or older?</h1>
             <p className="age-lede">Sussex County&apos;s first distillery in over 70 years.</p>
             <div className="age-actions">
-              <button type="button" className="btn" onClick={() => confirmAge(true)}>
-                Yes, enter
+              <button type="button" className={`btn age-yes${filling ? " is-filling" : ""}`} onClick={() => confirmAge(true)}>
+                <span>Yes, enter</span>
               </button>
               <button type="button" className="btn btn-ghost" onClick={() => confirmAge(false)}>
                 No

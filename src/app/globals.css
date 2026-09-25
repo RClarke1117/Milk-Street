@@ -183,6 +183,20 @@ h1, h2, h3, .display {
   height: 100%;
   object-fit: cover;
 }
+.hero-media img {
+  transform: scale(1.08);
+  animation: hero-drift 28s ease-in-out infinite alternate;
+}
+@keyframes hero-drift {
+  from { transform: scale(1.08) translate3d(0, 0, 0); }
+  to { transform: scale(1.14) translate3d(-1.6%, -1.2%, 0); }
+}
+.hero-line { display: block; }
+.hero-line span {
+  display: inline-block;
+  animation: rise 0.95s var(--ease) both;
+}
+.hero-line em span { color: inherit; font-style: italic; }
 .hero-media::after {
   content: "";
   position: absolute;
@@ -1066,6 +1080,25 @@ h1, h2, h3, .display {
   margin-top: 1.5rem;
 }
 .age-actions .btn, .age-actions .btn-ghost { min-width: 8.4rem; }
+.age-yes {
+  position: relative;
+  overflow: hidden;
+  background: transparent;
+  color: var(--cream);
+  border: 1px solid var(--copper-2);
+}
+.age-yes span { position: relative; z-index: 1; }
+.age-yes::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: var(--copper);
+  transform: scaleY(0);
+  transform-origin: bottom;
+  transition: transform 0.32s var(--ease);
+}
+.age-yes.is-filling { color: #1a120c; }
+.age-yes.is-filling::before { transform: scaleY(1); }
 .age-actions .btn-ghost { background: rgba(14, 12, 10, 0.45); }
 .age-no {
   margin: 1rem auto 0;
@@ -1134,6 +1167,27 @@ h1, h2, h3, .display {
   from { transform: scaleX(0); }
   to { transform: scaleX(1); }
 }
+@keyframes stroke-draw {
+  to { stroke-dashoffset: 0; }
+}
+@keyframes sprig-in {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+@keyframes dim-in {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+.nav-rule {
+  display: block;
+  width: 1.15rem;
+  height: 1px;
+  flex: 0 0 auto;
+  background: var(--copper-2);
+  transform-origin: left center;
+  animation: draw 0.45s var(--ease) both;
+}
+.nav-draw { display: none; }
 
 .empty { padding: 2rem 0; color: var(--ink-soft); }
 
@@ -1213,7 +1267,42 @@ h1, h2, h3, .display {
   }
   .site-header nav > .wheat-frame-copper::before {
     inset: 1.15rem 0.7rem 0.85rem;
-    border-color: rgba(226, 176, 122, 0.72);
+    border-color: transparent;
+  }
+  .nav-draw {
+    display: block;
+    position: absolute;
+    inset: 1.15rem 0.7rem 0.85rem;
+    z-index: 2;
+    width: auto;
+    height: auto;
+    overflow: visible;
+    pointer-events: none;
+  }
+  .nav-draw rect {
+    fill: none;
+    stroke: rgba(226, 176, 122, 0.78);
+    stroke-width: 1.25;
+    vector-effect: non-scaling-stroke;
+    stroke-dasharray: 100;
+    stroke-dashoffset: 100;
+  }
+  .site-header nav.is-open .nav-draw rect {
+    animation: stroke-draw 0.72s var(--ease) forwards;
+  }
+  .site-header nav.is-open .wheat-sprig {
+    opacity: 0;
+    animation: sprig-in 0.4s 0.58s var(--ease) forwards;
+  }
+  .nav-dim {
+    position: fixed;
+    z-index: 30;
+    inset: 50dvh 0 0 0;
+    border: 0;
+    padding: 0;
+    background: rgba(8, 6, 4, 0.62);
+    animation: dim-in 0.32s var(--ease) both;
+    cursor: pointer;
   }
   .site-header nav > .wheat-frame .wheat-sprig {
     width: 2.15rem;

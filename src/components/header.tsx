@@ -30,12 +30,18 @@ export function Header() {
 
   return (
     <header className={`site-header ${solid || open ? "is-solid" : ""}`}>
+      {open ? (
+        <button type="button" className="nav-dim" aria-label="Close menu" onClick={() => setOpen(false)} />
+      ) : null}
       <div className="header-bar">
         <Link href="/" className="brand" aria-label="Milk Street Distillery, home">
           <img src="/media/brand/logo.png" alt="" width={878} height={167} />
         </Link>
         <nav id="site-nav" className={open ? "is-open" : ""} aria-label="Primary">
           <WheatFrame tone="copper" />
+          <svg className="nav-draw" viewBox="0 0 100 100" preserveAspectRatio="none" aria-hidden="true">
+            <rect x="0.6" y="0.6" width="98.8" height="98.8" pathLength="100" />
+          </svg>
           {nav.map((item) => {
             const here = isHere(pathname, item.href);
             return (
@@ -46,6 +52,7 @@ export function Header() {
                 aria-current={here ? "page" : undefined}
               >
                 {here ? <WheatMark className="nav-wheat" /> : null}
+                {here ? <span className="nav-rule" /> : null}
                 {item.label}
               </Link>
             );
