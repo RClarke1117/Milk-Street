@@ -70,14 +70,11 @@ function imagesReady(el: HTMLElement) {
   if (!imgs.length) return Promise.resolve();
   return Promise.all(
     imgs.map((img) => {
-      const loaded =
-        img.complete && img.naturalWidth > 0
-          ? Promise.resolve()
-          : new Promise<void>((resolve) => {
-              img.addEventListener("load", () => resolve(), { once: true });
-              img.addEventListener("error", () => resolve(), { once: true });
-            });
-      return loaded.then(() => img.decode?.().catch(() => undefined));
+      if (img.complete && img.naturalWidth > 0) return Promise.resolve();
+      return new Promise<void>((resolve) => {
+        img.addEventListener("load", () => resolve(), { once: true });
+        img.addEventListener("error", () => resolve(), { once: true });
+      });
     }),
   ).then(() => undefined);
 }
@@ -86,11 +83,6 @@ function stagger(el: HTMLElement) {
   const parent = el.parentElement;
   if (!parent) return 0;
   return Math.min(Math.max([...parent.children].indexOf(el), 0), 6);
-}
-
-function onScreen(el: HTMLElement) {
-  const rect = el.getBoundingClientRect();
-  return rect.bottom > 0 && rect.top < window.innerHeight;
 }
 
 export function MotionRoot({ active }: { active: boolean }) {
@@ -116,33 +108,33 @@ export function MotionRoot({ active }: { active: boolean }) {
       el.setAttribute("data-in", "");
     };
 
-    const show = (el: Element, force = false) => {
+    const show = (el: Element) => {
       const node = el as HTMLElement;
       if (revealing.has(node) || node.hasAttribute("data-in")) return;
       revealing.add(node);
       pending.delete(node);
       observer.unobserve(node);
       void (async () => {
-        await Promise.race([imagesReady(node), sleep(2200)]);
-        await afterPaint();
-        if (!node.isConnected) return;
-        if (!force && !onScreen(node)) {
-          revealing.delete(node);
-          pending.add(node);
-          observer.observe(node);
-          return;
+        try {
+          await Promise.race([imagesReady(node), sleep(1200)]);
+          await afterPaint();
+        } catch {
+          // Still mark. A failed wait must not leave the tile clipped shut.
         }
+        if (!node.isConnected) return;
         mark(node);
       })();
     };
 
+    // Threshold stays 0: a pour clip of inset(100%) has no visible pixels, so a
+    // higher ratio would deadlock and leave tiles pre-hidden forever.
     const observer = new IntersectionObserver(
       (entries) => {
         for (const entry of entries) {
           if (entry.isIntersecting) show(entry.target);
         }
       },
-      { rootMargin: "0px 0px -8% 0px", threshold: 0.16 },
+      { rootMargin: "0px 0px -8% 0px", threshold: 0 },
     );
 
     const scan = () => {
@@ -163,7 +155,7 @@ export function MotionRoot({ active }: { active: boolean }) {
       const bottom = window.innerHeight + window.scrollY >= document.documentElement.scrollHeight - 4;
       if (!bottom) return;
       pending.forEach((el) => {
-        if (el.getBoundingClientRect().top < window.innerHeight) show(el, true);
+        if (el.getBoundingClientRect().top < window.innerHeight) show(el);
       });
     };
     const onScroll = () => {

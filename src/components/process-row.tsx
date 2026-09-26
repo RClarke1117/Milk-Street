@@ -38,14 +38,11 @@ export function ProcessRow({ steps }: { steps: ProcessStep[] }) {
       const imgs = Array.from(node.querySelectorAll("img"));
       return Promise.all(
         imgs.map((img) => {
-          const loaded =
-            img.complete && img.naturalWidth > 0
-              ? Promise.resolve()
-              : new Promise<void>((resolve) => {
-                  img.addEventListener("load", () => resolve(), { once: true });
-                  img.addEventListener("error", () => resolve(), { once: true });
-                });
-          return loaded.then(() => img.decode?.().catch(() => undefined));
+          if (img.complete && img.naturalWidth > 0) return Promise.resolve();
+          return new Promise<void>((resolve) => {
+            img.addEventListener("load", () => resolve(), { once: true });
+            img.addEventListener("error", () => resolve(), { once: true });
+          });
         }),
       );
     };
