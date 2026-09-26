@@ -20,7 +20,6 @@ function toShot(drink: Drink): Shot {
     credit: drink.credit,
     href: drink.spiritSlug ? `/spirits/${drink.spiritSlug}` : undefined,
     hrefLabel: drink.spiritSlug ? drink.linkLabel ?? drink.spirit : undefined,
-    hint: "Arrow keys move through the list.",
   };
 }
 
