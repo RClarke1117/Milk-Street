@@ -1380,7 +1380,7 @@ h1, h2, h3, .display {
     align-items: stretch;
     justify-content: flex-start;
     gap: 0;
-    padding: 1.4rem 1.15rem 1.05rem;
+    padding: 1.4rem 1.15rem 1.85rem;
     background:
       radial-gradient(90% 70% at 100% 0%, rgba(193, 122, 69, 0.28), transparent 58%),
       #0e0c0a;
@@ -1393,7 +1393,7 @@ h1, h2, h3, .display {
     z-index: 2;
   }
   .site-header nav > .wheat-frame-copper::before {
-    inset: 1.15rem 0.7rem 0.85rem;
+    inset: 1.15rem 0.7rem 0.55rem;
     border-color: rgba(226, 176, 122, 0.78);
   }
   .site-header nav.is-open .wheat-sprig {
@@ -1449,7 +1449,10 @@ h1, h2, h3, .display {
     width: 2.15rem;
     height: 1.05rem;
   }
-  .nav-phone { display: block; }
+  .nav-phone {
+    display: block;
+    padding-bottom: 0.35rem;
+  }
   .menu-nav {
     position: static;
     flex-direction: row;
