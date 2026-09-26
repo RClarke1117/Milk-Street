@@ -388,6 +388,7 @@ h1, h2, h3, .display {
   position: relative;
   margin: 0;
   overflow: hidden;
+  container-type: inline-size;
 }
 .place-shot img {
   display: block;
@@ -395,6 +396,26 @@ h1, h2, h3, .display {
   height: 18rem;
   max-width: 100%;
   object-fit: cover;
+}
+.place-wipe {
+  position: absolute;
+  inset: 0 auto 0 0;
+  z-index: 1;
+  width: 0;
+  overflow: hidden;
+  pointer-events: none;
+}
+.place-shot.is-showing-then .place-wipe { width: 100%; }
+.place-edge {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 1;
+  width: 2px;
+  background: var(--copper-2);
+  box-shadow: 0 0 14px 2px rgba(226, 176, 122, 0.65);
+  opacity: 0;
 }
 .place-when {
   position: absolute;
@@ -412,7 +433,10 @@ h1, h2, h3, .display {
 .place-shot .is-now { object-position: 50% 55%; }
 .place-shot .is-then {
   position: absolute;
-  inset: 0;
+  top: 0;
+  left: 0;
+  width: 100cqi;
+  max-width: none;
   height: 100%;
   object-position: 40% 50%;
 }

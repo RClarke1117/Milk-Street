@@ -47,11 +47,12 @@ export function PlaceShot() {
   }
 
   const label = showThen ? "Then" : "Now";
+  const wipe = cycle > 0 && !reduce ? (showThen ? " is-to-then" : " is-to-now") : "";
 
   return (
     <figure
       ref={ref}
-      className={`place-shot${showThen ? " is-showing-then" : ""}`}
+      className={`place-shot${showThen ? " is-showing-then" : ""}${wipe}`}
       onPointerEnter={(event) => {
         if (event.pointerType === "mouse") setHovered(true);
       }}
@@ -65,17 +66,17 @@ export function PlaceShot() {
         height={609}
         loading="eager"
       />
-      <img
-        className="is-then"
-        src="/media/place/building.jpg"
-        alt="The historic feed-store building that houses the distillery."
-        width={1500}
-        height={1091}
-        loading="eager"
-      />
-      {cycle > 0 && !reduce ? (
-        <span key={cycle} className={`place-edge ${showThen ? "is-forward" : "is-back"}`} aria-hidden="true" />
-      ) : null}
+      <span className="place-wipe">
+        <img
+          className="is-then"
+          src="/media/place/building.jpg"
+          alt="The historic feed-store building that houses the distillery."
+          width={1500}
+          height={1091}
+          loading="eager"
+        />
+        <span className="place-edge" aria-hidden="true" />
+      </span>
       <figcaption className="place-when">
         <span key={label} className="place-word">
           {label}
