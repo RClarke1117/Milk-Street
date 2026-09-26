@@ -1,13 +1,15 @@
 "use client";
 
-import { useEffect, useRef, useState } from "react";
+import { useCallback, useEffect, useRef, useState } from "react";
 
 const hold = 4200;
+const wipeMs = 1300;
 
 export function PlaceShot() {
   const ref = useRef<HTMLElement>(null);
   const [showThen, setShowThen] = useState(false);
   const [cycle, setCycle] = useState(0);
+  const [wipe, setWipe] = useState<"" | "then" | "now">("");
   const [visible, setVisible] = useState(false);
   const [hovered, setHovered] = useState(false);
   const [reduce, setReduce] = useState(false);
@@ -32,27 +34,32 @@ export function PlaceShot() {
 
   const live = visible && !hovered && !reduce;
 
+  const go = useCallback(() => {
+    const next = !showThen;
+    setShowThen(next);
+    setCycle((value) => value + 1);
+    if (!reduce) setWipe(next ? "then" : "now");
+  }, [showThen, reduce]);
+
   useEffect(() => {
     if (!live) return;
-    const id = window.setTimeout(() => {
-      setShowThen((value) => !value);
-      setCycle((value) => value + 1);
-    }, hold);
+    const id = window.setTimeout(go, hold);
     return () => window.clearTimeout(id);
-  }, [live, cycle]);
+  }, [live, cycle, go]);
 
-  function flip() {
-    setShowThen((value) => !value);
-    setCycle((value) => value + 1);
-  }
+  useEffect(() => {
+    if (!wipe) return;
+    const id = window.setTimeout(() => setWipe(""), wipeMs);
+    return () => window.clearTimeout(id);
+  }, [wipe]);
 
   const label = showThen ? "Then" : "Now";
-  const wipe = cycle > 0 && !reduce ? (showThen ? " is-to-then" : " is-to-now") : "";
+  const wipeClass = wipe === "then" ? " is-to-then" : wipe === "now" ? " is-to-now" : "";
 
   return (
     <figure
       ref={ref}
-      className={`place-shot${showThen ? " is-showing-then" : ""}${wipe}`}
+      className={`place-shot${showThen ? " is-showing-then" : ""}${wipeClass}`}
       onPointerEnter={(event) => {
         if (event.pointerType === "mouse") setHovered(true);
       }}
@@ -75,7 +82,7 @@ export function PlaceShot() {
           height={1091}
           loading="eager"
         />
-        <span className="place-edge" aria-hidden="true" />
+        {wipe ? <span key={cycle} className="place-edge" aria-hidden="true" /> : null}
       </span>
       <figcaption className="place-when">
         <span key={label} className="place-word">
@@ -86,7 +93,7 @@ export function PlaceShot() {
       <button
         type="button"
         className="place-flip"
-        onClick={flip}
+        onClick={go}
         aria-label={showThen ? "Show the building now" : "Show the building then"}
       />
     </figure>

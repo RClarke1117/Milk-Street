@@ -446,17 +446,19 @@
   from { transform: scale(1); }
   to { transform: scale(1.06); }
 }
-.place-shot.is-to-then .place-wipe { animation: wipe-to-then 1.3s var(--ease-pour) both; }
-.place-shot.is-to-now .place-wipe { animation: wipe-to-now 1.3s var(--ease-pour) both; }
+.place-shot.is-to-then .place-wipe {
+  width: 0;
+  animation: wipe-to-then 1.3s var(--ease-pour) both;
+}
+.place-shot.is-to-now .place-wipe {
+  width: 100%;
+  animation: wipe-to-now 1.3s var(--ease-pour) both;
+}
 @keyframes wipe-to-then { from { width: 0; } to { width: 100%; } }
 @keyframes wipe-to-now { from { width: 100%; } to { width: 0; } }
 .place-shot.is-to-then .place-edge,
 .place-shot.is-to-now .place-edge {
-  animation: edge-glow 1.3s var(--ease-pour) both;
-}
-@keyframes edge-glow {
-  0%, 100% { opacity: 0; }
-  12%, 88% { opacity: 1; }
+  opacity: 1;
 }
 .place-when {
   z-index: 3;
