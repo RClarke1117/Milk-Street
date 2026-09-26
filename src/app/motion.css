@@ -26,9 +26,8 @@
 .site-header { top: 0; animation: header-in 0.8s var(--ease) 0.1s backwards; }
 @keyframes header-in { from { top: -5rem; opacity: 0; } }
 .site-header {
-  transition: background 0.4s var(--ease), color 0.4s var(--ease), top 0.55s var(--ease);
+  transition: background 0.4s var(--ease), color 0.4s var(--ease);
 }
-.site-header.is-tucked { top: calc(-1 * var(--header) - 1.4rem); }
 
 .scroll-meter {
   position: absolute;

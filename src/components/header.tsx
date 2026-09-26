@@ -15,7 +15,6 @@ function isHere(pathname: string, href: string) {
 export function Header() {
   const pathname = usePathname();
   const [solid, setSolid] = useState(false);
-  const [tucked, setTucked] = useState(false);
   const [open, setOpen] = useState(false);
   const [closing, setClosing] = useState(false);
   const meter = useRef<HTMLSpanElement>(null);
@@ -24,8 +23,6 @@ export function Header() {
   openRef.current = open;
 
   useEffect(() => {
-    const reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-    let last = window.scrollY;
     let frame = 0;
     const update = () => {
       frame = 0;
@@ -33,16 +30,6 @@ export function Header() {
       setSolid(y > 24);
       const max = document.documentElement.scrollHeight - window.innerHeight;
       meter.current?.style.setProperty("--progress", String(max > 0 ? Math.min(1, Math.max(0, y / max)) : 0));
-      if (reduce) return;
-      if (y < 240) {
-        setTucked(false);
-        last = y;
-        return;
-      }
-      const delta = y - last;
-      if (Math.abs(delta) < 10) return;
-      setTucked(delta > 0);
-      last = y;
     };
     const onScroll = () => {
       if (!frame) frame = requestAnimationFrame(update);
@@ -80,7 +67,6 @@ export function Header() {
     window.clearTimeout(closeTimer.current);
     setClosing(false);
     setOpen(true);
-    setTucked(false);
   }
 
   useEffect(() => {
@@ -99,12 +85,10 @@ export function Header() {
   useEffect(() => () => window.clearTimeout(closeTimer.current), []);
 
   const showing = open && !closing;
-  const classes = ["site-header", solid || open ? "is-solid" : "", tucked && !open ? "is-tucked" : ""]
-    .filter(Boolean)
-    .join(" ");
+  const classes = ["site-header", solid || open ? "is-solid" : ""].filter(Boolean).join(" ");
 
   return (
-    <header className={classes} onFocusCapture={() => setTucked(false)}>
+    <header className={classes}>
       {open ? (
         <button
           type="button"
