@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
 import Image from "next/image";
+import Link from "next/link";
 import { Hours } from "@/components/hours";
+import { WheatFrame } from "@/components/wheat-frame";
 import { site } from "@/lib/site";
 
 export const metadata: Metadata = {
@@ -12,6 +14,7 @@ export default function VisitPage() {
   return (
     <main>
       <header className="page-hero">
+        <WheatFrame tone="copper" />
         <p className="kicker">Visit</p>
         <h1>We&apos;re located in downtown Branchville.</h1>
         <p>{site.address.full}</p>
@@ -27,9 +30,6 @@ export default function VisitPage() {
               <br />
               <a href={site.emailHref}>{site.email}</a>
             </p>
-            <p>
-              Bottle and gift-card pickup only, Monday through Friday, 12–6. Please email to verify that we are in. Not open for the tasting room or tours. Friday tasting room 4–10. Saturday 1–10. Sunday 1–6.
-            </p>
             <div className="btn-row">
               <a className="btn" href={site.maps}>
                 Directions
@@ -44,18 +44,22 @@ export default function VisitPage() {
         </div>
       </section>
       <section className="section section-dark">
+        <WheatFrame tone="copper" />
         <div className="split">
           <figure className="frame">
-            <Image src="/media/place/alco-hauler.jpg" alt="The Alco-Hauler." fill sizes="50vw" />
+            <Image src="/media/ig/alco-hauler.jpg" alt="The Alco-Hauler trailer." fill sizes="50vw" />
           </figure>
           <div>
             <h2>Alco-Hauler</h2>
-            <p>Available for weddings and private events.</p>
-            <p>Keep the party going at home. Grab some bottles to go.</p>
-            <p>If you pay by card, a 3.99% fee is added.</p>
-            <a className="btn" href={site.emailHref}>
-              {site.email}
-            </a>
+            <p>Available for weddings and private events. Keep the party going at home. Grab some bottles to go.</p>
+            <div className="btn-row">
+              <Link className="btn" href="/alco-hauler">
+                Alco-Hauler
+              </Link>
+              <a className="btn btn-ghost" href={site.emailHref}>
+                {site.email}
+              </a>
+            </div>
           </div>
         </div>
       </section>

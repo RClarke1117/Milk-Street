@@ -1,48 +1,61 @@
 import Image from "next/image";
 import Link from "next/link";
 import { Hours } from "@/components/hours";
+import { WheatFrame } from "@/components/wheat-frame";
 import { IgGrid } from "@/components/ig-grid";
-import { Reveal } from "@/components/reveal";
+import { PlaceShot } from "@/components/place-shot";
+import { Marquee } from "@/components/marquee";
+import { ProcessRow } from "@/components/process-row";
 import { UpcomingEvents } from "@/components/upcoming-events";
 import { profile } from "@/lib/instagram";
-import { site } from "@/lib/site";
+import { hours, site } from "@/lib/site";
 import { spirits } from "@/lib/spirits";
 
-const steps = [
+const steps: {
+  n: string;
+  title: string;
+  image: string;
+  alt: string;
+  line: string;
+  crop?: string;
+}[] = [
   {
     n: "01",
     title: "Mash",
-    copy: "Mashed on site.",
-    image: "/media/place/mash.jpg",
-    alt: "Stainless mash tun on the distillery floor.",
+    image: "/media/place/process-mash.jpg",
+    alt: "Milled grain poured into the mash tun.",
+    line: "Milled grain into the tun.",
+    crop: "38% 58%",
   },
   {
     n: "02",
     title: "Ferment",
-    copy: "Fermented on site.",
-    image: "/media/place/fermenters.jpg",
-    alt: "Open stainless fermenters.",
+    image: "/media/place/process-ferment.jpg",
+    alt: "A fermenting wash with a thick head of krausen.",
+    line: "The wash working in the drum.",
+    crop: "50% 68%",
   },
   {
     n: "03",
     title: "Distill",
-    copy: "Distilled on site.",
-    image: "/media/place/column-still.jpg",
-    alt: "Copper column still with a spirit safe.",
+    image: "/media/place/process-distill.jpg",
+    alt: "New make spirit running from the still into the spirit tub.",
+    line: "New make off the still.",
+    crop: "50% 22%",
   },
   {
     n: "04",
     title: "Age",
-    copy: "Whiskey is aged on site.",
-    image: "/media/place/barrels.jpg",
-    alt: "Barrels racked in the distillery.",
+    image: "/media/place/bar.jpg",
+    alt: "Oak barrels racked in the distillery.",
+    line: "Rested in oak barrels.",
   },
   {
     n: "05",
     title: "Bottle",
-    copy: "Bottled on site.",
-    image: "/media/place/still-house.jpg",
-    alt: "The still house interior at Milk Street.",
+    image: "/media/place/mash.jpg",
+    alt: "The bottling line at Milk Street.",
+    line: "Filled on the line.",
   },
 ];
 
@@ -64,10 +77,28 @@ export default function HomePage() {
         </div>
         <div className="hero-copy">
           <p className="kicker">Branchville, New Jersey</p>
-          <h1 className="display">
-            Grain
-            <br />
-            to <em>glass.</em>
+          <h1 className="display hero-title" aria-label="Grain to glass.">
+            <span className="hero-line" aria-hidden="true">
+              {"Grain".split("").map((letter, index) => (
+                <span key={letter} style={{ animationDelay: `${180 + index * 42}ms` }}>
+                  {letter}
+                </span>
+              ))}
+            </span>
+            <span className="hero-line" aria-hidden="true">
+              {"to ".split("").map((letter, index) => (
+                <span key={`to-${index}`} style={{ animationDelay: `${620 + index * 42}ms` }}>
+                  {letter === " " ? "\u00a0" : letter}
+                </span>
+              ))}
+              <em>
+                {"glass.".split("").map((letter, index) => (
+                  <span key={`glass-${index}`} style={{ animationDelay: `${760 + index * 42}ms` }}>
+                    {letter}
+                  </span>
+                ))}
+              </em>
+            </span>
           </h1>
           <p className="lede">
             Sussex County&apos;s first distillery in over 70 years, located in the small town of Branchville, nestled in the rural northwest corner of New Jersey. We are a true grain to glass distillery, as everything is mashed, fermented, distilled and bottled on site.
@@ -81,44 +112,37 @@ export default function HomePage() {
             </Link>
           </div>
           <div className="hero-meta">
-            <span>Friday 4–10</span>
-            <span>Saturday 1–10</span>
-            <span>Sunday 1–6</span>
+            {hours.map((row) => (
+              <span key={row.days}>
+                {row.days} {row.room}
+              </span>
+            ))}
           </div>
         </div>
+        <span className="hero-cue" aria-hidden="true">
+          <i />
+        </span>
       </section>
 
-      <div className="marquee" aria-hidden="true">
+      <Marquee>
         <div className="marquee-track">
           {[...names, ...names].map((name, index) => (
             <span key={`${name}-${index}`}>{name} ·</span>
           ))}
         </div>
-      </div>
+      </Marquee>
 
       <section className="section">
         <div className="section-head">
           <h2>
             <span className="num">01</span>We&apos;re located in downtown Branchville.
           </h2>
-          <p className="prose">{site.address.full}</p>
         </div>
-        <div className="split">
-          <figure className="frame">
-            <Image
-              src="/media/place/building.jpg"
-              alt="The historic feed-store building that houses the distillery."
-              width={1400}
-              height={1600}
-              style={{ width: "100%", height: "auto" }}
-            />
-            <figcaption>1 Milk Street, Building 1, Branchville, NJ 07826</figcaption>
-          </figure>
+        <div className="split place">
+          <PlaceShot />
           <div>
             <p className="kicker">Visit</p>
-            <h3 className="display" style={{ fontSize: "clamp(2.8rem, 5vw, 4.4rem)" }}>
-              1 Milk Street, Building 1
-            </h3>
+            <h3>1 Milk Street, Building 1</h3>
             <p>
               <a href={site.phoneHref}>{site.phone}</a>
               <br />
@@ -134,6 +158,7 @@ export default function HomePage() {
       </section>
 
       <section className="section section-dark">
+        <WheatFrame tone="copper" />
         <div className="section-head">
           <h2>
             <span className="num">02</span>Our distillery
@@ -143,24 +168,11 @@ export default function HomePage() {
             Mike and Gordon Geerhart opened in January 2017, in a late-1800s feed store. “We’re Sussex County boys and we love it here,” Mike told New Jersey Monthly.
           </p>
         </div>
+        <ProcessRow steps={steps} />
         <div className="btn-row">
           <Link className="btn" href="/the-make">
             Distillery
           </Link>
-        </div>
-        <div className="process">
-          {steps.map((step) => (
-            <Reveal key={step.n}>
-              <article>
-                <img src={step.image} alt={step.alt} />
-                <div>
-                  <span>{step.n}</span>
-                  <h3>{step.title}</h3>
-                  <p>{step.copy}</p>
-                </div>
-              </article>
-            </Reveal>
-          ))}
         </div>
       </section>
 
@@ -171,12 +183,8 @@ export default function HomePage() {
           </h2>
         </div>
         <div className="shelf">
-          {featured.map((spirit, index) => (
-            <Link
-              key={spirit.slug}
-              href={`/spirits/${spirit.slug}`}
-              className={`spirit-card ${index === 0 ? "feature" : ""}`}
-            >
+          {featured.map((spirit) => (
+            <Link key={spirit.slug} href={`/spirits/${spirit.slug}`} className="spirit-card">
               <Image src={spirit.image} alt={spirit.imageAlt} fill sizes="(max-width: 900px) 100vw, 33vw" />
               <span>
                 <em>{spirit.family}{spirit.proof ? ` · ${spirit.proof} proof` : ""}</em>
@@ -184,15 +192,24 @@ export default function HomePage() {
               </span>
             </Link>
           ))}
-        </div>
-        <div className="btn-row">
-          <Link className="btn" href="/spirits">
-            Our spirits
+          <Link href="/spirits" className="spirit-card spirit-more">
+            <Image
+              src="/media/place/pour.jpg"
+              alt="The rest of the Milk Street bottles on the tasting-room shelf."
+              fill
+              sizes="(max-width: 900px) 50vw, 25vw"
+            />
+            <WheatFrame tone="copper" />
+            <span>
+              <em>The rest of the shelf</em>
+              <strong>More spirits</strong>
+            </span>
           </Link>
         </div>
       </section>
 
       <section className="section section-dark">
+        <WheatFrame tone="copper" />
         <div className="split">
           <div>
             <p className="kicker">Tours &amp; tastings</p>
@@ -212,7 +229,7 @@ export default function HomePage() {
             </div>
           </div>
           <figure className="frame">
-            <Image src="/media/place/bar.jpg" alt="The tasting room bar." fill sizes="50vw" />
+            <Image src="/media/place/still-house.jpg" alt="The tasting room bar." fill sizes="50vw" />
           </figure>
         </div>
       </section>
@@ -238,10 +255,11 @@ export default function HomePage() {
       </section>
 
       <section className="section section-dark">
+        <WheatFrame tone="copper" />
         <div className="two">
           <div>
             <h2>Hours</h2>
-            <Hours />
+            <Hours compact />
           </div>
           <div>
             <h2>Events</h2>

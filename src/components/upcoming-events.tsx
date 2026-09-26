@@ -30,6 +30,11 @@ export function UpcomingEvents({ variant = "board" }: { variant?: "board" | "pre
               <span className="kind">{event.start}</span>
               <h3>{event.title}</h3>
               <p>{event.detail}</p>
+              {event.href ? (
+                <a className="text-link" href={event.href} target="_blank" rel="noreferrer">
+                  {event.hrefLabel ?? "Tickets"}
+                </a>
+              ) : null}
             </div>
           </article>
         ))}
@@ -59,6 +64,13 @@ export function UpcomingEvents({ variant = "board" }: { variant?: "board" | "pre
             </p>
             <h3>{event.title}</h3>
             <p>{event.detail}</p>
+            {event.href ? (
+              <div className="btn-row">
+                <a className="btn" href={event.href} target="_blank" rel="noreferrer">
+                  {event.hrefLabel ?? "Tickets"}
+                </a>
+              </div>
+            ) : null}
           </div>
         </article>
       ))}

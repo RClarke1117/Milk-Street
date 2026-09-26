@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
 import { spirits } from "@/lib/spirits";
+import { WheatFrame } from "@/components/wheat-frame";
 
 export const metadata: Metadata = {
   title: "Spirits",
@@ -14,6 +15,7 @@ export default function SpiritsPage() {
   return (
     <main>
       <header className="page-hero">
+        <WheatFrame tone="copper" />
         <p className="kicker">Our spirits</p>
         <h1>Our spirits</h1>
         <p>
@@ -39,6 +41,16 @@ export default function SpiritsPage() {
           </div>
         </section>
       ))}
+      <section className="section section-dark">
+        <WheatFrame tone="copper" />
+        <h2>Bottles</h2>
+        <p>Pickup at 1 Milk Street.</p>
+        <div className="btn-row">
+          <Link className="btn" href="/bottles">
+            Bottles
+          </Link>
+        </div>
+      </section>
     </main>
   );
 }

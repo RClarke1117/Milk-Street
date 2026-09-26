@@ -5,6 +5,7 @@ import { usePathname, useRouter, useSearchParams } from "next/navigation";
 import { useEffect, useMemo, useState } from "react";
 import { DrinkSlot } from "@/components/drink-slot";
 import { PhotoModal, type Shot } from "@/components/photo-modal";
+import { WheatFrame } from "@/components/wheat-frame";
 import { drinks, menuCategories, type Drink, type MenuCategory } from "@/lib/menu";
 
 function toShot(drink: Drink): Shot {
@@ -19,7 +20,6 @@ function toShot(drink: Drink): Shot {
     credit: drink.credit,
     href: drink.spiritSlug ? `/spirits/${drink.spiritSlug}` : undefined,
     hrefLabel: drink.spiritSlug ? drink.linkLabel ?? drink.spirit : undefined,
-    hint: "Arrow keys move through the list.",
   };
 }
 
@@ -143,12 +143,13 @@ export function MenuBoard() {
             </button>
           ))}
         </nav>
-        <div>
+        <div className="menu-sheet">
+          <WheatFrame />
           {groups.length === 0 ? (
             <p className="empty">Nothing on the list matches that. Try the spirit, or clear the search.</p>
           ) : null}
           {groups.map((group) => (
-            <section key={group.category} className="menu-group">
+            <section key={`${active}-${group.category}`} className="menu-group">
               <header>
                 <h2>{group.category}</h2>
               </header>
@@ -165,8 +166,8 @@ export function MenuBoard() {
                       </span>
                       <span className="menu-copy">
                         <span className="menu-name">{drink.name}</span>
-                        <span className="menu-desc">{drink.description}</span>
-                        <span className="menu-spirit">{drink.spirit}</span>
+                        {drink.description ? <span className="menu-desc">{drink.description}</span> : null}
+                        {drink.spirit ? <span className="menu-spirit">{drink.spirit}</span> : null}
                       </span>
                       <span className="menu-price">{drink.price}</span>
                     </button>
