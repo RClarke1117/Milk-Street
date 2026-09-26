@@ -367,6 +367,7 @@ h1, h2, h3, .display {
   overflow: hidden;
   background: var(--dark-2);
 }
+.section-dark .frame { outline: 1px solid var(--cream); }
 .frame img { width: 100%; height: 100%; object-fit: cover; min-height: 22rem; }
 .split,
 .place,
@@ -378,6 +379,7 @@ h1, h2, h3, .display {
   position: relative;
   margin: 0;
   overflow: hidden;
+  outline: 1px solid #000;
 }
 .place-shot img {
   display: block;
