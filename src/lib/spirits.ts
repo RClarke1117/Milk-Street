@@ -129,7 +129,7 @@ export const spirits: Spirit[] = [
     image: "/media/spirits/wooden-leg.jpg",
     imageAlt: "Wooden Leg Rum bottle.",
     lede: "Evaporated cane juice and brown molasses. Silver rum. The cane juice brings sweetness. The brown molasses is reminiscent of salted caramel.",
-    note: "Opened with Black Vulture in January 2017. Gordon told the Herald it is a smoother, sweeter rum. He uses a rich brown molasses, not blackstrap. Of blackstrap, he said, “It’s terrible.” The brown one carries a caramel flavor through.",
+    note: "Opened with Black Vulture in January 2017. Gordon told the Herald it is a smoother, sweeter rum. He uses a rich brown molasses, not blackstrap. The brown one carries a caramel flavor through.",
     mash: "Evaporated cane juice and brown molasses",
     palate: "Cane sweetness, brown molasses reminiscent of salted caramel",
     award: "2017 Global Spirits Awards Silver Winner",
