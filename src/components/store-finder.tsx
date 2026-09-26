@@ -48,10 +48,12 @@ export function StoreFinder() {
 
   const houseMiles = origin ? milesBetween(origin, houseStore) : undefined;
   const nearby = useMemo(() => {
-    if (!origin) return stores;
-    return [...stores]
-      .map((store) => ({ store, miles: milesBetween(origin, store) }))
-      .sort((a, b) => a.miles - b.miles);
+    const rows = stores.map((store) => ({
+      store,
+      miles: origin ? milesBetween(origin, store) : undefined,
+    }));
+    if (!origin) return rows;
+    return rows.sort((a, b) => (a.miles ?? 0) - (b.miles ?? 0));
   }, [origin]);
 
   async function onSubmit(event: FormEvent<HTMLFormElement>) {
@@ -137,10 +139,8 @@ export function StoreFinder() {
                   No liquor stores on this list yet. When the accounts are in, a zip will sort them by distance.
                 </p>
               </li>
-            ) : origin ? (
-              nearby.map((row) => <StoreRow key={row.store.id} store={row.store} miles={row.miles} />)
             ) : (
-              stores.map((store) => <StoreRow key={store.id} store={store} />)
+              nearby.map((row) => <StoreRow key={row.store.id} store={row.store} miles={row.miles} />)
             )}
           </ul>
         </section>
