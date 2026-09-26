@@ -131,22 +131,18 @@ export function StoreFinder() {
             <StoreRow store={houseStore} miles={houseMiles} />
           </ul>
         </section>
-        <section className="menu-group">
-          <header>
-            <h2>Liquor stores</h2>
-          </header>
-          <ul>
-            {stores.length === 0 ? (
-              <li>
-                <p className="empty">
-                  No liquor stores on this list yet. When the accounts are in, a zip will sort them by distance.
-                </p>
-              </li>
-            ) : (
-              nearby.map((row) => <StoreRow key={row.store.id} store={row.store} miles={row.miles} />)
-            )}
-          </ul>
-        </section>
+        {stores.length > 0 ? (
+          <section className="menu-group">
+            <header>
+              <h2>Liquor stores</h2>
+            </header>
+            <ul>
+              {nearby.map((row) => (
+                <StoreRow key={row.store.id} store={row.store} miles={row.miles} />
+              ))}
+            </ul>
+          </section>
+        ) : null}
       </div>
     </div>
   );

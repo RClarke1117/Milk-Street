@@ -18,8 +18,7 @@ export default function BottlesPage() {
         <p className="kicker">Bottles</p>
         <h1>Bottles</h1>
         <p>
-          Type a zip. We&apos;ll list the liquor stores that carry Milk Street when the accounts are on this page. Until
-          then, the bottles are at 1 Milk Street.
+          Type a zip. We&apos;ll list the liquor stores that carry Milk Street.
         </p>
         <p>
           Bottle and gift-card pickup only, Monday through Friday, 12–6. Please email to verify that we are in.

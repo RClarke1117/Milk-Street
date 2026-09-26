@@ -26,7 +26,6 @@ export const houseStore: Store = {
   house: true,
 };
 
-/** Liquor-store accounts. Empty until the distribution list is on this page. */
 export const stores: Store[] = [];
 
 export function storeMaps(store: Store) {

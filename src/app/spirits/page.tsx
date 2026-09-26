@@ -44,7 +44,7 @@ export default function SpiritsPage() {
       <section className="section section-dark">
         <WheatFrame tone="copper" />
         <h2>Bottles</h2>
-        <p>Pickup at 1 Milk Street. A zip will list the liquor stores once the accounts are on this page.</p>
+        <p>Pickup at 1 Milk Street.</p>
         <div className="btn-row">
           <Link className="btn" href="/bottles">
             Bottles
