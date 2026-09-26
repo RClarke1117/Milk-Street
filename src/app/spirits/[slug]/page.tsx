@@ -50,9 +50,14 @@ export default async function SpiritPage({ params }: { params: Promise<{ slug: s
               </div>
             ) : null}
           </div>
-          <Link className="btn" href="/the-make">
-            Distillery
-          </Link>
+          <div className="btn-row">
+            <Link className="btn" href="/the-make">
+              Distillery
+            </Link>
+            <Link className="btn btn-ghost" href="/bottles">
+              Bottles
+            </Link>
+          </div>
         </div>
       </article>
       {pours.length > 0 ? (

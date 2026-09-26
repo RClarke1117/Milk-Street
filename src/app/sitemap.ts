@@ -4,7 +4,7 @@ import { spirits } from "@/lib/spirits";
 export const dynamic = "force-static";
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  const paths = ["", "/the-make", "/spirits", "/menu", "/tours", "/events", "/alco-hauler", "/visit"];
+  const paths = ["", "/the-make", "/spirits", "/bottles", "/menu", "/tours", "/events", "/alco-hauler", "/visit"];
   const now = new Date("2026-09-22");
   return [
     ...paths.map((path) => ({

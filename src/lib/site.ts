@@ -26,6 +26,7 @@ export const site = {
 export const nav = [
   { href: "/the-make", label: "Distillery" },
   { href: "/spirits", label: "Spirits" },
+  { href: "/bottles", label: "Bottles" },
   { href: "/menu", label: "Menu" },
   { href: "/tours", label: "Tours" },
   { href: "/events", label: "Events" },
