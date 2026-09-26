@@ -27,25 +27,74 @@ export function ProcessRow({ steps }: { steps: ProcessStep[] }) {
       setOn(true);
       return;
     }
+
+    let observer: IntersectionObserver | null = null;
+    let classWatch: MutationObserver | null = null;
     let nudgeStart = 0;
     let nudgeEnd = 0;
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        if (!entry?.isIntersecting) return;
-        setOn(true);
-        observer.disconnect();
-        if (!window.matchMedia("(max-width: 640px)").matches) return;
-        nudgeStart = window.setTimeout(() => {
-          if (movedRef.current) return;
-          setNudge(true);
-          nudgeEnd = window.setTimeout(() => setNudge(false), 1300);
-        }, 1100);
-      },
-      { threshold: 0.45 },
-    );
-    observer.observe(node);
+    let cancelled = false;
+
+    const photosReady = () => {
+      const imgs = Array.from(node.querySelectorAll("img"));
+      return Promise.all(
+        imgs.map((img) => {
+          const loaded =
+            img.complete && img.naturalWidth > 0
+              ? Promise.resolve()
+              : new Promise<void>((resolve) => {
+                  img.addEventListener("load", () => resolve(), { once: true });
+                  img.addEventListener("error", () => resolve(), { once: true });
+                });
+          return loaded.then(() => img.decode?.().catch(() => undefined));
+        }),
+      );
+    };
+
+    const watch = () => {
+      observer = new IntersectionObserver(
+        ([entry]) => {
+          if (!entry?.isIntersecting) return;
+          observer?.disconnect();
+          void Promise.race([
+            photosReady(),
+            new Promise<void>((resolve) => window.setTimeout(resolve, 2200)),
+          ]).then(() => {
+            if (cancelled) return;
+            requestAnimationFrame(() => {
+              requestAnimationFrame(() => {
+                if (cancelled) return;
+                setOn(true);
+                if (!window.matchMedia("(max-width: 640px)").matches) return;
+                nudgeStart = window.setTimeout(() => {
+                  if (movedRef.current) return;
+                  setNudge(true);
+                  nudgeEnd = window.setTimeout(() => setNudge(false), 1300);
+                }, 1100);
+              });
+            });
+          });
+        },
+        { threshold: 0.45 },
+      );
+      observer.observe(node);
+    };
+
+    if (document.documentElement.classList.contains("is-revealed")) {
+      watch();
+    } else {
+      classWatch = new MutationObserver(() => {
+        if (!document.documentElement.classList.contains("is-revealed")) return;
+        classWatch?.disconnect();
+        classWatch = null;
+        watch();
+      });
+      classWatch.observe(document.documentElement, { attributes: true, attributeFilter: ["class"] });
+    }
+
     return () => {
-      observer.disconnect();
+      cancelled = true;
+      observer?.disconnect();
+      classWatch?.disconnect();
       window.clearTimeout(nudgeStart);
       window.clearTimeout(nudgeEnd);
     };

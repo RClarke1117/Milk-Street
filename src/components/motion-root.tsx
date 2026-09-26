@@ -50,6 +50,49 @@ declare global {
   }
 }
 
+function afterPaint() {
+  return new Promise<void>((resolve) => {
+    requestAnimationFrame(() => requestAnimationFrame(() => resolve()));
+  });
+}
+
+function sleep(ms: number) {
+  return new Promise<void>((resolve) => {
+    window.setTimeout(resolve, ms);
+  });
+}
+
+function imagesReady(el: HTMLElement) {
+  const imgs = [
+    ...(el instanceof HTMLImageElement ? [el] : []),
+    ...Array.from(el.querySelectorAll("img")),
+  ];
+  if (!imgs.length) return Promise.resolve();
+  return Promise.all(
+    imgs.map((img) => {
+      const loaded =
+        img.complete && img.naturalWidth > 0
+          ? Promise.resolve()
+          : new Promise<void>((resolve) => {
+              img.addEventListener("load", () => resolve(), { once: true });
+              img.addEventListener("error", () => resolve(), { once: true });
+            });
+      return loaded.then(() => img.decode?.().catch(() => undefined));
+    }),
+  ).then(() => undefined);
+}
+
+function stagger(el: HTMLElement) {
+  const parent = el.parentElement;
+  if (!parent) return 0;
+  return Math.min(Math.max([...parent.children].indexOf(el), 0), 6);
+}
+
+function onScreen(el: HTMLElement) {
+  const rect = el.getBoundingClientRect();
+  return rect.bottom > 0 && rect.top < window.innerHeight;
+}
+
 export function MotionRoot({ active }: { active: boolean }) {
   useEffect(() => {
     window.__msdMotion = true;
@@ -66,26 +109,46 @@ export function MotionRoot({ active }: { active: boolean }) {
 
     const seen = new WeakSet<Element>();
     const pending = new Set<HTMLElement>();
-    const show = (el: Element, order: number) => {
-      (el as HTMLElement).style.setProperty("--i", String(Math.min(order, 6)));
+    const revealing = new WeakSet<Element>();
+
+    const mark = (el: HTMLElement) => {
+      el.style.setProperty("--i", String(stagger(el)));
       el.setAttribute("data-in", "");
-      pending.delete(el as HTMLElement);
-      observer.unobserve(el);
     };
+
+    const show = (el: Element, force = false) => {
+      const node = el as HTMLElement;
+      if (revealing.has(node) || node.hasAttribute("data-in")) return;
+      revealing.add(node);
+      pending.delete(node);
+      observer.unobserve(node);
+      void (async () => {
+        await Promise.race([imagesReady(node), sleep(2200)]);
+        await afterPaint();
+        if (!node.isConnected) return;
+        if (!force && !onScreen(node)) {
+          revealing.delete(node);
+          pending.add(node);
+          observer.observe(node);
+          return;
+        }
+        mark(node);
+      })();
+    };
+
     const observer = new IntersectionObserver(
       (entries) => {
-        let order = 0;
         for (const entry of entries) {
-          if (entry.isIntersecting) show(entry.target, order++);
+          if (entry.isIntersecting) show(entry.target);
         }
       },
-      { rootMargin: "0px 0px -8% 0px", threshold: 0 },
+      { rootMargin: "0px 0px -8% 0px", threshold: 0.16 },
     );
 
     const scan = () => {
       document.querySelectorAll("#content, .site-footer").forEach((scope) => {
         scope.querySelectorAll<HTMLElement>(targets).forEach((el) => {
-          if (seen.has(el)) return;
+          if (seen.has(el) || el.hasAttribute("data-in")) return;
           seen.add(el);
           pending.add(el);
           observer.observe(el);
@@ -99,9 +162,8 @@ export function MotionRoot({ active }: { active: boolean }) {
       frame = 0;
       const bottom = window.innerHeight + window.scrollY >= document.documentElement.scrollHeight - 4;
       if (!bottom) return;
-      let order = 0;
       pending.forEach((el) => {
-        if (el.getBoundingClientRect().top < window.innerHeight) show(el, order++);
+        if (el.getBoundingClientRect().top < window.innerHeight) show(el, true);
       });
     };
     const onScroll = () => {
@@ -117,13 +179,26 @@ export function MotionRoot({ active }: { active: boolean }) {
       });
     });
 
+    const resetPersisted = (event: PageTransitionEvent) => {
+      if (!event.persisted) return;
+      document.querySelectorAll<HTMLElement>("[data-in]").forEach((el) => {
+        el.removeAttribute("data-in");
+        seen.delete(el);
+        revealing.delete(el);
+        pending.add(el);
+      });
+      scan();
+    };
+
     scan();
     mutations.observe(document.body, { childList: true, subtree: true });
     window.addEventListener("scroll", onScroll, { passive: true });
+    window.addEventListener("pageshow", resetPersisted);
     return () => {
       observer.disconnect();
       mutations.disconnect();
       window.removeEventListener("scroll", onScroll);
+      window.removeEventListener("pageshow", resetPersisted);
       cancelAnimationFrame(frame);
       cancelAnimationFrame(queued);
     };

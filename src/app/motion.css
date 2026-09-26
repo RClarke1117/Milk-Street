@@ -180,28 +180,34 @@
   transform: scale(1.16);
 }
 
-/* Cards */
+/* Cards: animation (not transition) so a cached / already-in-view tile still pours */
 .spirit-card, .ig-cell {
   -webkit-tap-highlight-color: transparent;
   transition: transform 0.35s var(--ease);
 }
 .spirit-card img, .ig-cell img { transition: transform 1.1s var(--ease); }
 .spirit-card:active, .ig-cell:active { transform: scale(0.975); }
-.m :where(#content) :is(.shelf > .spirit-card, .ig-grid > .ig-cell) {
-  clip-path: inset(0 0 0 0);
-  transition: clip-path 1.1s var(--ease-pour), transform 0.35s var(--ease);
-  transition-delay: calc(var(--i, 0) * 90ms), 0s;
-}
 .m :where(#content) :is(.shelf > .spirit-card, .ig-grid > .ig-cell):not([data-in]) { clip-path: inset(100% 0 0 0); }
 .m :where(#content) :is(.shelf > .spirit-card, .ig-grid > .ig-cell):not([data-in]) img { transform: scale(1.2); }
-.m :where(#content) :is(.shelf > .spirit-card, .ig-grid > .ig-cell) > span {
-  transition: opacity 0.7s var(--ease), transform 0.7s var(--ease);
-  transition-delay: calc(var(--i, 0) * 90ms + 420ms);
-}
 .m :where(#content) :is(.shelf > .spirit-card, .ig-grid > .ig-cell):not([data-in]) > span {
   opacity: 0;
   transform: translate3d(0, 0.7rem, 0);
 }
+.m :where(#content) :is(.shelf > .spirit-card, .ig-grid > .ig-cell)[data-in] {
+  animation: tile-pour 1.15s var(--ease-pour) calc(var(--i, 0) * 90ms) both;
+}
+.m :where(#content) :is(.shelf > .spirit-card, .ig-grid > .ig-cell)[data-in] img {
+  animation: tile-zoom 1.15s var(--ease) calc(var(--i, 0) * 90ms) backwards;
+}
+.m :where(#content) :is(.shelf > .spirit-card, .ig-grid > .ig-cell)[data-in] > span {
+  animation: tile-caption 0.7s var(--ease) calc(var(--i, 0) * 90ms + 420ms) both;
+}
+@keyframes tile-pour {
+  from { clip-path: inset(100% 0 0 0); }
+  to { clip-path: inset(0 0 0 0); }
+}
+@keyframes tile-zoom { from { transform: scale(1.2); } }
+@keyframes tile-caption { from { opacity: 0; transform: translate3d(0, 0.7rem, 0); } }
 
 .spirit-card > span { overflow: hidden; }
 .spirit-card > span::after {
