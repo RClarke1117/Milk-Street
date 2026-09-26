@@ -837,6 +837,7 @@ h1, h2, h3, .display {
   color: inherit;
   outline: none;
 }
+.store-finder { max-width: 46rem; }
 .store-search { align-items: center; }
 .store-search .btn { flex: 0 0 auto; }
 .store-row {

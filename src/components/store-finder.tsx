@@ -58,7 +58,9 @@ export function StoreFinder() {
 
   async function onSubmit(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
-    const code = zip.replace(/\D/g, "").slice(0, 5);
+    const raw = String(new FormData(event.currentTarget).get("zip") ?? zip);
+    const code = raw.replace(/\D/g, "").slice(0, 5);
+    setZip(code);
     if (code.length !== 5) {
       setStatus("bad");
       setOrigin(null);
@@ -94,13 +96,14 @@ export function StoreFinder() {
   }
 
   return (
-    <div className="menu-layout">
+    <div className="store-finder">
       <form className="menu-search store-search" onSubmit={onSubmit}>
         <label className="sr-only" htmlFor="store-zip">
           Zip code
         </label>
         <input
           id="store-zip"
+          name="zip"
           value={zip}
           inputMode="numeric"
           autoComplete="postal-code"
