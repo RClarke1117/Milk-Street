@@ -980,7 +980,7 @@ h1, h2, h3, .display {
 }
 .detail-hero {
   display: grid;
-  grid-template-columns: minmax(0, 18rem) 1fr;
+  grid-template-columns: minmax(0, 0.85fr) minmax(0, 1.15fr);
   min-height: 0;
   align-items: start;
   background: var(--dark);
@@ -989,9 +989,7 @@ h1, h2, h3, .display {
 .detail-hero img {
   display: block;
   width: 100%;
-  height: 26rem;
-  object-fit: contain;
-  object-position: center center;
+  height: auto;
   background: var(--dark);
 }
 .detail-copy { padding: calc(var(--header) + 1.4rem) 6vw 2.6rem; align-self: start; }
@@ -1390,7 +1388,6 @@ h1, h2, h3, .display {
   .section-head, .split, .menu-layout, .visit-grid, .two, .detail-hero, .event, .event-card, .modal-card, .footer-top, .hours-row, .hauler-board {
     grid-template-columns: 1fr;
   }
-  .detail-hero img { height: 16.5rem; }
   .detail-copy { padding: 0.9rem 1.2rem 2rem; }
   .detail-copy h1 { font-size: 2.45rem; }
   .process, .ig-grid, .facts, .related { grid-template-columns: 1fr 1fr; }
