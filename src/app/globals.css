@@ -958,6 +958,7 @@ h1, h2, h3, .display {
 }
 .event-card time { font-family: var(--serif); font-size: 1.7rem; display: block; }
 .event-when { margin: 0.2rem 0 0.8rem; letter-spacing: 0.08em; text-transform: uppercase; font-size: 0.78rem; color: var(--ink-soft); }
+.event-card .btn-row, .event-next .text-link { margin-top: 1rem; }
 .section-dark .event { border-color: var(--line-light); }
 .section-dark .event p { color: rgba(243, 238, 230, 0.78); }
 .kind {
