@@ -49,7 +49,7 @@ const bottle = {
   blueberry: { spirit: "Blueberry-infused vodka" },
   gingerVodka: { spirit: "Ginger vodka" },
   rumAndVodka: { spirit: "Rum and vodka" },
-  flight: { spirit: "Milk Street" },
+  flight: { spirit: "" },
 } as const;
 
 type BottleKey = keyof typeof bottle;
@@ -144,11 +144,11 @@ export const drinks: Drink[] = [
   item("ball-buster", "Ball Buster", "$12", "Boba", "Ginger vodka, pink lemonade, blackberry, and blueberry boba.", "gingerVodka"),
   item("coconut-danglers", "Coconut Danglers", "$12", "Boba", "Rum, coconut, orange, pineapple, coconut-pineapple seltzer, and mango boba.", "rum"),
 
-  item("jello-shots", "Jello Shots", "$5", "Flights & extras", "Jello shots.", "flight"),
-  item("moonshine-shots", "Moonshine Shots", "$5", "Flights & extras", "Moonshine shots.", "flight"),
-  item("boozy-slushies", "Boozy Slushies", "$12", "Flights & extras", "Boozy slushies.", "flight"),
-  item("brown-flight", "Brown Flight", "$36", "Flights & extras", "Brown flight.", "flight", { spirit: "Whiskey" }),
-  item("clear-flight", "Clear Flight", "$26", "Flights & extras", "Clear flight.", "flight", { spirit: "Vodka, gin, rum" }),
+  item("jello-shots", "Jello Shots", "$5", "Flights & extras", "", "flight"),
+  item("moonshine-shots", "Moonshine Shots", "$5", "Flights & extras", "", "flight"),
+  item("boozy-slushies", "Boozy Slushies", "$12", "Flights & extras", "", "flight"),
+  item("brown-flight", "Brown Flight", "$36", "Flights & extras", "", "flight", { spirit: "Whiskey" }),
+  item("clear-flight", "Clear Flight", "$26", "Flights & extras", "", "flight", { spirit: "Vodka, gin, rum" }),
 ];
 
 export const menuNote =

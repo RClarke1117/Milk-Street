@@ -166,8 +166,8 @@ export function MenuBoard() {
                       </span>
                       <span className="menu-copy">
                         <span className="menu-name">{drink.name}</span>
-                        <span className="menu-desc">{drink.description}</span>
-                        <span className="menu-spirit">{drink.spirit}</span>
+                        {drink.description ? <span className="menu-desc">{drink.description}</span> : null}
+                        {drink.spirit ? <span className="menu-spirit">{drink.spirit}</span> : null}
                       </span>
                       <span className="menu-price">{drink.price}</span>
                     </button>

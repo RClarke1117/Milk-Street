@@ -38,7 +38,7 @@ export function JsonLd() {
           .map((drink) => ({
             "@type": "MenuItem",
             name: drink.name,
-            description: drink.description,
+            ...(drink.description ? { description: drink.description } : {}),
             offers: {
               "@type": "Offer",
               price: drink.price.replace(/[^0-9.]/g, ""),
