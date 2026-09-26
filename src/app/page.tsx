@@ -259,7 +259,7 @@ export default function HomePage() {
         <div className="two">
           <div>
             <h2>Hours</h2>
-            <Hours />
+            <Hours compact />
           </div>
           <div>
             <h2>Events</h2>

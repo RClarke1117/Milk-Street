@@ -30,9 +30,6 @@ export default function VisitPage() {
               <br />
               <a href={site.emailHref}>{site.email}</a>
             </p>
-            <p>
-              Bottle and gift-card pickup only, Monday through Friday, 12–6. Please email to verify that we are in. Not open for the tasting room or tours. Friday tasting room 4–10. Saturday 1–10. Sunday 1–6.
-            </p>
             <div className="btn-row">
               <a className="btn" href={site.maps}>
                 Directions

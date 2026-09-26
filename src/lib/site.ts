@@ -34,24 +34,11 @@ export const nav = [
 ] as const;
 
 export const hours = [
-  {
-    days: "Monday – Thursday",
-    room: "Pickup 12–6",
-    note: "Bottle and gift-card pickup only, 12–6. Please email to verify that we are in. Not open for the tasting room or tours.",
-  },
-  {
-    days: "Friday",
-    room: "Pickup 12–6 · 4–10 PM",
-    note: "Pickup 12–6. Tasting room 4–10. Tours every half hour.",
-  },
-  {
-    days: "Saturday",
-    room: "1–10 PM",
-    note: "Tasting room. Tours on the half hour.",
-  },
-  {
-    days: "Sunday",
-    room: "1–6 PM",
-    note: "Tasting room. Tours on the half hour.",
-  },
+  { days: "Monday – Thursday", room: "Pickup 12–6" },
+  { days: "Friday", room: "Pickup 12–6 · 4–10 PM" },
+  { days: "Saturday", room: "1–10 PM" },
+  { days: "Sunday", room: "1–6 PM" },
 ] as const;
+
+export const hoursNote =
+  "Bottle and gift-card pickup only, Monday through Friday, 12–6. Please email to verify that we are in. Not open for the tasting room or tours. Tours run every half an hour.";

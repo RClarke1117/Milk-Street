@@ -1,4 +1,4 @@
-import { hours } from "@/lib/site";
+import { hours, hoursNote } from "@/lib/site";
 
 export function Hours({ compact = false }: { compact?: boolean }) {
   return (
@@ -7,9 +7,9 @@ export function Hours({ compact = false }: { compact?: boolean }) {
         <article key={row.days} className="hours-row">
           <h3>{row.days}</h3>
           <p className="hours-room">{row.room}</p>
-          <p>{row.note}</p>
         </article>
       ))}
+      <p className="hours-note">{hoursNote}</p>
     </div>
   );
 }
